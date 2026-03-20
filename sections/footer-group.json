@@ -22,7 +22,7 @@
           "type": "disclaimer",
           "settings": {
             "heading": "Disclaimer",
-            "text": "<p>lootroom GmbH is officially affiliated, endorsed, and licensed by <a href=\"https://facepunch.com/merch\" target=\"_blank\" rel=\"noopener noreferrer\">Facepunch Studios</a>.</p><p>&#169; 2026 Facepunch Studios Limited. All rights reserved. Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks and/or registered trademarks of Facepunch Studios in the US and/or other countries.</p><p>For other games, lootroom is not affiliated with, endorsed by, or in any way associated with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates. All graphics, game assets, sounds, and brands are property of their respective owners.</p>"
+            "text": "<p>lootroom GmbH is officially affiliated, endorsed, and licensed by <a href=\"https://facepunch.com/merch\" target=\"_blank\">Facepunch Studios</a>.</p><p>© 2026 Facepunch Studios Limited. All rights reserved. Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks and/or registered trademarks of Facepunch Studios in the US and/or other countries.</p><p>For other games, lootroom is not affiliated with, endorsed by, or in any way associated with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates. All graphics, game assets, sounds, and brands are property of their respective owners.</p>"
           }
         },
         "links_block": {
