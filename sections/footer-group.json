@@ -35,6 +35,7 @@
         "info_block": {
           "type": "info",
           "settings": {
+            "supplier_logo": "shopify://shop_images/threedjake-logo.e0559f435h0p.svg",
             "supplier_name": "3D Jake",
             "show_ssl": true
           }
