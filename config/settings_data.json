@@ -10,6 +10,7 @@
 {
   "current": {
     "global_background_image": "shopify://shop_images/desktop-background.svg",
+    "global_background_image_mobile": "shopify://shop_images/background-mobile_a96bdc24-fde7-4e55-a4bd-37db451191da.svg",
     "logo": "shopify://shop_images/logo-tw-1000px.png",
     "logo_width": 210,
     "type_header_font": "poppins_n7",
