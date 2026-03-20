@@ -3744,9 +3744,10 @@ details-disclosure > details {
  * Column for the image: Push the image to the bottom.
  */
 .footer-col--image {
-  flex: 0 0 auto;
+  flex: 0 0 300px; /* Reserve horizontal space */
   align-self: flex-end;
   margin-left: 20%;
+  position: relative;
 }
 
 /*
@@ -3757,7 +3758,10 @@ details-disclosure > details {
   height: 400px;
   width: auto;
   pointer-events: none;
-  margin-bottom: -1.5rem; /* Offsets the footer-inner padding to sit on the bottom border */
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Spalten allgemein */
@@ -3882,9 +3886,12 @@ details-disclosure > details {
   .footer-col--image {
     align-self: center; /* Center horizontally instead of flex-end */
     margin-left: 0;
+    flex: 0 0 auto;
   }
 
   .footer-naked-img {
+    position: static;
+    transform: none;
     width: 160px;
     height: auto;
     margin: 0 auto;
