@@ -11,36 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "trust_bar": {
-      "type": "trust-bar",
-      "settings": {
-        "show_trust_features": true,
-        "feature_1_title": "Sicherer Checkout",
-        "feature_1_sub": "256-Bit SSL Verschlüsselung",
-        "feature_2_title": "Weltweiter Versand",
-        "feature_2_sub": "Schneller & zuverlässiger Versand",
-        "feature_3_title": "24/7 Support",
-        "feature_3_sub": "Wir sind immer für dich da",
-        "feature_4_title": "Zufriedenheitsgarantie",
-        "feature_4_sub": "30 Tage Rückgaberecht",
-        "show_payments": true,
-        "payment_heading": "Sichere Bezahlung",
-        "show_shipping": true,
-        "shipping_heading": "Weltweiter Versand",
-        "show_dhl": true,
-        "show_usps": true,
-        "show_auspost": true,
-        "show_royalmail": true,
-        "bg_color": "rgba(0,0,0,0)",
-        "card_bg_color": "rgba(0,0,0,0)",
-        "text_color": "#ffffff",
-        "icon_color": "#f5e5b9",
-        "accent_color": "#dac795",
-        "divider_color": "rgba(0,0,0,0)",
-        "padding_top": 32,
-        "padding_bottom": 100
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -81,7 +51,6 @@
     }
   },
   "order": [
-    "trust_bar",
     "footer"
   ]
 }
