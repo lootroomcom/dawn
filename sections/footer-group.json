@@ -13,7 +13,22 @@
   "sections": {
     "trust_bar": {
       "type": "trust-bar",
-      "settings": {}
+      "settings": {
+        "show_payments": true,
+        "payment_heading": "Sichere Bezahlung",
+        "show_shipping": true,
+        "shipping_heading": "Weltweiter Versand",
+        "show_dhl": true,
+        "show_usps": true,
+        "show_auspost": true,
+        "show_royalmail": true,
+        "bg_color": "rgba(0,0,0,0)",
+        "text_color": "#ffffff",
+        "icon_color": "#f5e5b9",
+        "divider_color": "rgba(0,0,0,0)",
+        "padding_top": 32,
+        "padding_bottom": 80
+      }
     },
     "footer": {
       "type": "footer",
