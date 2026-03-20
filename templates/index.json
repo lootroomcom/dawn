@@ -1,1 +1,209 @@
-{"sections":{"product_feature_slider_AbxL6i":{"type":"product-feature-slider","blocks":{"slide_wd3RDy":{"type":"slide","settings":{"custom_image":"shopify:\/\/shop_images\/freigestellt.png","product":"rust-nailgun-prop","badge_text":"FEATURED PRODUCT","badge_bg":"rgba(0,0,0,0)","badge_color":"#f5e5b9","custom_text":"<p>- Life-Size: 34,5 x 33 x 10 cm (13,5 x 12,9 x 3,9 in)<br\/>- Weight: 600g<br\/>- Professional airbrushed with default used-look skin. <br\/>- Special: real tape & twine<\/p>","title_color":"#ffffff","text_color":"#ffffff","price_color":"#ffffff","enable_float":true,"float_distance":15,"float_speed":6,"enable_glow":true,"glow_color":"#f5e5b9","glow_strength":5}},"slide_z3anfF":{"type":"slide","settings":{"custom_image":"shopify:\/\/shop_images\/ltrm-sar-without-background.png","product":"rust-game-sar-standard-prop","badge_text":"FEATURED PRODUCT","badge_bg":"rgba(0,0,0,0)","badge_color":"#f5e5b9","custom_text":"<p>- Life-Size: 75 x 18 x 8 cm (30 x 7 x 3 inch)<br\/>- Weight: 370 grams<br\/>- Professional airbrushed with Default Skin<br\/>- Special: real metal clamps, cloth line, two types of tape<\/p>","title_color":"#ffffff","text_color":"#ffffff","price_color":"#ffffff","enable_float":true,"float_distance":15,"float_speed":6,"enable_glow":true,"glow_color":"#dac795","glow_strength":5}}},"block_order":["slide_wd3RDy","slide_z3anfF"],"name":"Advanced Product Slider","settings":{"autoplay":true,"autoplay_speed":8000,"speed":800,"loop":true,"show_pagination":true,"pagination_color":"#ffffff","show_arrows":true}},"trustpilot_widget_XQzT6e":{"type":"trustpilot-widget","settings":{"color_scheme":"scheme-2","padding_top":40,"padding_bottom":12}},"custom_liquid_ArpbHc":{"type":"custom-liquid","name":"t:sections.custom-liquid.presets.name","settings":{"custom_liquid":"<style>\n.center-image {\n  display: flex;\n  justify-content: center;\n  margin: 20px 0;\n}\n\n.center-image img {\n  max-width: 50%;\n  height: auto;\n}\n<\/style>\n\n<div class=\"center-image\">\n  <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0503\/3535\/0975\/files\/Lootroom_x_Rust_-_Website_Image_8426a525-e77b-4fff-b2af-a413250017df.png?v=1763468291\" alt=\"Beschreibung\">\n<\/div>","color_scheme":"scheme-2","padding_top":12,"padding_bottom":52}},"featured_collection":{"type":"featured-collection","settings":{"collection":"advertised2","products_to_show":8,"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":false,"view_all_style":"solid","color_scheme":"scheme-2","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":true,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":0,"padding_bottom":36}},"chic_multi_columns_jV64Yr":{"type":"chic-multi-columns","blocks":{"column_CpFFQA":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/deutschland.png","heading":"Made in Germany","text":"<p>Since 2018 we craft irl loot with diligence and state of the art systems in bavaria\/germany. Thousands of customers are convinced and appreciate the quality of our products. <br\/><br\/><\/p>","link_url":""}},"column_464WYx":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/beratungsstelle.png","heading":"Discord and Email Support","text":"<p>You come first! We never use scripted support. Our Team is real and will answer your questions shortly. Get in touch with lootroom - easy, fast and reliable.<br\/><br\/><\/p>","link_url":""}},"column_dNfRt6":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/shipping-and-delivery.png","heading":"Worldwide shipping","text":"<p>We’ve already shipped to 50+ countries worldwide! Shipping is FREE for orders above $100. Express shipping can be added at checkout. Every order securely shipped.<br\/><br\/><\/p>","link_url":""}}},"block_order":["column_CpFFQA","column_464WYx","column_dNfRt6"],"name":"Chic Multi Columns ULTRA MAX","settings":{"title":"","subtitle":"","columns_desktop":3,"media_ratio":"16\/9","gap":20,"radius":12,"padding_y":40,"card_color":"#f5e5b9","card_opacity":5,"text_color":"#ffffff","gradient_1":"#ff00cc","gradient_2":"#dac795","gradient_3":"#00f2fe","gradient_4":"#4facfe"}},"page_mQye6V":{"type":"page","name":"t:sections.page.presets.name","settings":{"page":"","heading_size":"h1","color_scheme":"scheme-2","padding_top":36,"padding_bottom":36}}},"order":["product_feature_slider_AbxL6i","trustpilot_widget_XQzT6e","custom_liquid_ArpbHc","featured_collection","chic_multi_columns_jV64Yr","page_mQye6V"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_feature_slider_AbxL6i": {
+      "type": "product-feature-slider",
+      "blocks": {
+        "slide_wd3RDy": {
+          "type": "slide",
+          "settings": {
+            "custom_image": "shopify://shop_images/freigestellt.png",
+            "product": "rust-nailgun-prop",
+            "badge_text": "FEATURED PRODUCT",
+            "badge_bg": "rgba(0,0,0,0)",
+            "badge_color": "#f5e5b9",
+            "custom_text": "<p>- Life-Size: 34,5 x 33 x 10 cm (13,5 x 12,9 x 3,9 in)<br/>- Weight: 600g<br/>- Professional airbrushed with default used-look skin. <br/>- Special: real tape & twine</p>",
+            "title_color": "#ffffff",
+            "title_bold": true,
+            "text_color": "#ffffff",
+            "text_bold": false,
+            "price_color": "#ffffff",
+            "price_bold": true,
+            "button_bg": "rgba(0,0,0,0)",
+            "button_text": "#f5e5b9",
+            "button_bg_secondary": "rgba(0,0,0,0)",
+            "button_text_secondary": "#f5e5b9",
+            "enable_float": true,
+            "float_distance": 15,
+            "float_speed": 6,
+            "enable_glow": true,
+            "glow_color": "#f5e5b9",
+            "glow_strength": 5
+          }
+        },
+        "slide_z3anfF": {
+          "type": "slide",
+          "settings": {
+            "custom_image": "shopify://shop_images/ltrm-sar-without-background.png",
+            "product": "rust-game-sar-standard-prop",
+            "badge_text": "FEATURED PRODUCT",
+            "badge_bg": "rgba(0,0,0,0)",
+            "badge_color": "#f5e5b9",
+            "custom_text": "<p>- Life-Size: 75 x 18 x 8 cm (30 x 7 x 3 inch)<br/>- Weight: 370 grams<br/>- Professional airbrushed with Default Skin<br/>- Special: real metal clamps, cloth line, two types of tape</p>",
+            "title_color": "#ffffff",
+            "title_bold": true,
+            "text_color": "#ffffff",
+            "text_bold": false,
+            "price_color": "#ffffff",
+            "price_bold": true,
+            "button_bg": "#ffffff",
+            "button_text": "#111111",
+            "button_bg_secondary": "rgba(0,0,0,0)",
+            "button_text_secondary": "#ffffff",
+            "enable_float": true,
+            "float_distance": 15,
+            "float_speed": 6,
+            "enable_glow": true,
+            "glow_color": "#dac795",
+            "glow_strength": 5
+          }
+        }
+      },
+      "block_order": [
+        "slide_wd3RDy",
+        "slide_z3anfF"
+      ],
+      "name": "Advanced Product Slider",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 8000,
+        "speed": 800,
+        "loop": true,
+        "show_pagination": true,
+        "pagination_color": "#ffffff",
+        "show_arrows": true
+      }
+    },
+    "trustpilot_widget_XQzT6e": {
+      "type": "trustpilot-widget",
+      "settings": {
+        "businessunit_id": "61b29dd6b35716981dec7da0",
+        "template_id": "5419b6a8b0d04a076446a9ad",
+        "domain": "lootroom.com",
+        "color_scheme": "scheme-2",
+        "theme": "dark",
+        "padding_top": 40,
+        "padding_bottom": 12
+      }
+    },
+    "custom_liquid_ArpbHc": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.center-image {\n  display: flex;\n  justify-content: center;\n  margin: 20px 0;\n}\n\n.center-image img {\n  max-width: 50%;\n  height: auto;\n}\n</style>\n\n<div class=\"center-image\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0503/3535/0975/files/Lootroom_x_Rust_-_Website_Image_8426a525-e77b-4fff-b2af-a413250017df.png?v=1763468291\" alt=\"Beschreibung\">\n</div>",
+        "color_scheme": "scheme-2",
+        "padding_top": 12,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "advertised2",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-2",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "chic_multi_columns_jV64Yr": {
+      "type": "chic-multi-columns",
+      "blocks": {
+        "column_CpFFQA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/deutschland.png",
+            "heading": "Made in Germany",
+            "text": "<p>Since 2018 we craft irl loot with diligence and state of the art systems in bavaria/germany. Thousands of customers are convinced and appreciate the quality of our products. <br/><br/></p>",
+            "link_url": ""
+          }
+        },
+        "column_464WYx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beratungsstelle.png",
+            "heading": "Discord and Email Support",
+            "text": "<p>You come first! We never use scripted support. Our Team is real and will answer your questions shortly. Get in touch with lootroom - easy, fast and reliable.<br/><br/></p>",
+            "link_url": ""
+          }
+        },
+        "column_dNfRt6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shipping-and-delivery.png",
+            "heading": "Worldwide shipping",
+            "text": "<p>We’ve already shipped to 50+ countries worldwide! Shipping is FREE for orders above $100. Express shipping can be added at checkout. Every order securely shipped.<br/><br/></p>",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_CpFFQA",
+        "column_464WYx",
+        "column_dNfRt6"
+      ],
+      "name": "Chic Multi Columns ULTRA MAX",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "columns_desktop": 3,
+        "media_ratio": "16/9",
+        "gap": 20,
+        "radius": 12,
+        "padding_y": 40,
+        "card_color": "#f5e5b9",
+        "card_opacity": 5,
+        "text_color": "#ffffff",
+        "gradient_1": "#ff00cc",
+        "gradient_2": "#dac795",
+        "gradient_3": "#00f2fe",
+        "gradient_4": "#4facfe"
+      }
+    },
+    "page_mQye6V": {
+      "type": "page",
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "product_feature_slider_AbxL6i",
+    "trustpilot_widget_XQzT6e",
+    "custom_liquid_ArpbHc",
+    "featured_collection",
+    "chic_multi_columns_jV64Yr",
+    "page_mQye6V"
+  ]
+}
