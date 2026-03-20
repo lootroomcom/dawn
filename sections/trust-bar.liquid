@@ -3,8 +3,10 @@
 {%- style -%}
   #trust-bar-{{ section.id }} {
     --trust-bg: {{ section.settings.bg_color }};
+    --trust-bg-card: {{ section.settings.card_bg_color }};
     --trust-text: {{ section.settings.text_color }};
     --trust-icon: {{ section.settings.icon_color }};
+    --trust-accent: {{ section.settings.accent_color }};
     --trust-divider: {{ section.settings.divider_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -12,70 +14,130 @@
 {%- endstyle -%}
 
 <section id="trust-bar-{{ section.id }}" class="trust-bar">
+  <div class="trust-bar__glow" aria-hidden="true"></div>
   <div class="page-width">
 
-    {%- if section.settings.show_payments -%}
-      <div class="trust-bar__group">
-        {%- if section.settings.payment_heading != blank -%}
-          <p class="trust-bar__heading">{{ section.settings.payment_heading }}</p>
-        {%- endif -%}
-        <div class="trust-bar__icons">
-          {%- for type in shop.enabled_payment_types -%}
-            {{ type | payment_type_svg_tag: class: 'trust-bar__payment-icon' }}
-          {%- endfor -%}
+    {%- if section.settings.show_trust_features -%}
+      <div class="trust-bar__features">
+        <div class="trust-bar__feature">
+          <div class="trust-bar__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="trust-bar__feature-text">
+            <span class="trust-bar__feature-title">{{ section.settings.feature_1_title }}</span>
+            <span class="trust-bar__feature-sub">{{ section.settings.feature_1_sub }}</span>
+          </div>
+        </div>
+        <div class="trust-bar__feature">
+          <div class="trust-bar__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="trust-bar__feature-text">
+            <span class="trust-bar__feature-title">{{ section.settings.feature_2_title }}</span>
+            <span class="trust-bar__feature-sub">{{ section.settings.feature_2_sub }}</span>
+          </div>
+        </div>
+        <div class="trust-bar__feature">
+          <div class="trust-bar__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="trust-bar__feature-text">
+            <span class="trust-bar__feature-title">{{ section.settings.feature_3_title }}</span>
+            <span class="trust-bar__feature-sub">{{ section.settings.feature_3_sub }}</span>
+          </div>
+        </div>
+        <div class="trust-bar__feature">
+          <div class="trust-bar__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="trust-bar__feature-text">
+            <span class="trust-bar__feature-title">{{ section.settings.feature_4_title }}</span>
+            <span class="trust-bar__feature-sub">{{ section.settings.feature_4_sub }}</span>
+          </div>
         </div>
       </div>
     {%- endif -%}
 
-    {%- if section.settings.show_payments and section.settings.show_shipping -%}
-      <div class="trust-bar__divider" aria-hidden="true"></div>
-    {%- endif -%}
+    <div class="trust-bar__badges">
 
-    {%- if section.settings.show_shipping -%}
-      <div class="trust-bar__group">
-        {%- if section.settings.shipping_heading != blank -%}
-          <p class="trust-bar__heading">{{ section.settings.shipping_heading }}</p>
-        {%- endif -%}
-        <div class="trust-bar__icons trust-bar__icons--shipping">
-
-          {%- if section.settings.show_dhl -%}
-            <div class="trust-bar__ship-icon" title="DHL">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="DHL">
-                <path d="M0 41.3h37.4l3.6-4.6H0v4.6zm0-9.1h44.6l3.5-4.6H0v4.6zm61.8-9.1L51.6 36.4h15.2l10.2-13.3H61.8zm-17.1 0L25.3 41.3h15.5l6.9-9h14.7l-3.5 4.5h15.2l10.2-13.3-9.9 12.8c.8-.7 1.7-1.5 2.4-2.2L91.7 23.1H44.7zM130.5 23.1l-10.2 13.3h-14.7l10.2-13.3H100l-13.9 18.2h60.8l13.9-18.2h-15.8l-10.2 13.3c1.3-1.7 2.7-3.5 3.7-4.6l6.5-8.7h-14.5zm22 0l-13.9 18.2H200v-4.6h-37.9l3.6-4.5H200v-4.6h-30.7l3.5-4.5H200v-4.5h-47.5z"/>
-              </svg>
-            </div>
+      {%- if section.settings.show_payments -%}
+        <div class="trust-bar__card">
+          {%- if section.settings.payment_heading != blank -%}
+            <p class="trust-bar__label">{{ section.settings.payment_heading }}</p>
           {%- endif -%}
-
-          {%- if section.settings.show_usps -%}
-            <div class="trust-bar__ship-icon" title="USPS">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="USPS">
-                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
-                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="currentColor">USPS</text>
-              </svg>
-            </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_auspost -%}
-            <div class="trust-bar__ship-icon" title="Australia Post">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="Australia Post">
-                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
-                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="currentColor">AUS POST</text>
-              </svg>
-            </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_royalmail -%}
-            <div class="trust-bar__ship-icon" title="Royal Mail">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="Royal Mail">
-                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
-                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="currentColor">ROYAL MAIL</text>
-              </svg>
-            </div>
-          {%- endif -%}
-
+          <div class="trust-bar__icons">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'trust-bar__payment-icon' }}
+            {%- endfor -%}
+          </div>
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.show_shipping -%}
+        <div class="trust-bar__card">
+          {%- if section.settings.shipping_heading != blank -%}
+            <p class="trust-bar__label">{{ section.settings.shipping_heading }}</p>
+          {%- endif -%}
+          <div class="trust-bar__icons trust-bar__icons--shipping">
+
+            {%- if section.settings.show_dhl -%}
+              <div class="trust-bar__ship-icon" title="DHL">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="DHL">
+                  <path d="M0 41.3h37.4l3.6-4.6H0v4.6zm0-9.1h44.6l3.5-4.6H0v4.6zm61.8-9.1L51.6 36.4h15.2l10.2-13.3H61.8zm-17.1 0L25.3 41.3h15.5l6.9-9h14.7l-3.5 4.5h15.2l10.2-13.3-9.9 12.8c.8-.7 1.7-1.5 2.4-2.2L91.7 23.1H44.7zM130.5 23.1l-10.2 13.3h-14.7l10.2-13.3H100l-13.9 18.2h60.8l13.9-18.2h-15.8l-10.2 13.3c1.3-1.7 2.7-3.5 3.7-4.6l6.5-8.7h-14.5zm22 0l-13.9 18.2H200v-4.6h-37.9l3.6-4.5H200v-4.6h-30.7l3.5-4.5H200v-4.5h-47.5z"/>
+                </svg>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_usps -%}
+              <div class="trust-bar__ship-icon trust-bar__ship-icon--wide" title="USPS">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" fill="currentColor" aria-label="USPS">
+                  <path d="M20 40c0-15 12-27 27-27h246c15 0 27 12 27 27s-12 27-27 27H47c-15 0-27-12-27-27z" fill="none" stroke="currentColor" stroke-width="4"/>
+                  <path d="M60 29h12c8 0 12 3 12 9 0 7-5 10-13 10h-4l-2 12H55l5-31zm9 14h3c4 0 6-2 6-5 0-3-2-4-5-4h-2l-2 9z"/>
+                  <path d="M100 40c0-4 4-8 10-8s9 3 9 7c0 6-8 7-8 11h8l-1 5H99l1-4c2-5 10-7 10-12 0-2-1-3-4-3-3 0-4 2-5 4h-1z"/>
+                  <rect x="130" y="26" width="4" height="2" rx="1"/>
+                  <rect x="130" y="26" width="4" height="2" rx="1"/>
+                  <g font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36">
+                    <text x="170" y="52" text-anchor="middle">USPS</text>
+                  </g>
+                  <path d="M245 28l-3 18c-1 5-5 9-12 9s-10-4-9-9l3-18h10l-3 17c0 2 1 4 3 4s4-2 4-4l3-17h4z"/>
+                  <path d="M262 34c0-3 3-7 9-7 5 0 8 2 8 6h-7c0-1-1-2-2-2-2 0-3 1-3 2 0 4 12 2 12 10 0 4-4 8-10 8-6 0-9-3-9-7h8c0 2 1 3 3 3 2 0 3-1 3-2 0-4-12-3-12-11z"/>
+                </svg>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_auspost -%}
+              <div class="trust-bar__ship-icon" title="Australia Post">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" aria-label="Australia Post">
+                  <path d="M50 5L5 30v40l45 25 45-25V30L50 5z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                  <path d="M50 15L15 34v32l35 19 35-19V34L50 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" opacity="0.4"/>
+                  <path d="M50 35l-15 8v16l15 8 15-8V43l-15-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="currentColor" opacity="0.15"/>
+                  <g font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11">
+                    <text x="50" y="50" text-anchor="middle" dominant-baseline="central" fill="currentColor">AUS</text>
+                    <text x="50" y="62" text-anchor="middle" dominant-baseline="central" fill="currentColor">POST</text>
+                  </g>
+                </svg>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_royalmail -%}
+              <div class="trust-bar__ship-icon" title="Royal Mail">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" fill="currentColor" aria-label="Royal Mail">
+                  <rect x="4" y="4" width="112" height="72" rx="8" fill="none" stroke="currentColor" stroke-width="4"/>
+                  <path d="M60 10l-48 25h96L60 10z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" opacity="0.5"/>
+                  <circle cx="60" cy="48" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <g font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="10">
+                    <text x="60" y="46" text-anchor="middle" fill="currentColor">ROYAL</text>
+                    <text x="60" y="56" text-anchor="middle" fill="currentColor">MAIL</text>
+                  </g>
+                </svg>
+              </div>
+            {%- endif -%}
+
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
 
   </div>
 </section>
@@ -84,6 +146,64 @@
 {
   "name": "Trust Bar",
   "settings": [
+    {
+      "type": "header",
+      "content": "Trust-Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_features",
+      "label": "Trust-Features anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Feature 1 – Titel",
+      "default": "Sicherer Checkout"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_sub",
+      "label": "Feature 1 – Untertitel",
+      "default": "256-Bit SSL Verschlüsselung"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Feature 2 – Titel",
+      "default": "Weltweiter Versand"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_sub",
+      "label": "Feature 2 – Untertitel",
+      "default": "Schneller & zuverlässiger Versand"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Feature 3 – Titel",
+      "default": "24/7 Support"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_sub",
+      "label": "Feature 3 – Untertitel",
+      "default": "Wir sind immer für dich da"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Feature 4 – Titel",
+      "default": "Zufriedenheitsgarantie"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_sub",
+      "label": "Feature 4 – Untertitel",
+      "default": "30 Tage Rückgaberecht"
+    },
     {
       "type": "header",
       "content": "Zahlungsmethoden"
@@ -114,7 +234,7 @@
       "type": "text",
       "id": "shipping_heading",
       "label": "Überschrift Versand",
-      "default": "Weltweiter Versand"
+      "default": "Weltweiter Versand mit"
     },
     {
       "type": "checkbox",
@@ -148,13 +268,19 @@
       "type": "color",
       "id": "bg_color",
       "label": "Hintergrundfarbe",
-      "default": "#111111"
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Hintergrund",
+      "default": "#161616"
     },
     {
       "type": "color",
       "id": "text_color",
       "label": "Textfarbe",
-      "default": "#999999"
+      "default": "#aaaaaa"
     },
     {
       "type": "color",
@@ -164,27 +290,33 @@
     },
     {
       "type": "color",
+      "id": "accent_color",
+      "label": "Akzentfarbe",
+      "default": "#dac795"
+    },
+    {
+      "type": "color",
       "id": "divider_color",
-      "label": "Trennlinie Farbe",
-      "default": "#333333"
+      "label": "Rand-Farbe",
+      "default": "#222222"
     },
     {
       "type": "range",
       "id": "padding_top",
       "label": "Abstand oben (px)",
       "min": 0,
-      "max": 80,
+      "max": 100,
       "step": 4,
-      "default": 32
+      "default": 48
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "label": "Abstand unten (px)",
       "min": 0,
-      "max": 80,
+      "max": 100,
       "step": 4,
-      "default": 32
+      "default": 48
     }
   ],
   "presets": [
