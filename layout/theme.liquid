@@ -266,11 +266,21 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
-    {%- if settings.global_background_image != blank -%}
+    {%- if settings.global_background_image != blank or settings.global_background_image_mobile != blank -%}
       <style>
-        body {
-          background-image: url('{{ settings.global_background_image | image_url: width: 2000 }}') !important;
-        }
+        {%- if settings.global_background_image != blank -%}
+          body {
+            background-image: url('{{ settings.global_background_image | image_url: width: 2000 }}') !important;
+          }
+        {%- endif -%}
+
+        {%- if settings.global_background_image_mobile != blank -%}
+          @media screen and (max-width: 749px) {
+            body {
+              background-image: url('{{ settings.global_background_image_mobile | image_url: width: 1200 }}') !important;
+            }
+          }
+        {%- endif -%}
       </style>
     {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
