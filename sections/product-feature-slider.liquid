@@ -42,17 +42,29 @@
 
                 {% if product != blank %}
 
-                  <h2 class="pf-title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+                  {% capture title_style %}
+                    {% if block.settings.title_color != blank %}color: {{ block.settings.title_color }}; {% endif %}
+                    {% if block.settings.title_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
+                  {% endcapture %}
+                  <h2 class="pf-title" style="{{ title_style | strip_newlines | strip }}">
                     {{ product.title }}
                   </h2>
 
                   {% if block.settings.custom_text != blank %}
-                    <div class="pf-text" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>
+                    {% capture text_style %}
+                      {% if block.settings.text_color != blank %}color: {{ block.settings.text_color }}; {% endif %}
+                      {% if block.settings.text_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
+                    {% endcapture %}
+                    <div class="pf-text" style="{{ text_style | strip_newlines | strip }}">
                       {{ block.settings.custom_text }}
                     </div>
                   {% endif %}
 
-                  <div class="pf-price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>
+                  {% capture price_style %}
+                    {% if block.settings.price_color != blank %}color: {{ block.settings.price_color }}; {% endif %}
+                    {% if block.settings.price_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
+                  {% endcapture %}
+                  <div class="pf-price" style="{{ price_style | strip_newlines | strip }}">
                     {% if product.compare_at_price > product.price %}
                       <span class="price price--compare">
                         {{ product.compare_at_price | money }}
@@ -172,11 +184,16 @@ document.addEventListener('DOMContentLoaded', function () {
         { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#ffffff" },
         { "type": "richtext", "id": "custom_text", "label": "Optional Text" },
 
-        { "type": "header", "content": "Textfarben" },
+        { "type": "header", "content": "Schrift & Farben" },
 
         { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#ffffff" },
+        { "type": "checkbox", "id": "title_bold", "label": "Titel fettgedruckt", "default": true },
+        
         { "type": "color", "id": "text_color", "label": "Text Farbe", "default": "#cccccc" },
+        { "type": "checkbox", "id": "text_bold", "label": "Text fettgedruckt", "default": false },
+        
         { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
+        { "type": "checkbox", "id": "price_bold", "label": "Preis fettgedruckt", "default": true },
 
         { "type": "header", "content": "Bild Animation" },
 
