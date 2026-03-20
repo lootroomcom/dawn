@@ -3744,9 +3744,9 @@ details-disclosure > details {
  * Column for the image: Push the image to the bottom.
  */
 .footer-col--image {
-  flex: 0 0 300px; /* Reserve horizontal space */
+  flex: 0 0 200px; /* Reserve horizontal space (reduced so text isn't pushed too far) */
   align-self: flex-end;
-  margin-left: 20%;
+  margin-left: 8%; /* Reduced from 20% to keep text closer */
   /* No position: relative here! */
 }
 
