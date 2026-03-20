@@ -21,13 +21,16 @@
             "badge_bg": "rgba(0,0,0,0)",
             "badge_color": "#f5e5b9",
             "custom_text": "<p>- Life-Size: 34,5 x 33 x 10 cm (13,5 x 12,9 x 3,9 in)<br/>- Weight: 600g<br/>- Professional airbrushed with default used-look skin. <br/>- Special: real tape & twine</p>",
+            "heading_tag": "h2",
             "title_color": "#ffffff",
             "title_bold": true,
             "text_color": "#ffffff",
             "text_bold": false,
             "price_color": "#ffffff",
             "price_bold": true,
+            "btn_primary_text": "",
             "button_bg": "rgba(0,0,0,0)",
+            "btn_secondary_text": "",
             "button_text": "#f5e5b9",
             "button_bg_secondary": "rgba(0,0,0,0)",
             "button_text_secondary": "#f5e5b9",
@@ -48,13 +51,16 @@
             "badge_bg": "rgba(0,0,0,0)",
             "badge_color": "#f5e5b9",
             "custom_text": "<p>- Life-Size: 75 x 18 x 8 cm (30 x 7 x 3 inch)<br/>- Weight: 370 grams<br/>- Professional airbrushed with Default Skin<br/>- Special: real metal clamps, cloth line, two types of tape</p>",
+            "heading_tag": "h2",
             "title_color": "#ffffff",
             "title_bold": true,
             "text_color": "#ffffff",
             "text_bold": false,
             "price_color": "#ffffff",
             "price_bold": true,
+            "btn_primary_text": "",
             "button_bg": "#ffffff",
+            "btn_secondary_text": "",
             "button_text": "#111111",
             "button_bg_secondary": "rgba(0,0,0,0)",
             "button_text_secondary": "#ffffff",
@@ -186,13 +192,31 @@
         "gradient_4": "#4facfe"
       }
     },
-    "page_mQye6V": {
-      "type": "page",
-      "name": "t:sections.page.presets.name",
+    "featured_collection_WjGK9R": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "page": "",
+        "collection": "cs-general",
+        "products_to_show": 4,
+        "title": "Featured collection",
         "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
         "color_scheme": "scheme-2",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -204,6 +228,6 @@
     "custom_liquid_ArpbHc",
     "featured_collection",
     "chic_multi_columns_jV64Yr",
-    "page_mQye6V"
+    "featured_collection_WjGK9R"
   ]
 }
