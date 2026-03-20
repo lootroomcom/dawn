@@ -1,5 +1,5 @@
-{{ 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' | stylesheet_tag }}
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
 
 <section id="pf-slider-{{ section.id }}" class="pf-slider">
   <div class="page-width">
@@ -24,7 +24,8 @@
                       "
                       data-float="{{ block.settings.enable_float }}"
                       data-glow="{{ block.settings.enable_glow }}">
-                   {{ block.settings.custom_image | image_url: width: 900 | image_tag: class: 'pf-animated-image', loading: 'lazy' }}
+                   {% capture image_loading %}{% if forloop.first %}eager{% else %}lazy{% endif %}{% endcapture %}
+                   {{ block.settings.custom_image | image_url: width: 900 | image_tag: class: 'pf-animated-image', loading: image_loading }}
                  </div>
                {% endif %}
               </div>
@@ -46,9 +47,10 @@
                     {% if block.settings.title_color != blank %}color: {{ block.settings.title_color }}; {% endif %}
                     {% if block.settings.title_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
                   {% endcapture %}
-                  <h2 class="pf-title" style="{{ title_style | strip_newlines | strip }}">
+                  {% assign heading_tag = block.settings.heading_tag | default: 'h2' %}
+                  <{{ heading_tag }} class="pf-title" style="{{ title_style | strip_newlines | strip }}">
                     {{ product.title }}
-                  </h2>
+                  </{{ heading_tag }}>
 
                   {% if block.settings.custom_text != blank %}
                     {% capture text_style %}
@@ -86,16 +88,24 @@
                           {% unless product.available %}disabled{% endunless %}
                         >
                           {% if product.available %}
-                            Add to cart
+                            {% if block.settings.btn_primary_text != blank %}
+                              {{ block.settings.btn_primary_text }}
+                            {% else %}
+                              {{ 'products.product.add_to_cart' | t | default: 'Add to cart' }}
+                            {% endif %}
                           {% else %}
-                            Sold out
+                            {{ 'products.product.sold_out' | t | default: 'Sold out' }}
                           {% endif %}
                         </button>
                       {% endform %}
                     </product-form>
 
                     <a href="{{ product.url }}" class="button button--secondary">
-                      View details
+                      {% if block.settings.btn_secondary_text != blank %}
+                        {{ block.settings.btn_secondary_text }}
+                      {% else %}
+                        {{ 'products.product.view_full_details' | t | default: 'View details' }}
+                      {% endif %}
                     </a>
 
                   </div>
@@ -186,6 +196,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         { "type": "header", "content": "Schrift & Farben" },
 
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Titel HTML-Tag (SEO)",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "p",  "label": "Text (p)" }
+          ],
+          "default": "h2"
+        },
         { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#ffffff" },
         { "type": "checkbox", "id": "title_bold", "label": "Titel fettgedruckt", "default": true },
         
@@ -196,7 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { "type": "checkbox", "id": "price_bold", "label": "Preis fettgedruckt", "default": true },
 
         { "type": "header", "content": "Buttons" },
+        { "type": "text", "id": "btn_primary_text", "label": "Text Haupt-Button", "placeholder": "z.B. In den Warenkorb" },
         { "type": "color", "id": "button_bg", "label": "1. Button Hintergrund", "default": "#ffffff" },
+        { "type": "text", "id": "btn_secondary_text", "label": "Text Zweiter Button", "placeholder": "z.B. Details ansehen" },
         { "type": "color", "id": "button_text", "label": "1. Button Text", "default": "#111111" },
         { "type": "color", "id": "button_bg_secondary", "label": "2. Button Hintergrund", "default": "transparent" },
         { "type": "color", "id": "button_text_secondary", "label": "2. Button Text", "default": "#ffffff" },
