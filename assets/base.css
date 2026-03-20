@@ -3747,11 +3747,12 @@ details-disclosure > details {
   flex: 0 0 300px; /* Reserve horizontal space */
   align-self: flex-end;
   margin-left: 20%;
-  position: relative;
+  /* No position: relative here! */
 }
 
 /*
- * Charakter-Bild: als block inline mit Text mitfließen
+ * Charakter-Bild: als absolute an Footer-Bottom (footer-wrapper) ausrichten.
+ * Durch den fehlenden `left` Wert behält es horizontal die Flucht des .footer-col--image Blocks!
  */
 .footer-naked-img {
   display: block;
@@ -3759,9 +3760,7 @@ details-disclosure > details {
   width: auto;
   pointer-events: none;
   position: absolute;
-  bottom: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0; /* An die absolute Unterkante des footer-wrapper heften */
 }
 
 /* Spalten allgemein */
