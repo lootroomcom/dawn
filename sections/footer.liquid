@@ -11,19 +11,14 @@
         {%- when 'image' -%}
           <div class="footer-col footer-col--image" {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank -%}
-              <img
-                class="footer-naked-img"
-                src="{{ block.settings.image | image_url: width: 400 }}"
-                alt="Brand Character"
-                width="400"
-                loading="lazy"
-              >
+              {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'footer-naked-img' }}
             {%- else -%}
               <img
                 class="footer-naked-img"
                 src="https://cdn.shopify.com/s/files/1/0503/3535/0975/files/naked.png?v=1772442775"
                 alt="Lootroom Character"
                 width="400"
+                height="400"
                 loading="lazy"
               >
             {%- endif -%}
@@ -60,13 +55,7 @@
             {%- if block.settings.supplier_logo != blank -%}
               <div class="footer-supplier">
                 <span class="footer-col__heading">Supplied by</span>
-                <img
-                  src="{{ block.settings.supplier_logo | image_url: width: 200 }}"
-                  alt="{{ block.settings.supplier_name | escape }}"
-                  class="footer-supplier__logo"
-                  width="200"
-                  loading="lazy"
-                >
+                {{ block.settings.supplier_logo | image_url: width: 200 | image_tag: loading: 'lazy', class: 'footer-supplier__logo', alt: block.settings.supplier_name }}
               </div>
             {%- endif -%}
 
