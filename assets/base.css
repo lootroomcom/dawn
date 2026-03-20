@@ -3726,41 +3726,37 @@ details-disclosure > details {
 
 /*
  * footer-inner: Textspalten per Flexbox.
- * Das Naked-Bild ist absolut positioniert und ragt nach oben über den
- * footer-break-top. Das padding-left reserviert den Platz für das Bild,
- * damit die Textspalten nicht dahinter verschwinden.
- *
- * --footer-naked-left  = left-Position des Bildes (ab Wrapper-Kante)
- * --footer-naked-width = gerenderte Breite des Bildes
- * padding-left         = left + width + gap zu den Spalten
+ * Das Naked-Bild ist nun ein regulärer Flexbox-Block und reiht sich automatisch ein.
  */
 .footer-inner {
-  --footer-naked-left: 40rem;
-  --footer-naked-width: 0rem;
-
   display: flex;
   flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;       /* Allow wrapping on smaller screens */
+  align-items: stretch;  /* Fill height so align-self works */
   gap: 2.5rem;
-  padding: 1.5rem 1.5rem 1.5rem calc(var(--footer-naked-left) + var(--footer-naked-width) + 2.5rem);
+  padding: 1.5rem;
   margin: 0 auto;
   max-width: var(--page-width);
   box-sizing: border-box;
 }
 
 /*
- * Charakter-Bild: absolut, klebt an der Unterkante, ragt über footer-break-top.
- * Liegt im DOM vor .footer-inner → Textspalten liegen im natürlichen Stacking
- * darüber, kein z-index nötig.
+ * Column for the image: Push the image to the bottom.
+ */
+.footer-col--image {
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+/*
+ * Charakter-Bild: als block inline mit Text mitfließen
  */
 .footer-naked-img {
   display: block;
   height: 400px;
   width: auto;
-  position: absolute;
-  left: var(--footer-naked-left);
-  bottom: 0;
-  pointer-events: none
+  pointer-events: none;
+  margin-bottom: -1.5rem; /* Offsets the footer-inner padding to sit on the bottom border */
 }
 
 /* Spalten allgemein */
@@ -3882,11 +3878,15 @@ details-disclosure > details {
 
 /* ---- Responsive: Tablet & Mobile (< 990px) ---- */
 @media screen and (max-width: 989px) {
+  .footer-col--image {
+    align-self: center; /* Center horizontally instead of flex-end */
+  }
+
   .footer-naked-img {
-    position: static;
     width: 160px;
     height: auto;
     margin: 0 auto;
+    margin-bottom: 0; /* Reset bottom offset */
   }
 
   .footer-inner {

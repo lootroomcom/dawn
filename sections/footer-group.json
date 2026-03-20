@@ -5,6 +5,10 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "image_block": {
+          "type": "image",
+          "settings": {}
+        },
         "disclaimer_block": {
           "type": "disclaimer",
           "settings": {
@@ -28,6 +32,7 @@
         }
       },
       "block_order": [
+        "image_block",
         "disclaimer_block",
         "links_block",
         "info_block"

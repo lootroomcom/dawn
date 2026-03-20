@@ -6,26 +6,29 @@
 <footer class="footer-wrapper" role="contentinfo">
   <div class="footer-inner page-width">
 
-    {%- if section.settings.naked != blank -%}
-      <img
-        class="footer-naked-img"
-        src="{{ section.settings.naked | image_url: width: 400 }}"
-        alt="Lootroom Character"
-        width="400"
-        loading="lazy"
-      >
-    {%- else -%}
-      <img
-        class="footer-naked-img"
-        src="https://cdn.shopify.com/s/files/1/0503/3535/0975/files/naked.png?v=1772442775"
-        alt="Lootroom Character"
-        width="400"
-        loading="lazy"
-      >
-    {%- endif -%}
-
     {%- for block in section.blocks -%}
       {%- case block.type -%}
+        {%- when 'image' -%}
+          <div class="footer-col footer-col--image" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img
+                class="footer-naked-img"
+                src="{{ block.settings.image | image_url: width: 400 }}"
+                alt="Brand Character"
+                width="400"
+                loading="lazy"
+              >
+            {%- else -%}
+              <img
+                class="footer-naked-img"
+                src="https://cdn.shopify.com/s/files/1/0503/3535/0975/files/naked.png?v=1772442775"
+                alt="Lootroom Character"
+                width="400"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+
         {%- when 'disclaimer' -%}
           <div class="footer-col footer-col--disclaimer" {{ block.shopify_attributes }}>
             {%- if block.settings.heading != blank -%}
@@ -84,21 +87,24 @@
     {%- endfor -%}
 
   </div>
-
-  <div class="footer-break-bottom" aria-hidden="true"></div>
 </footer>
 
 {% schema %}
 {
   "name": "Footer",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "naked",
-      "label": "Naked Character"
-    }
-  ],
+  "settings": [],
   "blocks": [
+    {
+      "type": "image",
+      "name": "Brand Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Character Image"
+        }
+      ]
+    },
     {
       "type": "disclaimer",
       "name": "Disclaimer",
@@ -161,6 +167,9 @@
   ],
   "default": {
     "blocks": [
+      {
+        "type": "image"
+      },
       {
         "type": "disclaimer"
       },
