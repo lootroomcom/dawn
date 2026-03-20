@@ -1,0 +1,196 @@
+{{ 'section-trust-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #trust-bar-{{ section.id }} {
+    --trust-bg: {{ section.settings.bg_color }};
+    --trust-text: {{ section.settings.text_color }};
+    --trust-icon: {{ section.settings.icon_color }};
+    --trust-divider: {{ section.settings.divider_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section id="trust-bar-{{ section.id }}" class="trust-bar">
+  <div class="page-width">
+
+    {%- if section.settings.show_payments -%}
+      <div class="trust-bar__group">
+        {%- if section.settings.payment_heading != blank -%}
+          <p class="trust-bar__heading">{{ section.settings.payment_heading }}</p>
+        {%- endif -%}
+        <div class="trust-bar__icons">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'trust-bar__payment-icon' }}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_payments and section.settings.show_shipping -%}
+      <div class="trust-bar__divider" aria-hidden="true"></div>
+    {%- endif -%}
+
+    {%- if section.settings.show_shipping -%}
+      <div class="trust-bar__group">
+        {%- if section.settings.shipping_heading != blank -%}
+          <p class="trust-bar__heading">{{ section.settings.shipping_heading }}</p>
+        {%- endif -%}
+        <div class="trust-bar__icons trust-bar__icons--shipping">
+
+          {%- if section.settings.show_dhl -%}
+            <div class="trust-bar__ship-icon" title="DHL">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="DHL">
+                <path d="M0 41.3h37.4l3.6-4.6H0v4.6zm0-9.1h44.6l3.5-4.6H0v4.6zm61.8-9.1L51.6 36.4h15.2l10.2-13.3H61.8zm-17.1 0L25.3 41.3h15.5l6.9-9h14.7l-3.5 4.5h15.2l10.2-13.3-9.9 12.8c.8-.7 1.7-1.5 2.4-2.2L91.7 23.1H44.7zM130.5 23.1l-10.2 13.3h-14.7l10.2-13.3H100l-13.9 18.2h60.8l13.9-18.2h-15.8l-10.2 13.3c1.3-1.7 2.7-3.5 3.7-4.6l6.5-8.7h-14.5zm22 0l-13.9 18.2H200v-4.6h-37.9l3.6-4.5H200v-4.6h-30.7l3.5-4.5H200v-4.5h-47.5z"/>
+              </svg>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_usps -%}
+            <div class="trust-bar__ship-icon" title="USPS">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="USPS">
+                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
+                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="currentColor">USPS</text>
+              </svg>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_auspost -%}
+            <div class="trust-bar__ship-icon" title="Australia Post">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="Australia Post">
+                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
+                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="currentColor">AUS POST</text>
+              </svg>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_royalmail -%}
+            <div class="trust-bar__ship-icon" title="Royal Mail">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="currentColor" aria-label="Royal Mail">
+                <path d="M10 30c0-11 9-20 20-20h140c11 0 20 9 20 20s-9 20-20 20H30c-11 0-20-9-20-20z" fill="none" stroke="currentColor" stroke-width="3"/>
+                <text x="100" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="currentColor">ROYAL MAIL</text>
+              </svg>
+            </div>
+          {%- endif -%}
+
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Zahlungsmethoden"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payments",
+      "label": "Zahlungsmethoden anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "payment_heading",
+      "label": "Überschrift Zahlungsmethoden",
+      "default": "Sichere Bezahlung"
+    },
+    {
+      "type": "header",
+      "content": "Versanddienstleister"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping",
+      "label": "Versanddienstleister anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shipping_heading",
+      "label": "Überschrift Versand",
+      "default": "Weltweiter Versand"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dhl",
+      "label": "DHL anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_usps",
+      "label": "USPS anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_auspost",
+      "label": "Australia Post anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_royalmail",
+      "label": "Royal Mail anzeigen",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Design"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Hintergrundfarbe",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon-Farbe",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Trennlinie Farbe",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Abstand oben (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Abstand unten (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar"
+    }
+  ]
+}
+{% endschema %}

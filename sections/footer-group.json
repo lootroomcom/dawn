@@ -11,6 +11,10 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "trust_bar": {
+      "type": "trust-bar",
+      "settings": {}
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -51,6 +55,7 @@
     }
   },
   "order": [
+    "trust_bar",
     "footer"
   ]
 }

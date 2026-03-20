@@ -1,0 +1,105 @@
+.trust-bar {
+  background: var(--trust-bg);
+  border-top: 1px solid var(--trust-divider);
+  border-bottom: 1px solid var(--trust-divider);
+}
+
+.trust-bar .page-width {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-bar__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.trust-bar__heading {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--trust-text);
+}
+
+.trust-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Payment type SVGs from Shopify */
+.trust-bar__payment-icon {
+  width: 38px;
+  height: auto;
+  color: var(--trust-icon);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.trust-bar__payment-icon:hover {
+  opacity: 1;
+}
+
+/* Shipping provider icons */
+.trust-bar__icons--shipping {
+  gap: 20px;
+}
+
+.trust-bar__ship-icon {
+  width: 80px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--trust-icon);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.trust-bar__ship-icon:hover {
+  opacity: 1;
+}
+
+.trust-bar__ship-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Vertical divider between groups */
+.trust-bar__divider {
+  width: 1px;
+  height: 48px;
+  background: var(--trust-divider);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 749px) {
+  .trust-bar .page-width {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .trust-bar__divider {
+    width: 60%;
+    height: 1px;
+  }
+
+  .trust-bar__ship-icon {
+    width: 64px;
+    height: 22px;
+  }
+
+  .trust-bar__payment-icon {
+    width: 32px;
+  }
+}
