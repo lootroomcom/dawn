@@ -1,0 +1,623 @@
+{% comment %}
+  Side-by-Side Product Slider Section
+  Left: Product Image | Right: Title, Price, Add to Cart
+{% endcomment %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<section class="sbs-slider-section" id="sbs-slider-{{ section.id }}">
+  <div class="sbs-slider-wrapper">
+    <div class="swiper sbs-swiper">
+      <div class="swiper-wrapper">
+
+        {% for block in section.blocks %}
+          {% if block.type == 'slide' %}
+            {% assign product = all_products[block.settings.product] %}
+            <div class="swiper-slide">
+              <div class="sbs-slide-inner">
+
+                <!-- LEFT: Product Image -->
+                <div class="sbs-image-col">
+                  <div class="sbs-image-wrap">
+                    {% if product != blank %}
+                      {% assign img = product.featured_image %}
+                      <img
+                        src="{{ img | image_url: width: 900 }}"
+                        alt="{{ img.alt | escape }}"
+                        width="{{ img.width }}"
+                        height="{{ img.height }}"
+                        loading="lazy"
+                        class="sbs-product-img"
+                      >
+                    {% elsif block.settings.fallback_image != blank %}
+                      <img
+                        src="{{ block.settings.fallback_image | image_url: width: 900 }}"
+                        alt="{{ block.settings.fallback_image.alt | escape }}"
+                        loading="lazy"
+                        class="sbs-product-img"
+                      >
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'sbs-placeholder-img' }}
+                    {% endif %}
+                  </div>
+                </div>
+
+                <!-- RIGHT: Info + Cart -->
+                <div class="sbs-info-col">
+                  <div class="sbs-info-inner">
+
+                    {% if block.settings.eyebrow != blank %}
+                      <p class="sbs-eyebrow">{{ block.settings.eyebrow }}</p>
+                    {% endif %}
+
+                    <h2 class="sbs-title">
+                      {% if product != blank %}
+                        {{ product.title }}
+                      {% else %}
+                        {{ block.settings.custom_title }}
+                      {% endif %}
+                    </h2>
+
+                    {% if block.settings.slide_description != blank %}
+                      <div class="sbs-description">{{ block.settings.slide_description }}</div>
+                    {% endif %}
+
+                    {% assign has_features = false %}
+                    {% if block.settings.feature_1 != blank or block.settings.feature_2 != blank or block.settings.feature_3 != blank or block.settings.feature_4 != blank or block.settings.feature_5 != blank %}
+                      {% assign has_features = true %}
+                    {% endif %}
+                    {% if has_features %}
+                      <ul class="sbs-features">
+                        {% if block.settings.feature_1 != blank %}<li>{{ block.settings.feature_1 }}</li>{% endif %}
+                        {% if block.settings.feature_2 != blank %}<li>{{ block.settings.feature_2 }}</li>{% endif %}
+                        {% if block.settings.feature_3 != blank %}<li>{{ block.settings.feature_3 }}</li>{% endif %}
+                        {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 }}</li>{% endif %}
+                        {% if block.settings.feature_5 != blank %}<li>{{ block.settings.feature_5 }}</li>{% endif %}
+                      </ul>
+                    {% endif %}
+
+                    <div class="sbs-price-row">
+                      {% if product != blank %}
+                        {% if product.compare_at_price > product.price %}
+                          <span class="sbs-price sbs-price--sale">{{ product.price | money }}</span>
+                          <span class="sbs-price sbs-price--compare">{{ product.compare_at_price | money }}</span>
+                          <span class="sbs-badge">Sale</span>
+                        {% else %}
+                          <span class="sbs-price">{{ product.price | money }}</span>
+                        {% endif %}
+                      {% elsif block.settings.custom_price != blank %}
+                        <span class="sbs-price">{{ block.settings.custom_price }}</span>
+                      {% endif %}
+                    </div>
+
+                    {% if product != blank %}
+                      <div class="sbs-buttons">
+                        {% form 'product', product, class: 'sbs-form' %}
+                          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                          <input type="hidden" name="quantity" value="1">
+                          <button
+                            type="submit"
+                            name="add"
+                            class="button button--primary{% unless product.available %} disabled{% endunless %}"
+                            {% unless product.available %}disabled{% endunless %}
+                          >
+                            {% if product.available %}
+                              {{ 'products.product.add_to_cart' | t | default: 'Add to cart' }}
+                            {% else %}
+                              {{ 'products.product.sold_out' | t | default: 'Sold out' }}
+                            {% endif %}
+                          </button>
+                        {% endform %}
+                        <a href="{{ product.url }}" class="button button--secondary">
+                          {{ 'products.product.view_full_details' | t | default: 'View details' }}
+                        </a>
+                      </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div><!-- /.swiper-wrapper -->
+
+      <!-- Navigation -->
+      <div class="sbs-nav sbs-prev" aria-label="Previous">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </div>
+      <div class="sbs-nav sbs-next" aria-label="Next">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <!-- Pagination -->
+      <div class="sbs-pagination swiper-pagination"></div>
+
+    </div><!-- /.swiper -->
+  </div>
+</section>
+
+<style>
+  #sbs-slider-{{ section.id }} {
+    --sbs-accent: {{ section.settings.accent_color }};
+    --sbs-text: {{ section.settings.text_color | default: "#ffffff" }};
+    --sbs-btn-bg: {{ section.settings.button_color }};
+    --sbs-btn-text: {{ section.settings.button_text_color }};
+    --sbs-radius: {{ section.settings.border_radius }}px;
+    --sbs-gap: {{ section.settings.column_gap }}px;
+    padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px;
+    --sbs-bg: {{ section.settings.background_color }};
+    background: var(--sbs-bg);
+    overflow: hidden;
+  }
+
+  .sbs-slider-wrapper {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .sbs-swiper { overflow: hidden; }
+
+  .sbs-slide-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sbs-gap);
+    align-items: center;
+    min-height: {{ section.settings.slide_height }}px;
+  }
+
+  /* IMAGE COLUMN */
+  .sbs-image-col { overflow: hidden; border-radius: var(--sbs-radius); }
+  .sbs-image-wrap {
+    width: 100%;
+    height: {{ section.settings.image_height }}px;
+    overflow: hidden;
+    border-radius: var(--sbs-radius);
+    position: relative;
+  }
+  .sbs-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: {{ section.settings.image_fit }};
+    display: block;
+    transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+  }
+  .sbs-swiper .swiper-slide-active .sbs-product-img { transform: scale(1); }
+  .sbs-placeholder-img { width: 100%; height: 100%; }
+
+  /* INFO COLUMN */
+  .sbs-info-col { display: flex; align-items: center; }
+  .sbs-info-inner { width: 100%; padding: 24px 0; }
+
+  .sbs-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sbs-accent);
+    margin: 0 0 12px;
+  }
+
+  .sbs-title {
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--sbs-text);
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .sbs-description {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--sbs-text);
+    margin: 0 0 24px;
+    max-width: 480px;
+  }
+  .sbs-description p { margin: 0 0 10px; }
+
+  .sbs-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .sbs-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--sbs-text);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sbs-features li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sbs-accent);
+    flex-shrink: 0;
+  }
+
+  .sbs-price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 28px;
+    flex-wrap: wrap;
+  }
+
+  .sbs-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--sbs-text);
+  }
+  .sbs-price--sale { color: var(--sbs-accent); }
+  .sbs-price--compare {
+    font-size: 18px;
+    color: var(--sbs-text);
+    opacity: 0.45;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .sbs-badge {
+    background: var(--sbs-accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  /* BUTTONS */
+  .sbs-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .sbs-buttons .button {
+    width: auto !important;
+    flex: 0 1 auto;
+  }
+
+  /* NAVIGATION */
+  .sbs-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    color: #111;
+  }
+  .sbs-nav:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.18); transform: translateY(calc(-50% - 1px)); }
+  .sbs-prev { left: -18px; }
+  .sbs-next { right: -18px; }
+  .sbs-nav.swiper-button-disabled { opacity: 0.35; pointer-events: none; }
+
+  /* PAGINATION */
+  .sbs-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .sbs-pagination .swiper-pagination-bullet {
+    background: var(--sbs-text);
+    opacity: 0.25;
+    width: 8px;
+    height: 8px;
+  }
+  .sbs-pagination .swiper-pagination-bullet-active {
+    background: var(--sbs-accent);
+    opacity: 1;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .sbs-slide-inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .sbs-image-wrap { height: 280px; }
+    .sbs-prev { left: 4px; }
+    .sbs-next { right: 4px; }
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var slider = new Swiper('#sbs-slider-{{ section.id }} .sbs-swiper', {
+      loop: {{ section.settings.loop | json }},
+      speed: {{ section.settings.transition_speed }},
+      autoplay: {% if section.settings.autoplay %}{ delay: {{ section.settings.autoplay_delay }}, disableOnInteraction: false }{% else %}false{% endif %},
+      navigation: {
+        prevEl: '#sbs-slider-{{ section.id }} .sbs-prev',
+        nextEl: '#sbs-slider-{{ section.id }} .sbs-next',
+      },
+      pagination: {
+        el: '#sbs-slider-{{ section.id }} .sbs-pagination',
+        clickable: true,
+      },
+      grabCursor: true,
+      effect: '{{ section.settings.slide_effect }}',
+    });
+
+    // Quantity buttons
+    document.querySelectorAll('#sbs-slider-{{ section.id }} .sbs-qty-minus').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var input = this.parentNode.querySelector('.sbs-qty-input');
+        var val = parseInt(input.value, 10);
+        if (val > 1) input.value = val - 1;
+      });
+    });
+    document.querySelectorAll('#sbs-slider-{{ section.id }} .sbs-qty-plus').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var input = this.parentNode.querySelector('.sbs-qty-input');
+        input.value = parseInt(input.value, 10) + 1;
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "SBS Product Slider",
+  "tag": "section",
+  "class": "sbs-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Width (px)",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column Gap (px)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "slide_height",
+      "label": "Min Slide Height (px)",
+      "min": 300,
+      "max": 900,
+      "step": 10,
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image Height (px)",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "default": 480
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" },
+        { "value": "fill", "label": "Fill" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius (px)",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#1b333c"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Background",
+      "default": "#dac795"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text",
+      "default": "#1b333c"
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "select",
+      "id": "slide_effect",
+      "label": "Transition Effect",
+      "options": [
+        { "value": "slide", "label": "Slide" },
+        { "value": "fade", "label": "Fade" }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "label": "Transition Speed (ms)",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "default": 600
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay Delay (ms)",
+      "min": 1000,
+      "max": 9000,
+      "step": 500,
+      "default": 4000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow Text",
+          "placeholder": "z.B. Neu eingetroffen"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title (falls kein Produkt)"
+        },
+        {
+          "type": "text",
+          "id": "slide_description",
+          "label": "Text unter dem Titel",
+          "placeholder": "z.B. Kurze Beschreibung..."
+        },
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "• Feature 1",
+          "placeholder": "z.B. Hochwertige Materialien"
+        },
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "• Feature 2",
+          "placeholder": "z.B. 2 Jahre Garantie"
+        },
+        {
+          "type": "text",
+          "id": "feature_3",
+          "label": "• Feature 3",
+          "placeholder": "z.B. Kostenloser Versand"
+        },
+        {
+          "type": "text",
+          "id": "feature_4",
+          "label": "• Feature 4"
+        },
+        {
+          "type": "text",
+          "id": "feature_5",
+          "label": "• Feature 5"
+        },
+        {
+          "type": "text",
+          "id": "custom_price",
+          "label": "Custom Price (falls kein Produkt)",
+          "placeholder": "z.B. 29,99 €"
+        },
+        {
+          "type": "image_picker",
+          "id": "fallback_image",
+          "label": "Fallback Bild (falls kein Produkt)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SBS Product Slider",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,299 @@
+{{ 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' | stylesheet_tag }}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<section class="pf-slider">
+  <div class="page-width">
+    <div class="swiper pfSwiper">
+      <div class="swiper-wrapper">
+
+        {% for block in section.blocks %}
+          {% assign product = block.settings.product %}
+
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <div class="pf-inner">
+
+              <!-- LEFT: CUSTOM IMAGE ONLY -->
+              <div class="pf-image">
+               {% if block.settings.custom_image != blank %}
+  <img 
+    class="pf-animated-image"
+    src="{{ block.settings.custom_image | image_url: width: 900 }}"
+    alt="Slider image"
+    loading="lazy"
+    style="
+      --float-distance: {{ block.settings.float_distance }}px;
+      --float-duration: {{ block.settings.float_speed }}s;
+      --glow-color: {{ block.settings.glow_color }};
+      --glow-strength: {{ block.settings.glow_strength }}px;
+    "
+    data-float="{{ block.settings.enable_float }}"
+    data-glow="{{ block.settings.enable_glow }}"
+  >
+{% endif %}
+              </div>
+
+              <!-- RIGHT: PRODUCT CONTENT -->
+              <div class="pf-content">
+
+                {% if block.settings.badge_text != blank %}
+                  <div class="pf-badge"
+                       style="background: {{ block.settings.badge_bg }};
+                              color: {{ block.settings.badge_color }};">
+                    {{ block.settings.badge_text }}
+                  </div>
+                {% endif %}
+
+                {% if product != blank %}
+
+                  <h2 class="pf-title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+                    {{ product.title }}
+                  </h2>
+
+                  {% if block.settings.custom_text != blank %}
+                    <div class="pf-text" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>
+                      {{ block.settings.custom_text }}
+                    </div>
+                  {% endif %}
+
+                  <div class="pf-price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>
+                    {% if product.compare_at_price > product.price %}
+                      <span class="price price--compare">
+                        {{ product.compare_at_price | money }}
+                      </span>
+                    {% endif %}
+                    <span class="price">
+                      {{ product.price | money }}
+                    </span>
+                  </div>
+
+                  <div class="pf-buttons">
+
+                    <product-form>
+                      {% form 'product', product %}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <button 
+                          type="submit" 
+                          class="button button--primary"
+                          {% unless product.available %}disabled{% endunless %}
+                        >
+                          {% if product.available %}
+                            Add to cart
+                          {% else %}
+                            Sold out
+                          {% endif %}
+                        </button>
+                      {% endform %}
+                    </product-form>
+
+                    <a href="{{ product.url }}" class="button button--secondary">
+                      View details
+                    </a>
+
+                  </div>
+
+                {% endif %}
+
+              </div>
+
+            </div>
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+      {% if section.settings.show_pagination %}
+        <div class="swiper-pagination"></div>
+      {% endif %}
+
+      {% if section.settings.show_arrows %}
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+.pf-inner {
+  display: flex;
+  align-items: flex-start; /* <-- geändert */
+  justify-content: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.pf-image img {
+  max-width: 500px;
+  width: 100%;
+  display: block;
+}
+
+.pf-content {
+  max-width: 450px;
+}
+
+.pf-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.pf-title {
+  font-size: 32px;
+  margin: 0 0 15px 0;
+}
+
+.pf-text {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.pf-price {
+  margin-bottom: 20px;
+}
+
+.pf-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.swiper-pagination-bullet {
+  background: {{ section.settings.pagination_color }};
+}
+
+@media screen and (max-width: 768px) {
+  .pf-inner {
+    flex-direction: column;
+  }
+}
+@keyframes pfFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(calc(-1 * var(--float-distance))); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pfGlow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 var(--glow-strength) var(--glow-color));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+  }
+}
+
+.pf-animated-image {
+  border-radius: 16px;
+}
+
+/* Float aktiv */
+.pf-animated-image[data-float="true"] {
+  animation: pfFloat var(--float-duration) ease-in-out infinite;
+}
+
+/* Glow aktiv */
+.pf-animated-image[data-glow="true"][data-float="true"] {
+  animation: 
+    pfFloat var(--float-duration) ease-in-out infinite,
+    pfGlow 3s ease-in-out infinite;
+}
+
+.pf-animated-image[data-glow="true"][data-float="false"] {
+  animation: pfGlow 3s ease-in-out infinite;
+}
+
+.pf-animated-image[data-glow="false"][data-float="true"] {
+  animation: pfFloat var(--float-duration) ease-in-out infinite;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.pfSwiper', {
+    loop: {{ section.settings.loop }},
+    speed: {{ section.settings.speed }},
+    allowTouchMove: false,
+
+    {% if section.settings.autoplay %}
+    autoplay: {
+      delay: {{ section.settings.autoplay_speed }},
+      disableOnInteraction: false
+    },
+    {% endif %}
+
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Advanced Product Slider",
+  "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 2000, "max": 8000, "step": 500, "default": 4000, "label": "Autoplay Speed" },
+    { "type": "range", "id": "speed", "min": 300, "max": 2000, "step": 100, "default": 800, "label": "Slide Speed" },
+    { "type": "checkbox", "id": "loop", "label": "Loop", "default": true },
+    { "type": "checkbox", "id": "show_pagination", "label": "Show Pagination", "default": true },
+    { "type": "color", "id": "pagination_color", "label": "Pagination Color", "default": "#000000" },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 12,
+      "settings": [
+        { "type": "image_picker", "id": "custom_image", "label": "Bild hochladen (links)" },
+        { "type": "product", "id": "product", "label": "Produkt (rechte Seite)" },
+        { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "FEATURED PRODUCT" },
+        { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "#111111" },
+        { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#ffffff" },
+        { "type": "richtext", "id": "custom_text", "label": "Optional Text" },
+
+        { "type": "header", "content": "Textfarben" },
+
+        { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#ffffff" },
+        { "type": "color", "id": "text_color", "label": "Text Farbe", "default": "#cccccc" },
+        { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
+
+        { "type": "header", "content": "Bild Animation" },
+
+        { "type": "checkbox", "id": "enable_float", "label": "Float Animation aktivieren", "default": true },
+        { "type": "range", "id": "float_distance", "label": "Float Höhe (px)", "min": 5, "max": 40, "step": 1, "default": 15 },
+        { "type": "range", "id": "float_speed", "label": "Float Geschwindigkeit (Sekunden)", "min": 2, "max": 15, "step": 1, "default": 6 },
+
+        { "type": "checkbox", "id": "enable_glow", "label": "Glow aktivieren", "default": true },
+        { "type": "color", "id": "glow_color", "label": "Glow Farbe", "default": "#0096ff" },
+        { "type": "range", "id": "glow_strength", "label": "Glow Intensität", "min": 5, "max": 60, "step": 1, "default": 25 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Product Slider",
+      "blocks": [
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

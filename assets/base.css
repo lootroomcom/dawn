@@ -6,6 +6,10 @@
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+
+  /* Button colors fix */
+  --color-button: 218, 199, 149;
+  --color-button-text: 27, 51, 60;
 }
 
 .product-card-wrapper .card,
@@ -85,7 +89,16 @@
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   max-width: 100%;
 }
-
+body {
+  position: relative !important;
+  overflow-x: hidden !important;
+  background-color: rgb(27 51 60) !important;
+  background-image: url('https://cdn.shopify.com/s/files/1/0503/3535/0975/files/desktop-background.svg?v=1705324545') !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+  background-repeat: repeat-y !important;
+  font-family: Poppins, sans-serif !important;
+}
 .page-width.drawer-menu {
   max-width: 100%;
 }
@@ -468,7 +481,7 @@ table:not([class]) th {
 a:empty,
 ul:empty,
 dl:empty,
-div:empty,
+div:empty:not(.footer-break-top):not(.footer-break-bottom),
 section:empty,
 article:empty,
 p:empty,
@@ -2339,15 +2352,29 @@ input[type='checkbox'] {
   z-index: initial;
 }
 
-/* Main Header Layout */
 .header-wrapper {
   display: block;
   position: relative;
-  background-color: rgb(var(--color-background));
+  overflow: visible;
 }
 
 .header-wrapper--border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  border-bottom: none;
+}
+
+.header-wrapper::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: url('https://cdn.shopify.com/s/files/1/0503/3535/0975/files/nav-bg.png?v=1772370025');
+  background-position: bottom center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .header {
@@ -2383,11 +2410,24 @@ input[type='checkbox'] {
     column-gap: 1rem;
   }
 
+  /* =============================================
+     MENU ZENTRIEREN FIX (middle-left + dropdown)
+     ============================================= */
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr auto !important;
     column-gap: 2rem;
   }
+
+  .header--middle-left .header__inline-menu {
+    justify-self: center;
+    margin-left: 0;
+  }
+
+  .header--middle-left .header__inline-menu .list-menu--inline {
+    justify-content: center;
+  }
+  /* ============================================= */
 
   .header--middle-center:not(.drawer-menu) {
     grid-template-areas: 'navigation heading icons';
@@ -2934,7 +2974,6 @@ details-disclosure > details {
 .gradient {
   background: rgb(var(--color-background));
   background: var(--gradient-background);
-  background-attachment: fixed;
 }
 
 @media screen and (forced-colors: active) {
@@ -3348,19 +3387,19 @@ details-disclosure > details {
   .animate--hover-3d-lift .customer button:not([disabled]):hover,
   .animate--hover-3d-lift .shopify-payment-button__button:hover,
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
-    transition: transform var(--duration-extended) ease, box-shadow var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    transition: transform var(--duration-extended) ease, box-shadow var(--duration-long) ease;
     transform: rotate(1deg);
     box-shadow: -1rem -1rem 1rem -1rem rgba(0, 0, 0, 0.05), 1rem 1rem 1rem -1rem rgba(0, 0, 0, 0.05),
       0 0 0.5rem 0 rgba(255, 255, 255, 0), 0 2rem 3.5rem -2rem rgba(0, 0, 0, 0.5);
   }
 
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
-    transform: translate(-50%, -50%) scale(1.05); /* Apply a specialized transform to the video play button. */
+    transform: translate(-50%, -50%) scale(1.05);
   }
 
   .animate--hover-3d-lift .collage__item .card-wrapper:hover .card--card,
   .animate--hover-3d-lift .collage__item .card-wrapper:hover .card--standard .card__inner {
-    transform: rotate(0.5deg); /* Less intense rotation for collage items. */
+    transform: rotate(0.5deg);
   }
 
   .animate--hover-3d-lift .product-grid .grid__item:hover,
@@ -3368,11 +3407,11 @@ details-disclosure > details {
   .animate--hover-3d-lift .collage__item:hover,
   .animate--hover-3d-lift .blog-articles .article:hover,
   .animate--hover-3d-lift .complementary-slide li:hover {
-    z-index: 2; /* Make sure the hovered card is the topmost card. */
+    z-index: 2;
   }
 
   .animate--hover-3d-lift .product-grid {
-    isolation: isolate; /* Ensure z-index changes here don't negatively effect other UI stacking. */
+    isolation: isolate;
   }
 
   .animate--hover-3d-lift .card-wrapper .card--shape.card--standard:not(.card--text) .card__inner {
@@ -3381,7 +3420,7 @@ details-disclosure > details {
   }
 
   .animate--hover-3d-lift .card-wrapper:hover .card--shape.card--standard:not(.card--text) .card__inner {
-    transition: transform calc(2 * var(--duration-extended)) ease, filter var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    transition: transform calc(2 * var(--duration-extended)) ease, filter var(--duration-long) ease;
     filter: drop-shadow(0rem 2rem 2rem rgba(0, 0, 0, 0.15)) drop-shadow(0rem 1rem 1rem rgba(0, 0, 0, 0.15));
   }
 
@@ -3487,14 +3526,14 @@ details-disclosure > details {
   .animate--hover-vertical-lift .button:not([disabled]):hover:after,
   .animate--hover-vertical-lift .customer button:not([disabled]):hover:after,
   .animate--hover-vertical-lift .shopify-payment-button__button:not([disabled]):hover:after {
-    --border-offset: 0.3px; /* Default is 1.3px as defined above in this file. This removes 1px to prevent the border from growing on buttons when this effect is on.  */
+    --border-offset: 0.3px;
     box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
         rgba(var(--color-button-text), var(--border-opacity)),
       0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
   }
 
   .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
-    --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
+    --border-offset: 0px;
   }
 }
 
@@ -3594,4 +3633,275 @@ details-disclosure > details {
   100% {
     transform: translateX(100%) scaleX(0);
   }
+}
+
+/* =============================================
+   CUSTOM BRANDING & STYLING
+   ============================================= */
+
+.header__heading-link {
+  color: #dac795;
+}
+
+/* Desktop nav menu items */
+@media screen and (min-width: 990px) {
+  .header__inline-menu .list-menu__item--link {
+    color: #dac795 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-family: Poppins, sans-serif;
+  }
+
+  .header__inline-menu .list-menu__item--link:hover {
+    color: #f5e5b9 !important;
+  }
+
+  .header__inline-menu .header__menu-item {
+    font-weight: 700 !important;
+  }
+}
+
+/* Header icons */
+.header__icon svg {
+  fill: #dac795;
+  color: #dac795;
+}
+
+.header__icon:hover svg {
+  fill: #f5e5b9;
+}
+
+/* Cart bubble */
+.cart-count-bubble {
+  background-color: #dac795;
+  color: #1b333c;
+}
+
+/* Social icons */
+.header__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+/* Shopify section wrapper: keine ungewollten Abstände */
+.shopify-section:has(.footer-wrapper),
+.shopify-section-group-footer-group {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Dekorative Trennlinien oben/unten */
+.footer-break-top,
+.footer-break-bottom {
+  display: block;
+  width: 100%;
+  height: 60px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.footer-break-top {
+  background-image: url('https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-top.png?v=1772442257');
+}
+
+.footer-break-bottom {
+  background-image: url('https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-bottom.png?v=1772442257');
+}
+
+/* Wrapper: position:relative als Anker für das absolut positionierte Naked-Bild */
+.footer-wrapper {
+  background-color: #f5e5b9;
+  color: #1b333c;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+/*
+ * footer-inner: Textspalten per Flexbox.
+ * Das Naked-Bild ist absolut positioniert und ragt nach oben über den
+ * footer-break-top. Das padding-left reserviert den Platz für das Bild,
+ * damit die Textspalten nicht dahinter verschwinden.
+ *
+ * --footer-naked-left  = left-Position des Bildes (ab Wrapper-Kante)
+ * --footer-naked-width = gerenderte Breite des Bildes
+ * padding-left         = left + width + gap zu den Spalten
+ */
+.footer-inner {
+  --footer-naked-left: 40rem;
+  --footer-naked-width: 0rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1.5rem 1.5rem 1.5rem calc(var(--footer-naked-left) + var(--footer-naked-width) + 2.5rem);
+  margin: 0 auto;
+  max-width: var(--page-width);
+  box-sizing: border-box;
+}
+
+/*
+ * Charakter-Bild: absolut, klebt an der Unterkante, ragt über footer-break-top.
+ * Liegt im DOM vor .footer-inner → Textspalten liegen im natürlichen Stacking
+ * darüber, kein z-index nötig.
+ */
+.footer-naked-img {
+  display: block;
+  height: 400px;
+  width: auto;
+  position: absolute;
+  left: var(--footer-naked-left);
+  bottom: 0;
+  pointer-events: none
+}
+
+/* Spalten allgemein */
+.footer-col {
+  align-self: center;
+  padding: 0;
+}
+
+.footer-col--disclaimer {
+  flex: 2;
+  min-width: 220px;
+}
+
+.footer-col--links {
+  flex: 1;
+  min-width: 120px;
+}
+
+.footer-col--info {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Spalten-Überschrift */
+.footer-col__heading {
+  display: block;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: #1b333c;
+  margin-bottom: 0.6rem;
+}
+
+/* Disclaimer-Text */
+.footer-col__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1b333c;
+}
+
+.footer-col__text p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col__text p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-col__text a {
+  color: #1b333c;
+  text-decoration: underline;
+}
+
+/* Links-Liste */
+.footer-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links-list li {
+  margin-bottom: 0.3rem;
+}
+
+.footer-links-list a {
+  color: #1b333c;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.footer-links-list a:hover {
+  text-decoration: underline;
+}
+
+/* Supplier-Bereich */
+.footer-supplier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-supplier__logo {
+  max-width: 150px;
+  height: auto;
+}
+
+/* SSL-Badge */
+.footer-ssl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #1b333c;
+}
+
+.footer-ssl svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  fill: #1b333c;
+}
+
+/* Copyright */
+.footer-copyright {
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #1b333c;
+  margin: 0;
+}
+
+/* ---- Responsive: Tablet & Mobile (< 990px) ---- */
+@media screen and (max-width: 989px) {
+  .footer-naked-img {
+    position: static;
+    width: 160px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .footer-ssl {
+    justify-content: center;
+  }
+}
+.footer-wrapper ::selection {
+  background-color: rgba(27, 51, 60, 0.4);
+  color: #1b333c;
 }

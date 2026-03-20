@@ -1,0 +1,122 @@
+{% comment %}
+  Strong Modern Divider – Always Visible
+{% endcomment %}
+
+<section class="strong-divider strong-divider-{{ section.id }}">
+  <div class="divider-inner">
+    {% if section.settings.show_text and section.settings.text != blank %}
+      <div class="divider-text">
+        <span>{{ section.settings.text }}</span>
+      </div>
+    {% else %}
+      <div class="divider-line"></div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.strong-divider-{{ section.id }}{
+  padding: {{ section.settings.spacing }}px 0;
+  width:100%;
+}
+
+/* Linie */
+.strong-divider-{{ section.id }} .divider-line{
+  height:4px;
+  width:100%;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    {{ section.settings.color_1 }},
+    {{ section.settings.color_2 }},
+    {{ section.settings.color_3 }}
+  );
+  box-shadow:
+    0 0 15px {{ section.settings.color_2 }},
+    0 0 30px {{ section.settings.color_3 }};
+}
+
+/* Text Variante */
+.strong-divider-{{ section.id }} .divider-text{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  width:100%;
+}
+
+.strong-divider-{{ section.id }} .divider-text::before,
+.strong-divider-{{ section.id }} .divider-text::after{
+  content:"";
+  flex:1;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    {{ section.settings.color_1 }},
+    {{ section.settings.color_2 }},
+    {{ section.settings.color_3 }}
+  );
+  box-shadow:
+    0 0 15px {{ section.settings.color_2 }};
+}
+
+.strong-divider-{{ section.id }} .divider-text span{
+  font-size:14px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Strong Modern Divider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_text",
+      "label": "Mit Text anzeigen",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Featured"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Spacing oben & unten",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "color_1",
+      "label": "Farbe 1",
+      "default": "#ff00cc"
+    },
+    {
+      "type": "color",
+      "id": "color_2",
+      "label": "Farbe 2",
+      "default": "#333399"
+    },
+    {
+      "type": "color",
+      "id": "color_3",
+      "label": "Farbe 3",
+      "default": "#00f2fe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Strong Modern Divider"
+    }
+  ]
+}
+{% endschema %}

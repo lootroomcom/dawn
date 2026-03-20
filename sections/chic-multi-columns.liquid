@@ -1,0 +1,304 @@
+{% comment %}
+  Chic Multi Columns – ULTRA MAX EFFECT EDITION
+{% endcomment %}
+
+<section class="cmc-wrap cmc-{{ section.id }}">
+  <div class="cmc-bg-animated"></div>
+
+  <div class="cmc-inner page-width">
+    {% if section.settings.title != blank %}
+      <header class="cmc-header">
+        <h2 class="cmc-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="cmc-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <div class="cmc-grid">
+      {% for block in section.blocks %}
+        {% assign card_link = block.settings.link_url %}
+
+        <div class="cmc-card-wrapper">
+          {% if card_link != blank %}
+            <a href="{{ card_link }}" class="cmc-card-link">
+          {% endif %}
+
+          <article class="cmc-card">
+            
+            {% if block.settings.image != blank %}
+              <div class="cmc-media">
+                {{ block.settings.image
+                  | image_url: width: 900
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'cmc-img',
+                    alt: block.settings.image.alt | escape
+                }}
+              </div>
+            {% endif %}
+
+            <div class="cmc-body">
+              {% if block.settings.heading != blank %}
+                <h3 class="cmc-card-title">{{ block.settings.heading }}</h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <div class="cmc-card-text rte">{{ block.settings.text }}</div>
+              {% endif %}
+            </div>
+
+            <div class="cmc-light"></div>
+          </article>
+
+          {% if card_link != blank %}
+            </a>
+          {% endif %}
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.cmc-{{ section.id }}{
+  --cmc-gap: {{ section.settings.gap }}px;
+  --cmc-radius: {{ section.settings.radius }}px;
+  --cmc-text: {{ section.settings.text_color }};
+  --cmc-card: rgba(
+    {{ section.settings.card_color.red }},
+    {{ section.settings.card_color.green }},
+    {{ section.settings.card_color.blue }},
+    {{ section.settings.card_opacity | divided_by: 100.0 }}
+  );
+
+  position:relative;
+  padding: {{ section.settings.padding_y }}px 0;
+  color:var(--cmc-text);
+  overflow:hidden;
+}
+
+/* 🔥 INTENSIVER ANIMATED GRADIENT */
+.cmc-bg-animated{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(-45deg,
+    {{ section.settings.gradient_1 }},
+    {{ section.settings.gradient_2 }},
+    {{ section.settings.gradient_3 }},
+    {{ section.settings.gradient_4 }}
+  );
+  background-size:600% 600%;
+  animation: gradientMove 8s ease infinite;
+  z-index:-1;
+  filter:saturate(1.4);
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* GRID */
+.cmc-grid{
+  display:grid;
+  gap:var(--cmc-gap);
+  grid-template-columns:repeat({{ section.settings.columns_desktop }},1fr);
+  position:relative;
+  z-index:2;
+}
+
+/* LINK WRAPPER */
+.cmc-card-link{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* 💎 CARD */
+.cmc-card{
+  position:relative;
+  border-radius:var(--cmc-radius);
+  background:var(--cmc-card);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.3),
+    0 20px 60px rgba(0,0,0,.35);
+  overflow:hidden;
+  transition:transform .15s ease, box-shadow .3s ease;
+  transform-style:preserve-3d;
+  animation:floatCard 6s ease-in-out infinite;
+}
+
+/* 🌈 NEON GLOW */
+.cmc-card:hover{
+  box-shadow:
+    0 0 30px rgba(255,255,255,.6),
+    0 0 5px {{ section.settings.gradient_2 }},
+    0 30px 80px rgba(0,0,0,.45);
+}
+
+/* ✨ SHINE SWEEP */
+.cmc-card::after{
+  content:"";
+  position:absolute;
+  top:-100%;
+  left:-100%;
+  width:200%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,.6) 50%,
+    transparent 60%
+  );
+  transform:rotate(25deg);
+  transition:all .7s ease;
+  opacity:0;
+}
+.cmc-card:hover::after{
+  top:100%;
+  left:100%;
+  opacity:1;
+}
+
+/* 💡 MOUSE LIGHT */
+.cmc-light{
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,
+    rgba(255,255,255,.8),
+    rgba(255,255,255,.3),
+    transparent 60%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity .2s;
+}
+.cmc-card:hover .cmc-light{
+  opacity:1;
+}
+
+/* MEDIA */
+.cmc-media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px 10px;
+}
+
+.cmc-img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  transition:transform .4s ease;
+}
+.cmc-card:hover .cmc-img{
+  transform:scale(1.1);
+}
+
+/* BODY */
+.cmc-body{
+  padding:24px;
+}
+.cmc-card-title{
+  margin:0 0 8px;
+  font-size:20px;
+}
+.cmc-card-text{
+  font-size:14.5px;
+  opacity:.75;
+}
+
+/* 📱 MOBILE SWIPE */
+@media(max-width:749px){
+  .cmc-grid{
+    grid-auto-flow:column;
+    grid-auto-columns:85%;
+    grid-template-columns:unset;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+  }
+  .cmc-card-wrapper{
+    scroll-snap-align:start;
+  }
+}
+</style>
+
+<script>
+document.querySelectorAll(".cmc-{{ section.id }} .cmc-card").forEach(card=>{
+  const light = card.querySelector(".cmc-light");
+
+  card.addEventListener("mousemove", e=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 0;
+    const rotateY = (centerX - x) / 0;
+
+    card.style.transform = `
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+    `;
+
+    if(light){
+      light.style.left = x + "px";
+      light.style.top = y + "px";
+    }
+  });
+
+  card.addEventListener("mouseleave", ()=>{
+    card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Chic Multi Columns",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titel", "default": "Ultra Premium Section" },
+    { "type": "text", "id": "subtitle", "label": "Untertitel", "default": "Maximum Visual Impact" },
+    { "type": "range", "id": "columns_desktop", "label": "Spalten Desktop", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "select", "id": "media_ratio", "label": "Bildverhältnis", "default": "16/9",
+      "options":[
+        {"value":"1/1","label":"1:1"},
+        {"value":"4/3","label":"4:3"},
+        {"value":"16/9","label":"16:9"}
+      ]
+    },
+    { "type": "range", "id": "gap", "label": "Card Abstand", "min": 10, "max": 30, "step": 2, "default": 20 },
+    { "type": "range", "id": "radius", "label": "Radius", "min": 12, "max": 30, "step": 2, "default": 24 },
+    { "type": "range", "id": "padding_y", "label": "Section Padding", "min": 40, "max": 120, "step": 1, "default": 80 },
+    { "type": "color", "id": "card_color", "label": "Card Farbe", "default": "#ffffff" },
+    { "type": "range", "id": "card_opacity", "label": "Card Opazität", "min": 0, "max": 100, "step": 1, "default": 80 },
+    { "type": "color", "id": "text_color", "label": "Textfarbe", "default": "#111111" },
+    { "type": "color", "id": "gradient_1", "label": "Gradient 1", "default": "#ff00cc" },
+    { "type": "color", "id": "gradient_2", "label": "Gradient 2", "default": "#333399" },
+    { "type": "color", "id": "gradient_3", "label": "Gradient 3", "default": "#00f2fe" },
+    { "type": "color", "id": "gradient_4", "label": "Gradient 4", "default": "#4facfe" }
+  ],
+  "blocks":[
+    {
+      "type":"column",
+      "name":"Spalte",
+      "settings":[
+        { "type":"image_picker","id":"image","label":"Bild" },
+        { "type":"text","id":"heading","label":"Titel","default":"Premium Qualität" },
+        { "type":"richtext","id":"text","label":"Text","default":"<p>Massiver visueller Effekt.</p>" },
+        { "type":"url","id":"link_url","label":"Link URL" }
+      ]
+    }
+  ],
+  "max_blocks":6,
+  "presets":[{"name":"Chic Multi Columns ULTRA MAX"}]
+}
+{% endschema %}
