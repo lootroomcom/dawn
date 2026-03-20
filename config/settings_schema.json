@@ -8,6 +8,17 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Global Background",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "global_background_image",
+        "label": "Global Background Image",
+        "info": "Upload an image to be used as the background for all pages."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
