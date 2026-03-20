@@ -1,7 +1,13 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
 
-<div class="footer-break-top" aria-hidden="true"></div>
+{%- if section.settings.show_footer_break_top -%}
+  {%- assign top_break_url = 'https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-top.png?v=1772442257' -%}
+  {%- if section.settings.footer_break_top != blank -%}
+    {%- assign top_break_url = section.settings.footer_break_top | image_url -%}
+  {%- endif -%}
+  <div class="footer-break-top" aria-hidden="true" style="background-image: url('{{ top_break_url }}');"></div>
+{%- endif -%}
 
 <footer class="footer-wrapper" role="contentinfo">
   <div class="footer-inner page-width">
@@ -78,10 +84,41 @@
   </div>
 </footer>
 
+{%- if section.settings.show_footer_break_bottom -%}
+  {%- assign bottom_break_url = 'https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-bottom.png?v=1772442257' -%}
+  {%- if section.settings.footer_break_bottom != blank -%}
+    {%- assign bottom_break_url = section.settings.footer_break_bottom | image_url -%}
+  {%- endif -%}
+  <div class="footer-break-bottom" aria-hidden="true" style="background-image: url('{{ bottom_break_url }}');"></div>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Footer",
-  "settings": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_footer_break_top",
+      "label": "Show Top Break Line",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_break_top",
+      "label": "Top Break Line Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_footer_break_bottom",
+      "label": "Show Bottom Break Line",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_break_bottom",
+      "label": "Bottom Break Line Image"
+    }
+  ],
   "blocks": [
     {
       "type": "image",
