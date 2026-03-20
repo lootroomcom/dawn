@@ -1,22 +1,32 @@
 /* =============================================
+   BRAND VARIABLES
+   ============================================= */
+:root {
+  --brand-gold: #dac795;
+  --brand-gold-rgb: 218, 199, 149;
+  --brand-beige: #f5e5b9;
+  --brand-beige-rgb: 245, 229, 185;
+}
+
+/* =============================================
    CUSTOM BRANDING & STYLING
    ============================================= */
 
 .header__heading-link {
-  color: #dac795;
+  color: var(--brand-gold);
 }
 
 /* Desktop nav menu items */
 @media screen and (min-width: 990px) {
   .header__inline-menu .list-menu__item--link {
-    color: #dac795 !important;
+    color: var(--brand-gold) !important;
     font-weight: 700 !important;
     text-transform: uppercase;
     font-family: Poppins, sans-serif;
   }
 
   .header__inline-menu .list-menu__item--link:hover {
-    color: #f5e5b9 !important;
+    color: var(--brand-beige) !important;
   }
 
   .header__inline-menu .header__menu-item {
@@ -26,17 +36,17 @@
 
 /* Header icons */
 .header__icon svg {
-  fill: #dac795;
-  color: #dac795;
+  fill: var(--brand-gold);
+  color: var(--brand-gold);
 }
 
 .header__icon:hover svg {
-  fill: #f5e5b9;
+  fill: var(--brand-beige);
 }
 
 /* Cart bubble */
 .cart-count-bubble {
-  background-color: #dac795;
+  background-color: var(--brand-gold);
   color: #1b333c;
 }
 
@@ -79,7 +89,7 @@
 
 /* Wrapper: position:relative als Anker für das absolut positionierte Naked-Bild */
 .footer-wrapper {
-  background-color: #f5e5b9;
+  background-color: var(--brand-beige);
   color: #1b333c;
   position: relative;
   margin: 0;

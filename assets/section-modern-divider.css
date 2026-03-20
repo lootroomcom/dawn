@@ -1,0 +1,39 @@
+.strong-divider {
+  padding: var(--divider-spacing, 80px) 0;
+  width: 100%;
+}
+
+/* Linie */
+.strong-divider .divider-line {
+  height: 4px;
+  width: 100%;
+  border-radius: 999px;
+  background: var(--divider-gradient);
+  box-shadow: var(--divider-shadow-1), var(--divider-shadow-2);
+}
+
+/* Text Variante */
+.strong-divider .divider-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.strong-divider .divider-text::before,
+.strong-divider .divider-text::after {
+  content: "";
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--divider-gradient);
+  box-shadow: var(--divider-shadow-1);
+}
+
+.strong-divider .divider-text span {
+  font-size: 14px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}

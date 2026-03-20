@@ -61,8 +61,8 @@
   </div>
 </section>
 
-<style>
-.cmc-{{ section.id }}{
+{%- style -%}
+.cmc-{{ section.id }} {
   --cmc-gap: {{ section.settings.gap }}px;
   --cmc-radius: {{ section.settings.radius }}px;
   --cmc-text: {{ section.settings.text_color }};
@@ -72,162 +72,19 @@
     {{ section.settings.card_color.blue }},
     {{ section.settings.card_opacity | divided_by: 100.0 }}
   );
-
-  position:relative;
-  padding: {{ section.settings.padding_y }}px 0;
-  color:var(--cmc-text);
-  overflow:hidden;
-}
-
-/* 🔥 INTENSIVER ANIMATED GRADIENT */
-.cmc-bg-animated{
-  position:absolute;
-  inset:0;
-  background: linear-gradient(-45deg,
+  --cmc-padding-y: {{ section.settings.padding_y }}px;
+  --cmc-gradient: linear-gradient(-45deg,
     {{ section.settings.gradient_1 }},
     {{ section.settings.gradient_2 }},
     {{ section.settings.gradient_3 }},
     {{ section.settings.gradient_4 }}
   );
-  background-size:600% 600%;
-  animation: gradientMove 8s ease infinite;
-  z-index:-1;
-  filter:saturate(1.4);
+  --cmc-gradient-2: {{ section.settings.gradient_2 }};
+  --cmc-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
 }
+{%- endstyle -%}
 
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* GRID */
-.cmc-grid{
-  display:grid;
-  gap:var(--cmc-gap);
-  grid-template-columns:repeat({{ section.settings.columns_desktop }},1fr);
-  position:relative;
-  z-index:2;
-}
-
-/* LINK WRAPPER */
-.cmc-card-link{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* 💎 CARD */
-.cmc-card{
-  position:relative;
-  border-radius:var(--cmc-radius);
-  background:var(--cmc-card);
-  backdrop-filter:blur(28px);
-  -webkit-backdrop-filter:blur(28px);
-  border:1px solid rgba(255,255,255,.4);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.3),
-    0 20px 60px rgba(0,0,0,.35);
-  overflow:hidden;
-  transition:transform .15s ease, box-shadow .3s ease;
-  transform-style:preserve-3d;
-  animation:floatCard 6s ease-in-out infinite;
-}
-
-/* 🌈 NEON GLOW */
-.cmc-card:hover{
-  box-shadow:
-    0 0 30px rgba(255,255,255,.6),
-    0 0 5px {{ section.settings.gradient_2 }},
-    0 30px 80px rgba(0,0,0,.45);
-}
-
-/* ✨ SHINE SWEEP */
-.cmc-card::after{
-  content:"";
-  position:absolute;
-  top:-100%;
-  left:-100%;
-  width:200%;
-  height:200%;
-  background:linear-gradient(
-    120deg,
-    transparent 40%,
-    rgba(255,255,255,.6) 50%,
-    transparent 60%
-  );
-  transform:rotate(25deg);
-  transition:all .7s ease;
-  opacity:0;
-}
-.cmc-card:hover::after{
-  top:100%;
-  left:100%;
-  opacity:1;
-}
-
-/* 💡 MOUSE LIGHT */
-.cmc-light{
-  position:absolute;
-  width:400px;
-  height:400px;
-  background:radial-gradient(circle,
-    rgba(255,255,255,.8),
-    rgba(255,255,255,.3),
-    transparent 60%);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  opacity:0;
-  transition:opacity .2s;
-}
-.cmc-card:hover .cmc-light{
-  opacity:1;
-}
-
-/* MEDIA */
-.cmc-media{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:30px 20px 10px;
-}
-
-.cmc-img{
-  width:80px;
-  height:80px;
-  object-fit:contain;
-  transition:transform .4s ease;
-}
-.cmc-card:hover .cmc-img{
-  transform:scale(1.1);
-}
-
-/* BODY */
-.cmc-body{
-  padding:24px;
-}
-.cmc-card-title{
-  margin:0 0 8px;
-  font-size:20px;
-}
-.cmc-card-text{
-  font-size:14.5px;
-  opacity:.75;
-}
-
-/* 📱 MOBILE SWIPE */
-@media(max-width:749px){
-  .cmc-grid{
-    grid-auto-flow:column;
-    grid-auto-columns:85%;
-    grid-template-columns:unset;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-  }
-  .cmc-card-wrapper{
-    scroll-snap-align:start;
-  }
-}
-</style>
+{{ 'section-chic-multi-columns.css' | asset_url | stylesheet_tag }}
 
 <script>
 document.querySelectorAll(".cmc-{{ section.id }} .cmc-card").forEach(card=>{
