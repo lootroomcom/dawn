@@ -1,136 +1,206 @@
 /* ==========================================================================
-   Trust Bar – Premium E-Commerce Design
+   Trust Bar – Matching "Chic Multi Columns ULTRA MAX" Design System
    ========================================================================== */
 
-.trust-bar {
-  background: var(--trust-bg);
+/* ---- Section Wrapper ---- */
+.tb-wrap {
   position: relative;
+  padding: var(--tb-padding-y, 60px) 0;
+  color: var(--tb-text, #fff);
   overflow: hidden;
 }
 
-/* Subtle decorative gradient glow */
-.trust-bar__glow {
+/* ---- Animated Gradient Background (same as CMC) ---- */
+.tb-bg-animated {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--trust-accent), transparent);
-  opacity: 0.5;
+  inset: 0;
+  background: var(--tb-gradient);
+  background-size: 600% 600%;
+  animation: tbGradientMove 8s ease infinite;
+  z-index: -1;
+  filter: saturate(1.4);
 }
 
-/* ---- Trust Features Row ---- */
-.trust-bar__features {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+@keyframes tbGradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- Section Header ---- */
+.tb-header {
+  text-align: center;
   margin-bottom: 40px;
 }
 
-.trust-bar__feature {
+.tb-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.tb-subtitle {
+  font-size: 15px;
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+.tb-grid {
+  display: grid;
+  gap: var(--tb-gap, 20px);
+  position: relative;
+  z-index: 2;
+}
+
+.tb-grid--features {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: var(--tb-gap, 20px);
+}
+
+.tb-grid--badges {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---- Glassmorphism Card (matching CMC) ---- */
+.tb-card {
+  position: relative;
+  border-radius: var(--tb-radius, 24px);
+  background: var(--tb-card, rgba(255,255,255,0.06));
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.35);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  animation: tbFloat 6s ease-in-out infinite;
+  padding: 24px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 20px 16px;
-  border-radius: 12px;
-  background: var(--trust-bg-card);
-  border: 1px solid var(--trust-divider);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 16px;
 }
 
-.trust-bar__feature:hover {
-  border-color: var(--trust-accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+@keyframes tbFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
 }
 
-.trust-bar__feature-icon {
-  width: 40px;
-  height: 40px;
+/* Neon glow on hover */
+.tb-card:hover {
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.15),
+    0 0 5px var(--tb-gradient-2, #1a1a2e),
+    0 30px 80px rgba(0,0,0,0.45);
+}
+
+/* Shine sweep (matching CMC) */
+.tb-card::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  transition: all 0.7s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tb-card:hover::after {
+  top: 100%;
+  left: 100%;
+  opacity: 1;
+}
+
+/* Mouse-follow light (matching CMC) */
+.tb-light {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0.15),
+    transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tb-card:hover .tb-light {
+  opacity: 1;
+}
+
+/* ---- Feature Card Icon ---- */
+.tb-card-icon {
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(218, 199, 149, 0.12), rgba(218, 199, 149, 0.04));
-  color: var(--trust-accent);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(218,199,149,0.18), rgba(218,199,149,0.05));
+  color: var(--tb-accent);
 }
 
-.trust-bar__feature-icon svg {
+.tb-card-icon svg {
   width: 22px;
   height: 22px;
 }
 
-.trust-bar__feature-text {
+/* ---- Card Typography (matching CMC sizes) ---- */
+.tb-card-body {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.trust-bar__feature-title {
-  font-size: 1.3rem;
+.tb-card-title {
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--trust-icon);
-  letter-spacing: 0.01em;
   line-height: 1.3;
 }
 
-.trust-bar__feature-sub {
-  font-size: 1.1rem;
-  color: var(--trust-text);
-  line-height: 1.3;
-  opacity: 0.75;
+.tb-card-title--center {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
-/* ---- Badge Cards (Payment / Shipping) ---- */
-.trust-bar__badges {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.tb-card-text {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.6;
+  line-height: 1.35;
 }
 
-.trust-bar__card {
-  display: flex;
+/* ---- Badges Card ---- */
+.tb-card--badges {
   flex-direction: column;
   align-items: center;
-  gap: 16px;
   padding: 28px 24px;
-  border-radius: 14px;
-  background: var(--trust-bg-card);
-  border: 1px solid var(--trust-divider);
-  transition: border-color 0.3s ease;
+  gap: 16px;
 }
 
-.trust-bar__card:hover {
-  border-color: color-mix(in srgb, var(--trust-accent) 40%, transparent);
-}
-
-.trust-bar__label {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--trust-text);
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.trust-bar__label::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 2px;
-  background: var(--trust-accent);
-  border-radius: 1px;
-}
-
-/* ---- Icons ---- */
-.trust-bar__icons {
+/* ---- Payment Icons ---- */
+.tb-icons {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -138,86 +208,87 @@
   justify-content: center;
 }
 
-.trust-bar__payment-icon {
-  width: 42px;
+.tb-pay-icon {
+  width: 40px;
   height: auto;
-  color: var(--trust-icon);
-  opacity: 0.65;
+  opacity: 0.55;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.trust-bar__payment-icon:hover {
+.tb-pay-icon:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
-/* Shipping icons */
-.trust-bar__icons--shipping {
+/* ---- Shipping Icons ---- */
+.tb-icons--shipping {
   gap: 24px;
 }
 
-.trust-bar__ship-icon {
+.tb-ship {
   width: 72px;
-  height: 32px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--trust-icon);
-  opacity: 0.65;
+  opacity: 0.55;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.trust-bar__ship-icon--wide {
-  width: 100px;
+.tb-ship--wide {
+  width: 96px;
 }
 
-.trust-bar__ship-icon:hover {
+.tb-ship:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
-.trust-bar__ship-icon svg {
+.tb-ship svg {
   width: 100%;
   height: 100%;
 }
 
-/* ---- Responsive ---- */
-@media screen and (max-width: 989px) {
-  .trust-bar__features {
+/* ---- Responsive (matching CMC mobile behavior) ---- */
+@media (max-width: 989px) {
+  .tb-grid--features {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 749px) {
-  .trust-bar__features {
+@media (max-width: 749px) {
+  .tb-grid--features {
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+
+  .tb-grid--features .tb-card-wrapper {
+    scroll-snap-align: start;
+  }
+
+  .tb-grid--badges {
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 28px;
   }
 
-  .trust-bar__badges {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .tb-card {
+    padding: 20px;
   }
 
-  .trust-bar__feature {
-    padding: 16px 14px;
-  }
-
-  .trust-bar__card {
-    padding: 20px 16px;
-  }
-
-  .trust-bar__ship-icon {
+  .tb-ship {
     width: 56px;
     height: 24px;
   }
 
-  .trust-bar__ship-icon--wide {
-    width: 76px;
+  .tb-ship--wide {
+    width: 72px;
   }
 
-  .trust-bar__payment-icon {
+  .tb-pay-icon {
     width: 34px;
   }
 }
