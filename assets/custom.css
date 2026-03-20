@@ -9,6 +9,18 @@
 }
 
 /* =============================================
+   GLOBAL BACKGROUND
+   ============================================= */
+body {
+  background-image: url('https://cdn.shopify.com/s/files/1/0503/3535/0975/files/desktop-background.svg?v=1705324545');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* =============================================
    CUSTOM BRANDING & STYLING
    ============================================= */
 
