@@ -17,35 +17,80 @@
 
 .pf-content {
   max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .pf-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 12px;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Soft shadow for depth */
 }
 
 .pf-title {
-  font-size: 32px;
-  margin: 0 0 15px 0;
+  font-size: clamp(2.8rem, 4vw, 4.2rem); /* Responsive font sizing */
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em; /* Tighter letter spacing for modern look */
 }
 
 .pf-text {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   line-height: 1.6;
+  font-size: 1.6rem;
+  opacity: 0.85; /* Softer text contrast */
 }
 
 .pf-price {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pf-price .price--compare {
+  font-size: 1.6rem;
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 .pf-buttons {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Staggered text animation on active slide */
+.swiper-slide-active .pf-content > * {
+  animation: pfFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.swiper-slide-active .pf-badge { animation-delay: 0.1s; }
+.swiper-slide-active .pf-title { animation-delay: 0.2s; }
+.swiper-slide-active .pf-text { animation-delay: 0.3s; }
+.swiper-slide-active .pf-price { animation-delay: 0.4s; }
+.swiper-slide-active .pf-buttons { animation-delay: 0.5s; }
+
+@keyframes pfFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media screen and (max-width: 768px) {
