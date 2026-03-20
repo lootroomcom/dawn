@@ -1,5 +1,3 @@
-{{ 'section-trust-bar.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .trust-bar-{{ section.id }} {
     --tb-text: {{ section.settings.text_color }};
@@ -22,6 +20,306 @@
     --tb-padding-y: {{ section.settings.padding_y }}px;
   }
 {%- endstyle -%}
+
+<style>
+/* ==========================================================================
+   Trust Bar – Matching "Chic Multi Columns ULTRA MAX" Design System
+   ========================================================================== */
+
+/* ---- Section Wrapper ---- */
+.tb-wrap {
+  position: relative;
+  padding: var(--tb-padding-y, 60px) 0;
+  color: var(--tb-text, #fff);
+  overflow: hidden;
+}
+
+/* ---- Animated Gradient Background (same as CMC) ---- */
+.tb-bg-animated {
+  position: absolute;
+  inset: 0;
+  background: var(--tb-gradient);
+  background-size: 600% 600%;
+  animation: tbGradientMove 8s ease infinite;
+  z-index: -1;
+  filter: saturate(1.4);
+}
+
+@keyframes tbGradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- Section Header ---- */
+.tb-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tb-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.tb-subtitle {
+  font-size: 15px;
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+.tb-grid {
+  display: grid;
+  gap: var(--tb-gap, 20px);
+  position: relative;
+  z-index: 2;
+}
+
+.tb-grid--features {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: var(--tb-gap, 20px);
+}
+
+.tb-grid--badges {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---- Glassmorphism Card (matching CMC) ---- */
+.tb-card {
+  position: relative;
+  border-radius: var(--tb-radius, 24px);
+  background: var(--tb-card, rgba(255,255,255,0.06));
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.35);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  animation: tbFloat 6s ease-in-out infinite;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+@keyframes tbFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* Neon glow on hover */
+.tb-card:hover {
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.15),
+    0 0 5px var(--tb-gradient-2, #1a1a2e),
+    0 30px 80px rgba(0,0,0,0.45);
+}
+
+/* Shine sweep (matching CMC) */
+.tb-card::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  transition: all 0.7s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tb-card:hover::after {
+  top: 100%;
+  left: 100%;
+  opacity: 1;
+}
+
+/* Mouse-follow light (matching CMC) */
+.tb-light {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0.15),
+    transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tb-card:hover .tb-light {
+  opacity: 1;
+}
+
+/* ---- Feature Card Icon ---- */
+.tb-card-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(218,199,149,0.18), rgba(218,199,149,0.05));
+  color: var(--tb-accent);
+}
+
+.tb-card-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+/* ---- Card Typography (matching CMC sizes) ---- */
+.tb-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tb-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tb-card-title--center {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.tb-card-text {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.6;
+  line-height: 1.35;
+}
+
+/* ---- Badges Card ---- */
+.tb-card--badges {
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px;
+  gap: 16px;
+}
+
+/* ---- Payment Icons ---- */
+.tb-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tb-pay-icon {
+  width: 40px !important;
+  height: 24px !important;
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tb-pay-icon:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+/* ---- Shipping Icons ---- */
+.tb-icons--shipping {
+  gap: 24px;
+}
+
+.tb-ship {
+  width: 72px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tb-ship--wide {
+  width: 96px;
+}
+
+.tb-ship:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.tb-ship svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Responsive (matching CMC mobile behavior) ---- */
+@media (max-width: 989px) {
+  .tb-grid--features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 749px) {
+  .tb-grid--features {
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+
+  .tb-grid--features .tb-card-wrapper {
+    scroll-snap-align: start;
+  }
+
+  .tb-grid--badges {
+    grid-template-columns: 1fr;
+  }
+
+  .tb-card {
+    padding: 20px;
+  }
+
+  .tb-ship {
+    width: 56px;
+    height: 24px;
+  }
+
+  .tb-ship--wide {
+    width: 72px;
+  }
+
+  .tb-pay-icon {
+    width: 34px !important;
+    height: 20px !important;
+  }
+}
+</style>
 
 <section class="tb-wrap trust-bar-{{ section.id }}">
   <div class="tb-bg-animated"></div>
