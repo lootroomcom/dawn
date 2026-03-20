@@ -11,37 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "trust_bar_iiXgrg": {
-      "type": "trust-bar",
-      "name": "Trust Bar",
-      "settings": {
-        "show_trust_features": true,
-        "feature_1_title": "Sicherer Checkout",
-        "feature_1_sub": "256-Bit SSL Verschlüsselung",
-        "feature_2_title": "Weltweiter Versand",
-        "feature_2_sub": "Schneller & zuverlässiger Versand",
-        "feature_3_title": "24/7 Support",
-        "feature_3_sub": "Wir sind immer für dich da",
-        "feature_4_title": "Zufriedenheitsgarantie",
-        "feature_4_sub": "30 Tage Rückgaberecht",
-        "show_payments": true,
-        "payment_heading": "Sichere Bezahlung",
-        "show_shipping": true,
-        "shipping_heading": "Weltweiter Versand mit",
-        "show_dhl": true,
-        "show_usps": true,
-        "show_auspost": true,
-        "show_royalmail": true,
-        "bg_color": "#0a0a0a",
-        "card_bg_color": "#161616",
-        "text_color": "#aaaaaa",
-        "icon_color": "#cccccc",
-        "accent_color": "#dac795",
-        "divider_color": "#222222",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -78,11 +47,13 @@
         "links_block",
         "info_block"
       ],
-      "settings": {}
+      "settings": {
+        "show_footer_break_top": true,
+        "show_footer_break_bottom": false
+      }
     }
   },
   "order": [
-    "trust_bar_iiXgrg",
     "footer"
   ]
 }
