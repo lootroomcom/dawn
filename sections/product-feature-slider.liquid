@@ -1,7 +1,7 @@
 {{ 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' | stylesheet_tag }}
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
 
-<section class="pf-slider">
+<section id="pf-slider-{{ section.id }}" class="pf-slider">
   <div class="page-width">
     <div class="swiper pfSwiper">
       <div class="swiper-wrapper">
@@ -15,21 +15,18 @@
               <!-- LEFT: CUSTOM IMAGE ONLY -->
               <div class="pf-image">
                {% if block.settings.custom_image != blank %}
-  <img 
-    class="pf-animated-image"
-    src="{{ block.settings.custom_image | image_url: width: 900 }}"
-    alt="Slider image"
-    loading="lazy"
-    style="
-      --float-distance: {{ block.settings.float_distance }}px;
-      --float-duration: {{ block.settings.float_speed }}s;
-      --glow-color: {{ block.settings.glow_color }};
-      --glow-strength: {{ block.settings.glow_strength }}px;
-    "
-    data-float="{{ block.settings.enable_float }}"
-    data-glow="{{ block.settings.enable_glow }}"
-  >
-{% endif %}
+                 <div class="pf-animated-image-wrapper"
+                      style="
+                        --float-distance: {{ block.settings.float_distance }}px;
+                        --float-duration: {{ block.settings.float_speed }}s;
+                        --glow-color: {{ block.settings.glow_color }};
+                        --glow-strength: {{ block.settings.glow_strength }}px;
+                      "
+                      data-float="{{ block.settings.enable_float }}"
+                      data-glow="{{ block.settings.enable_glow }}">
+                   {{ block.settings.custom_image | image_url: width: 900 | image_tag: class: 'pf-animated-image', loading: 'lazy' }}
+                 </div>
+               {% endif %}
               </div>
 
               <!-- RIGHT: PRODUCT CONTENT -->
@@ -115,111 +112,17 @@
   </div>
 </section>
 
-<style>
-.pf-inner {
-  display: flex;
-  align-items: flex-start; /* <-- geändert */
-  justify-content: center;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 0;
-}
-
-.pf-image img {
-  max-width: 500px;
-  width: 100%;
-  display: block;
-}
-
-.pf-content {
-  max-width: 450px;
-}
-
-.pf-badge {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
-
-.pf-title {
-  font-size: 32px;
-  margin: 0 0 15px 0;
-}
-
-.pf-text {
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-.pf-price {
-  margin-bottom: 20px;
-}
-
-.pf-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.swiper-pagination-bullet {
-  background: {{ section.settings.pagination_color }};
-}
-
-@media screen and (max-width: 768px) {
-  .pf-inner {
-    flex-direction: column;
+{%- style -%}
+  #pf-slider-{{ section.id }} .swiper-pagination-bullet {
+    background: {{ section.settings.pagination_color }};
   }
-}
-@keyframes pfFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(calc(-1 * var(--float-distance))); }
-  100% { transform: translateY(0px); }
-}
+{%- endstyle -%}
 
-@keyframes pfGlow {
-  0% {
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
-  }
-  50% {
-    filter: drop-shadow(0 0 var(--glow-strength) var(--glow-color));
-  }
-  100% {
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
-  }
-}
-
-.pf-animated-image {
-  border-radius: 16px;
-}
-
-/* Float aktiv */
-.pf-animated-image[data-float="true"] {
-  animation: pfFloat var(--float-duration) ease-in-out infinite;
-}
-
-/* Glow aktiv */
-.pf-animated-image[data-glow="true"][data-float="true"] {
-  animation: 
-    pfFloat var(--float-duration) ease-in-out infinite,
-    pfGlow 3s ease-in-out infinite;
-}
-
-.pf-animated-image[data-glow="true"][data-float="false"] {
-  animation: pfGlow 3s ease-in-out infinite;
-}
-
-.pf-animated-image[data-glow="false"][data-float="true"] {
-  animation: pfFloat var(--float-duration) ease-in-out infinite;
-}
-</style>
+{{ 'section-advanced-product-slider.css' | asset_url | stylesheet_tag }}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  new Swiper('.pfSwiper', {
+  new Swiper('#pf-slider-{{ section.id }} .pfSwiper', {
     loop: {{ section.settings.loop }},
     speed: {{ section.settings.speed }},
     allowTouchMove: false,
@@ -232,13 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
     {% endif %}
 
     pagination: {
-      el: '.swiper-pagination',
+      el: '#pf-slider-{{ section.id }} .swiper-pagination',
       clickable: true
     },
 
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      nextEl: '#pf-slider-{{ section.id }} .swiper-button-next',
+      prevEl: '#pf-slider-{{ section.id }} .swiper-button-prev'
     }
   });
 });
