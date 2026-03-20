@@ -234,11 +234,20 @@
   justify-content: center;
 }
 
-.tb-pay-icon {
+.tb-pay-icon,
+.tb-pay-icon svg {
+  display: block;
   width: 40px !important;
   height: 24px !important;
+  max-width: 40px !important;
+  max-height: 24px !important;
+}
+
+.tb-pay-icon {
   opacity: 0.55;
   transition: opacity 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .tb-pay-icon:hover {
@@ -304,9 +313,12 @@
     padding: 5px 12px;
   }
 
-  .tb-pay-icon {
+  .tb-pay-icon,
+  .tb-pay-icon svg {
     width: 34px !important;
     height: 20px !important;
+    max-width: 34px !important;
+    max-height: 20px !important;
   }
 }
 </style>
