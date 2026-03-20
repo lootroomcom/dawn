@@ -73,6 +73,18 @@
   align-items: center;
 }
 
+.pf-buttons .button.button--primary {
+  background-color: var(--pf-btn-bg, #ffffff) !important;
+  color: var(--pf-btn-text, #111111) !important;
+  border: 1px solid var(--pf-btn-bg, #ffffff) !important;
+}
+
+.pf-buttons .button.button--secondary {
+  background-color: var(--pf-btn-bg-alt, transparent) !important;
+  color: var(--pf-btn-text-alt, #ffffff) !important;
+  border: 1px solid var(--pf-btn-text-alt, #ffffff) !important;
+}
+
 /* Staggered text animation on active slide */
 .swiper-slide-active .pf-content > * {
   animation: pfFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;

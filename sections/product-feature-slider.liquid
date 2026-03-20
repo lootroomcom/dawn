@@ -75,7 +75,7 @@
                     </span>
                   </div>
 
-                  <div class="pf-buttons">
+                  <div class="pf-buttons" style="--pf-btn-bg: {{ block.settings.button_bg }}; --pf-btn-text: {{ block.settings.button_text }}; --pf-btn-bg-alt: {{ block.settings.button_bg_secondary }}; --pf-btn-text-alt: {{ block.settings.button_text_secondary }};">
 
                     <product-form>
                       {% form 'product', product %}
@@ -194,6 +194,12 @@ document.addEventListener('DOMContentLoaded', function () {
         
         { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
         { "type": "checkbox", "id": "price_bold", "label": "Preis fettgedruckt", "default": true },
+
+        { "type": "header", "content": "Buttons" },
+        { "type": "color", "id": "button_bg", "label": "1. Button Hintergrund", "default": "#ffffff" },
+        { "type": "color", "id": "button_text", "label": "1. Button Text", "default": "#111111" },
+        { "type": "color", "id": "button_bg_secondary", "label": "2. Button Hintergrund", "default": "transparent" },
+        { "type": "color", "id": "button_text_secondary", "label": "2. Button Text", "default": "#ffffff" },
 
         { "type": "header", "content": "Bild Animation" },
 
