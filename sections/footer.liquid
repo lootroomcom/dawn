@@ -24,63 +24,64 @@
       >
     {%- endif -%}
 
-    <div class="footer-col footer-col--disclaimer">
-      <h4 class="footer-col__heading">Disclaimer</h4>
-      <div class="footer-col__text">
-        <p>
-          lootroom GmbH is officially affiliated, endorsed, and licensed by
-          <a href="https://facepunch.com/merch" target="_blank" rel="noopener noreferrer">Facepunch Studios</a>.
-        </p>
-        <p>
-          &copy; {{ 'now' | date: '%Y' }} Facepunch Studios Limited. All rights reserved.
-          Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks
-          and/or registered trademarks of Facepunch Studios in the US and/or other countries.
-        </p>
-        <p>
-          For other games, lootroom is not affiliated with, endorsed by, or in any way associated
-          with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates.
-          All graphics, game assets, sounds, and brands are property of their respective owners.
-        </p>
-      </div>
-    </div>
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'disclaimer' -%}
+          <div class="footer-col footer-col--disclaimer" {{ block.shopify_attributes }}>
+            {%- if block.settings.heading != blank -%}
+              <h4 class="footer-col__heading">{{ block.settings.heading | escape }}</h4>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="footer-col__text">
+                {{ block.settings.text }}
+              </div>
+            {%- endif -%}
+          </div>
 
-    <div class="footer-col footer-col--links">
-      <h4 class="footer-col__heading">Useful Links</h4>
-      {%- if section.settings.menu.links.size > 0 -%}
-        <ul class="footer-links-list">
-          {%- for link in section.settings.menu.links -%}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-    </div>
+        {%- when 'link_list' -%}
+          <div class="footer-col footer-col--links" {{ block.shopify_attributes }}>
+            {%- if block.settings.heading != blank -%}
+              <h4 class="footer-col__heading">{{ block.settings.heading | escape }}</h4>
+            {%- endif -%}
+            {%- if block.settings.menu != blank and block.settings.menu.links.size > 0 -%}
+              <ul class="footer-links-list">
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
 
-    <div class="footer-col footer-col--info">
-      {%- if section.settings.supplier_logo != blank -%}
-        <div class="footer-supplier">
-          <span class="footer-col__heading">Supplied by</span>
-          <img
-            src="{{ section.settings.supplier_logo | image_url: width: 200 }}"
-            alt="{{ section.settings.supplier_name | escape }}"
-            class="footer-supplier__logo"
-            width="200"
-            loading="lazy"
-          >
-        </div>
-      {%- endif -%}
+        {%- when 'info' -%}
+          <div class="footer-col footer-col--info" {{ block.shopify_attributes }}>
+            {%- if block.settings.supplier_logo != blank -%}
+              <div class="footer-supplier">
+                <span class="footer-col__heading">Supplied by</span>
+                <img
+                  src="{{ block.settings.supplier_logo | image_url: width: 200 }}"
+                  alt="{{ block.settings.supplier_name | escape }}"
+                  class="footer-supplier__logo"
+                  width="200"
+                  loading="lazy"
+                >
+              </div>
+            {%- endif -%}
 
-      <div class="footer-ssl">
-        {%- comment -%} Shield / SSL icon {%- endcomment -%}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-        </svg>
-        <span>SSL 256-Bit<br>RSA Encryption</span>
-      </div>
+            {%- if block.settings.show_ssl -%}
+              <div class="footer-ssl">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+                <span>SSL 256-Bit<br>RSA Encryption</span>
+              </div>
+            {%- endif -%}
 
-      <p class="footer-copyright">
-        &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | upcase }}
-      </p>
-    </div>
+            <p class="footer-copyright">
+              &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | upcase }}
+            </p>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
 
   </div>
 
@@ -92,27 +93,84 @@
   "name": "Footer",
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "default": "footer",
-      "label": "Footer Navigation"
-    },
-    {
       "type": "image_picker",
       "id": "naked",
       "label": "Naked Character"
-    },
-    {
-      "type": "image_picker",
-      "id": "supplier_logo",
-      "label": "Supplier Logo"
-    },
-    {
-      "type": "text",
-      "id": "supplier_name",
-      "label": "Supplier Name",
-      "default": "3D Jake"
     }
-  ]
+  ],
+  "blocks": [
+    {
+      "type": "disclaimer",
+      "name": "Disclaimer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Disclaimer",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>lootroom GmbH is officially affiliated, endorsed, and licensed by <a href=\"https://facepunch.com/merch\" target=\"_blank\" rel=\"noopener noreferrer\">Facepunch Studios</a>.</p><p>&copy; 2026 Facepunch Studios Limited. All rights reserved. Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks and/or registered trademarks of Facepunch Studios in the US and/or other countries.</p><p>For other games, lootroom is not affiliated with, endorsed by, or in any way associated with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates. All graphics, game assets, sounds, and brands are property of their respective owners.</p>",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Useful Links",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "info",
+      "name": "Supplier & Info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "supplier_logo",
+          "label": "Supplier Logo"
+        },
+        {
+          "type": "text",
+          "id": "supplier_name",
+          "default": "3D Jake",
+          "label": "Supplier Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_ssl",
+          "default": true,
+          "label": "Show SSL Badge"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "disclaimer"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "info"
+      }
+    ]
+  }
 }
 {% endschema %}

@@ -1,1 +1,54 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","blocks":{},"block_order":[],"settings":{"color_scheme":"scheme-1","newsletter_enable":false,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":false,"show_social":false,"enable_country_selector":false,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":0,"padding_bottom":0}}},"order":["footer"]}
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "disclaimer_block": {
+          "type": "disclaimer",
+          "settings": {
+            "heading": "Disclaimer",
+            "text": "<p>lootroom GmbH is officially affiliated, endorsed, and licensed by <a href=\"https://facepunch.com/merch\" target=\"_blank\" rel=\"noopener noreferrer\">Facepunch Studios</a>.</p><p>&#169; 2026 Facepunch Studios Limited. All rights reserved. Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks and/or registered trademarks of Facepunch Studios in the US and/or other countries.</p><p>For other games, lootroom is not affiliated with, endorsed by, or in any way associated with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates. All graphics, game assets, sounds, and brands are property of their respective owners.</p>"
+          }
+        },
+        "links_block": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Useful Links",
+            "menu": "footer"
+          }
+        },
+        "info_block": {
+          "type": "info",
+          "settings": {
+            "supplier_name": "3D Jake",
+            "show_ssl": true
+          }
+        }
+      },
+      "block_order": [
+        "disclaimer_block",
+        "links_block",
+        "info_block"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
