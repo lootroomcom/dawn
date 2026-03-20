@@ -3746,6 +3746,7 @@ details-disclosure > details {
 .footer-col--image {
   flex: 0 0 auto;
   align-self: flex-end;
+  margin-left: 20%;
 }
 
 /*
@@ -3880,6 +3881,7 @@ details-disclosure > details {
 @media screen and (max-width: 989px) {
   .footer-col--image {
     align-self: center; /* Center horizontally instead of flex-end */
+    margin-left: 0;
   }
 
   .footer-naked-img {
