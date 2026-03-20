@@ -1,0 +1,107 @@
+{{ 'section-trustpilot.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="trustpilot-center section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="trustpilot-wrapper">
+    <span class="trustpilot-status"></span>
+    <div class="trustpilot-widget"
+         data-locale="en-US"
+         data-template-id="{{ section.settings.template_id }}"
+         data-businessunit-id="{{ section.settings.businessunit_id }}"
+         data-style-height="24px"
+         data-style-width="auto"
+         data-theme="{{ section.settings.theme }}"
+         data-min-review-count="10"
+         data-style-alignment="center">
+      <a href="https://www.trustpilot.com/review/{{ section.settings.domain }}"
+         target="_blank"
+         rel="noopener">Trustpilot</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trustpilot Widget",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "businessunit_id",
+      "label": "Business Unit ID",
+      "default": "61b29dd6b35716981dec7da0"
+    },
+    {
+      "type": "text",
+      "id": "template_id",
+      "label": "Template ID",
+      "default": "5419b6a8b0d04a076446a9ad"
+    },
+    {
+      "type": "text",
+      "id": "domain",
+      "label": "Domain",
+      "default": "lootroom.com"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "theme",
+      "label": "Trustpilot Theme",
+      "options": [
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark" }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trustpilot Widget"
+    }
+  ]
+}
+{% endschema %}
