@@ -48,6 +48,22 @@
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "brand_gold",
+        "label": "Brand Gold",
+        "default": "#dac795"
+      },
+      {
+        "type": "color",
+        "id": "brand_beige",
+        "label": "Brand Beige",
+        "default": "#f5e5b9"
+      },
+      {
         "type": "color_scheme_group",
         "id": "color_schemes",
         "definition": [
