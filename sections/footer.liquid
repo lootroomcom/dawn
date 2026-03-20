@@ -2,7 +2,7 @@
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.show_footer_break_top -%}
-  {%- assign top_break_url = 'https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-top.png?v=1772442257' -%}
+  {%- assign top_break_url = 'break-top.png' | asset_url -%}
   {%- if section.settings.footer_break_top != blank -%}
     {%- assign top_break_url = section.settings.footer_break_top | image_url -%}
   {%- endif -%}
@@ -21,7 +21,7 @@
             {%- else -%}
               <img
                 class="footer-naked-img"
-                src="https://cdn.shopify.com/s/files/1/0503/3535/0975/files/naked.png?v=1772442775"
+                src="{{ 'naked.png' | asset_url }}"
                 alt="Lootroom Character"
                 width="400"
                 height="400"
@@ -85,7 +85,7 @@
 </footer>
 
 {%- if section.settings.show_footer_break_bottom -%}
-  {%- assign bottom_break_url = 'https://cdn.shopify.com/s/files/1/0503/3535/0975/files/break-bottom.png?v=1772442257' -%}
+  {%- assign bottom_break_url = 'break-bottom.png' | asset_url -%}
   {%- if section.settings.footer_break_bottom != blank -%}
     {%- assign bottom_break_url = section.settings.footer_break_bottom | image_url -%}
   {%- endif -%}
@@ -144,7 +144,7 @@
         {
           "type": "richtext",
           "id": "text",
-          "default": "<p>lootroom GmbH is officially affiliated, endorsed, and licensed by <a href=\"https://facepunch.com/merch\" target=\"_blank\" rel=\"noopener noreferrer\">Facepunch Studios</a>.</p><p>&copy; 2026 Facepunch Studios Limited. All rights reserved. Facepunch Studios, Rust, the Facepunch Studios logo, and the Rust logo are trademarks and/or registered trademarks of Facepunch Studios in the US and/or other countries.</p><p>For other games, lootroom is not affiliated with, endorsed by, or in any way associated with Steam, Valve, Microsoft, Blizzard, Overwatch, or any of their subsidiaries or affiliates. All graphics, game assets, sounds, and brands are property of their respective owners.</p>",
+          "default": "<p>Your company name is officially affiliated, endorsed, and licensed by your partners.</p><p>&copy; 2026 Your Company. All rights reserved. All graphics, game assets, sounds, and brands are property of their respective owners.</p>",
           "label": "Text"
         }
       ]
