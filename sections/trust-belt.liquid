@@ -1,0 +1,119 @@
+{{ 'section-trust-belt.css' | asset_url | stylesheet_tag }}
+
+<div class="trust-belt color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="trust-belt__inner">
+      
+      {%- if section.blocks.size > 0 or section.settings.shipping_heading != blank -%}
+        <div class="trust-belt__shipping">
+          {%- if section.settings.shipping_heading != blank -%}
+            <span class="trust-belt__heading">{{ section.settings.shipping_heading | escape }}</span>
+          {%- endif -%}
+          <div class="trust-belt__icons {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'shipping' -%}
+                <div class="trust-belt__icon-wrapper" {{ block.shopify_attributes }}>
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 120 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <span class="visually-hidden">{{ block.settings.title | escape }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+      
+      {%- if shop.enabled_payment_types != blank or section.settings.payment_heading != blank -%}
+        <div class="trust-belt__payment">
+          {%- if section.settings.payment_heading != blank -%}
+            <span class="trust-belt__heading">{{ section.settings.payment_heading | escape }}</span>
+          {%- endif -%}
+          <div class="trust-belt__icons trust-belt__icons--payment {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
+            {%- for type in shop.enabled_payment_types -%}
+              <span class="trust-belt__icon-wrapper" title="{{ type | replace: '_', ' ' | capitalize }}">
+                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+              </span>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust Belt",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "shipping_heading",
+      "label": "Überschrift Versand",
+      "default": "Versand mit"
+    },
+    {
+      "type": "text",
+      "id": "payment_heading",
+      "label": "Überschrift Zahlung",
+      "default": "Sicher bezahlen"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_icons",
+      "label": "Moderner Grayscale-Modus",
+      "default": true,
+      "info": "Zeigt Logos elegant dezent in Grau. Sie werden bei Hover farbig (Best Practice 2026)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shipping",
+      "name": "Versanddienstleister",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo-Bild",
+          "info": "Ein kleines Bild oder Icon des Dienstleisters."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name (für Barrierefreiheit)",
+          "default": "Versand"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Belt",
+      "blocks": [
+        {
+          "type": "shipping"
+        },
+        {
+          "type": "shipping"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
