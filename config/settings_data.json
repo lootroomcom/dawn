@@ -10,6 +10,7 @@
 {
   "current": {
     "ambient_mesh_enabled": true,
+    "ambient_mesh_color_2": "#24404b",
     "ambient_mesh_opacity": 20,
     "ambient_dots_opacity": 19,
     "ambient_dots_spacing": 16,
