@@ -21,10 +21,10 @@
       {%- if section.blocks.size > 0 or section.settings.shipping_heading != blank -%}
         <div class="trust-belt__shipping">
           {%- if section.settings.shipping_heading != blank -%}
-            <span class="trust-belt__heading">{{ section.settings.shipping_heading | escape }}</span>
+            <h2 class="trust-belt__heading">{{ section.settings.shipping_heading | escape }}</h2>
           {%- endif -%}
           {%- if section.settings.shipping_text != blank -%}
-            <div class="trust-belt__text">{{ section.settings.shipping_text }}</div>
+            <div class="trust-belt__text rte">{{ section.settings.shipping_text }}</div>
           {%- endif -%}
           <div class="trust-belt__icons {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
             {%- for block in section.blocks -%}
@@ -48,10 +48,10 @@
       {%- if shop.enabled_payment_types != blank or section.settings.payment_heading != blank -%}
         <div class="trust-belt__payment">
           {%- if section.settings.payment_heading != blank -%}
-            <span class="trust-belt__heading">{{ section.settings.payment_heading | escape }}</span>
+            <h2 class="trust-belt__heading">{{ section.settings.payment_heading | escape }}</h2>
           {%- endif -%}
           {%- if section.settings.payment_text != blank -%}
-            <div class="trust-belt__text">{{ section.settings.payment_text }}</div>
+            <div class="trust-belt__text rte">{{ section.settings.payment_text }}</div>
           {%- endif -%}
           <div class="trust-belt__icons trust-belt__icons--payment {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
             {%- for type in shop.enabled_payment_types -%}
