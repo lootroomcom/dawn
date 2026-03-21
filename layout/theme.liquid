@@ -266,6 +266,8 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'premium-ui-overrides.css' | asset_url | stylesheet_tag }}
+    {{ 'mesh-background-ambient.css' | asset_url | stylesheet_tag }}
     {%- if settings.global_background_image != blank or settings.global_background_image_mobile != blank -%}
       <style>
         {%- if settings.global_background_image != blank -%}
@@ -332,7 +334,8 @@
     </script>
   </head>
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-<a class="skip-to-content-link button visually-hidden" href="#MainContent">
+    <div class="mesh-bg-ambient"></div>
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 

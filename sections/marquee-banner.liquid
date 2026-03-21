@@ -1,0 +1,82 @@
+{{ 'section-marquee-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="marquee-banner color-{{ section.settings.color_scheme }} gradient" style="--marquee-speed: {{ section.settings.speed }}s; padding-top: {{ section.settings.padding_y }}px; padding-bottom: {{ section.settings.padding_y }}px;">
+  <div class="marquee-banner__inner">
+    {%- for i in (1..6) -%}
+      <div class="marquee-banner__content" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+        {%- for block in section.blocks -%}
+          <div class="marquee-banner__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.show_bullet -%}
+              <span class="marquee-banner__bullet">✦</span>
+            {%- endif -%}
+            <span class="marquee-banner__text">{{ block.settings.text }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Banner",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "background-2"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Animationsgeschwindigkeit",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Abstand oben/unten",
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "USP / Lauftext",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Premium Qualität"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_bullet",
+          "label": "Trenn-Sternchen (✦) anzeigen",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Laufschrift (Marquee)",
+      "blocks": [
+        { "type": "text", "settings": { "text": "Kostenloser Versand" } },
+        { "type": "text", "settings": { "text": "100% Sicher" } },
+        { "type": "text", "settings": { "text": "Kostenlose Retouren" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

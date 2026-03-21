@@ -1,0 +1,35 @@
+/* 
+  E-Commerce 2026 Ambient Mesh Gradient Background
+  Creates a luxurious, softly shifting background behind the entire page.
+*/
+
+.mesh-bg-ambient {
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  z-index: -1; /* Always behind everything */
+  pointer-events: none; /* Prevents blocking clicks */
+  
+  /* Fallback base color */
+  background-color: rgb(var(--color-background));
+  
+  /* 3 radial gradients using the brand colors defined in theme.liquid */
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(var(--brand-gold-rgb), 0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 80%, rgba(var(--brand-beige-rgb), 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(var(--color-foreground), 0.02) 0%, transparent 60%);
+    
+  /* Extreme blur for the frosted/ambient look */
+  filter: blur(80px);
+  
+  /* Infinite slow drifting animation */
+  animation: mesh-drift 25s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-drift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(3%, 5%); }
+  100% { transform: scale(1.05) translate(-2%, 2%); }
+}
