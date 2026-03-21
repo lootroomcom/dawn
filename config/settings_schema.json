@@ -8,18 +8,6 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
-    "name": "Global Background",
-    "settings": [
-      {
-        "type": "color",
-        "id": "global_background_color_override",
-        "label": "Globale Basis-Hintergrundfarbe",
-        "info": "Überschreibt die Standard-Hintergrundfarbe der gesamten Seite. Dies ist die feste Farbe direkt hinter dem Mesh-Gradienten.",
-        "default": "#fdfdfd"
-      }
-    ]
-  },
-  {
     "name": "Ambient Background",
     "settings": [
       {
