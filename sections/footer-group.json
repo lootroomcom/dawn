@@ -13,34 +13,6 @@
   "sections": {
     "trust_belt_EiUb8z": {
       "type": "trust-belt",
-      "blocks": {
-        "shipping_xMq7RU": {
-          "type": "shipping",
-          "settings": {
-            "image": "shopify://shop_images/royal.svg",
-            "title": "Royal"
-          }
-        },
-        "shipping_PzxFYQ": {
-          "type": "shipping",
-          "settings": {
-            "image": "shopify://shop_images/usps.svg",
-            "title": "USPS"
-          }
-        },
-        "shipping_m6ihpH": {
-          "type": "shipping",
-          "settings": {
-            "image": "shopify://shop_images/dhl_81a2677c-6f0b-4605-b1f7-dd5ef36e0fdb.svg",
-            "title": "DHL"
-          }
-        }
-      },
-      "block_order": [
-        "shipping_xMq7RU",
-        "shipping_PzxFYQ",
-        "shipping_m6ihpH"
-      ],
       "name": "Trust Belt",
       "settings": {
         "color_scheme": "scheme-2",
