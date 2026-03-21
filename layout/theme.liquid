@@ -304,6 +304,13 @@
       {% comment %}theme-check-enable AssetPreload{% endcomment %}
     {%- endunless -%}
 
+    {%- if settings.global_background_image != blank -%}
+      <link rel="preload" as="image" href="{{ settings.global_background_image | image_url: width: 2000 }}">
+    {%- endif -%}
+    {%- if settings.global_background_image_mobile != blank -%}
+      <link rel="preload" as="image" href="{{ settings.global_background_image_mobile | image_url: width: 1200 }}" media="(max-width: 749px)">
+    {%- endif -%}
+
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
       {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
       <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
