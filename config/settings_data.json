@@ -183,7 +183,7 @@
           "button": "#f5e5b9",
           "button_label": "#f5e5b9",
           "secondary_button_label": "#dac795",
-          "shadow": "#000000"
+          "shadow": "rgba(0,0,0,0)"
         }
       },
       "scheme-3": {
