@@ -80,8 +80,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.6rem;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.trust-belt__shipping .trust-belt__icon-wrapper {
+  height: 3.9rem;
+}
+
+.trust-belt__payment .trust-belt__icon-wrapper {
+  height: 2.6rem;
 }
 
 .trust-belt__icon-wrapper:hover {
