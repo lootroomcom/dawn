@@ -266,7 +266,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
-    {{ 'mesh-background-ambient.css' | asset_url | stylesheet_tag }}
+    {%- comment -%} Ambient Background – dots now rendered inline via Liquid {%- endcomment -%}
     {%- if settings.global_background_image != blank or settings.global_background_image_mobile != blank -%}
       <style>
         {%- if settings.global_background_image != blank -%}
@@ -332,7 +332,34 @@
       }
     </script>
   </head>
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}" style="background-image: radial-gradient(ellipse 80% 60% at 15% 25%, rgba(212,175,55,0.04), transparent), radial-gradient(ellipse 70% 80% at 85% 75%, rgba(245,235,200,0.07), transparent), radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,160,120,0.03), transparent); background-attachment: fixed;">
+  {%- liquid
+    assign mesh_on = settings.ambient_mesh_enabled
+    assign dots_on = settings.ambient_dots_enabled
+    assign m_op = settings.ambient_mesh_opacity | divided_by: 100.0
+    assign m_c1 = settings.ambient_mesh_color_1
+    assign m_c2 = settings.ambient_mesh_color_2
+    assign m_c3 = settings.ambient_mesh_color_3
+    assign d_c  = settings.ambient_dots_color
+    assign d_op = settings.ambient_dots_opacity | divided_by: 100.0
+    assign d_sp = settings.ambient_dots_spacing
+  -%}
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}"
+    {%- if mesh_on %} style="background-image: radial-gradient(ellipse 80% 60% at 15% 25%, rgba({{ m_c1.red }},{{ m_c1.green }},{{ m_c1.blue }},{{ m_op }}), transparent), radial-gradient(ellipse 70% 80% at 85% 75%, rgba({{ m_c2.red }},{{ m_c2.green }},{{ m_c2.blue }},{{ m_op }}), transparent), radial-gradient(ellipse 60% 50% at 50% 50%, rgba({{ m_c3.red }},{{ m_c3.green }},{{ m_c3.blue }},{{ m_op | times: 0.5 }}), transparent); background-attachment: fixed;"{% endif -%}
+  >
+  {%- if dots_on -%}
+    <style>
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, rgba({{ d_c.red }},{{ d_c.green }},{{ d_c.blue }},{{ d_op }}) 1px, transparent 1px);
+        background-size: {{ d_sp }}px {{ d_sp }}px;
+      }
+      .shopify-section { position: relative; z-index: 1; }
+    </style>
+  {%- endif -%}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
