@@ -13,6 +13,7 @@
     "global_background_image_mobile": "shopify://shop_images/background-mobile_a96bdc24-fde7-4e55-a4bd-37db451191da.svg",
     "logo": "shopify://shop_images/logo-tw-1000px.png",
     "logo_width": 210,
+    "brand_gold": "#dac795",
     "type_header_font": "poppins_n7",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
@@ -54,7 +55,7 @@
     "card_shadow_opacity": 0,
     "card_shadow_horizontal_offset": 0,
     "card_shadow_vertical_offset": 4,
-    "card_shadow_blur": 5,
+    "card_shadow_blur": 0,
     "collection_card_style": "standard",
     "collection_card_image_padding": 0,
     "collection_card_text_alignment": "left",
@@ -179,11 +180,11 @@
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#f5e5b9",
           "button": "#f5e5b9",
           "button_label": "#f5e5b9",
           "secondary_button_label": "#dac795",
-          "shadow": "#000000"
+          "shadow": "rgba(0,0,0,0)"
         }
       },
       "scheme-3": {
