@@ -11,18 +11,6 @@
     "name": "Global Background",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "global_background_image",
-        "label": "Global Background Image",
-        "info": "Upload an image to be used as the background for all pages."
-      },
-      {
-        "type": "image_picker",
-        "id": "global_background_image_mobile",
-        "label": "Global Background Image (Mobile)",
-        "info": "Upload an image to be used as the background for all pages on mobile devices (recommended size: 1200 x 390)."
-      },
-      {
         "type": "color",
         "id": "global_background_color_override",
         "label": "Globale Basis-Hintergrundfarbe",
