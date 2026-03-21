@@ -10,8 +10,8 @@
 {
   "current": {
     "ambient_mesh_enabled": true,
-    "ambient_mesh_color_1": "#f5e5b9",
-    "ambient_mesh_color_2": "#9841cf",
+    "ambient_mesh_color_1": "#9841cf",
+    "ambient_mesh_color_2": "#f5e5b9",
     "ambient_mesh_color_3": "#ff0000",
     "ambient_mesh_opacity": 15,
     "ambient_dots_color": "#ffffff",
