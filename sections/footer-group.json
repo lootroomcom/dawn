@@ -24,7 +24,8 @@
         "shipping_m6ihpH": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/dhl_81a2677c-6f0b-4605-b1f7-dd5ef36e0fdb.svg",
+            "title": "DHL"
           }
         }
       },
@@ -34,10 +35,22 @@
       ],
       "name": "Trust Belt",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "shipping_heading": "Versand mit",
         "payment_heading": "Sicher bezahlen",
-        "grayscale_icons": true
+        "grayscale_icons": true,
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
+    },
+    "custom_liquid_UxEgkd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 52
       }
     },
     "footer": {
@@ -84,6 +97,7 @@
   },
   "order": [
     "trust_belt_EiUb8z",
+    "custom_liquid_UxEgkd",
     "footer"
   ]
 }
