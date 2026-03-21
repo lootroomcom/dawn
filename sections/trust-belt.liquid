@@ -23,12 +23,15 @@
           {%- if section.settings.shipping_heading != blank -%}
             <span class="trust-belt__heading">{{ section.settings.shipping_heading | escape }}</span>
           {%- endif -%}
+          {%- if section.settings.shipping_text != blank -%}
+            <div class="trust-belt__text">{{ section.settings.shipping_text }}</div>
+          {%- endif -%}
           <div class="trust-belt__icons {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
             {%- for block in section.blocks -%}
               {%- if block.type == 'shipping' -%}
                 <div class="trust-belt__icon-wrapper" {{ block.shopify_attributes }}>
                   {%- if block.settings.image != blank -%}
-                    {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                    {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.title }}
                   {%- else -%}
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                   {%- endif -%}
@@ -46,6 +49,9 @@
         <div class="trust-belt__payment">
           {%- if section.settings.payment_heading != blank -%}
             <span class="trust-belt__heading">{{ section.settings.payment_heading | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.payment_text != blank -%}
+            <div class="trust-belt__text">{{ section.settings.payment_text }}</div>
           {%- endif -%}
           <div class="trust-belt__icons trust-belt__icons--payment {% if section.settings.grayscale_icons %}trust-belt__icons--grayscale{% endif %}">
             {%- for type in shop.enabled_payment_types -%}
@@ -83,10 +89,20 @@
       "default": "Versand mit"
     },
     {
+      "type": "inline_richtext",
+      "id": "shipping_text",
+      "label": "Text unter Versand-Überschrift"
+    },
+    {
       "type": "text",
       "id": "payment_heading",
       "label": "Überschrift Zahlung",
       "default": "Sicher bezahlen"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "payment_text",
+      "label": "Text unter Zahlungs-Überschrift"
     },
     {
       "type": "checkbox",
