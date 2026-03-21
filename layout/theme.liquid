@@ -267,7 +267,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'premium-ui-overrides.css' | asset_url | stylesheet_tag }}
-    {{ 'mesh-background-ambient.css' | asset_url | stylesheet_tag }}
+    {%- comment -%} mesh-background-ambient.css removed, mesh is now inline on body {%- endcomment -%}
     {%- if settings.global_background_image != blank or settings.global_background_image_mobile != blank -%}
       <style>
         {%- if settings.global_background_image != blank -%}
@@ -333,8 +333,7 @@
       }
     </script>
   </head>
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-    <div class="mesh-bg-ambient"></div>
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}" style="background-image: radial-gradient(ellipse 80% 60% at 15% 25%, rgba(212,175,55,0.15), transparent), radial-gradient(ellipse 70% 80% at 85% 75%, rgba(245,235,200,0.25), transparent), radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,160,120,0.08), transparent); background-attachment: fixed;">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
