@@ -266,7 +266,6 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
-    {{ 'premium-ui-overrides.css' | asset_url | stylesheet_tag }}
     {{ 'mesh-background-ambient.css' | asset_url | stylesheet_tag }}
     {%- if settings.global_background_image != blank or settings.global_background_image_mobile != blank -%}
       <style>
