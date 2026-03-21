@@ -15,7 +15,7 @@
     "ambient_mesh_color_3": "#ff0000",
     "ambient_mesh_opacity": 15,
     "ambient_dots_color": "#ffffff",
-    "ambient_dots_opacity": 8,
+    "ambient_dots_opacity": 5,
     "ambient_dots_spacing": 20,
     "logo": "shopify://shop_images/logo-tw-1000px.png",
     "logo_width": 210,
