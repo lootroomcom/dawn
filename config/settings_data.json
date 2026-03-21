@@ -12,7 +12,7 @@
     "ambient_mesh_enabled": true,
     "ambient_mesh_color_1": "#f5e5b9",
     "ambient_mesh_color_2": "#630e99",
-    "ambient_mesh_color_3": "#f5e5b9",
+    "ambient_mesh_color_3": "#ff0000",
     "ambient_mesh_opacity": 15,
     "ambient_dots_color": "#ffffff",
     "ambient_dots_opacity": 10,
