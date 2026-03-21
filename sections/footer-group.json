@@ -17,7 +17,8 @@
         "shipping_yQcLKL": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/United_States_Postal_Service-Logo.wine.svg",
+            "title": "USPS"
           }
         },
         "shipping_HL9jdg": {
