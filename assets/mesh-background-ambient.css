@@ -10,7 +10,7 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(212, 175, 55, 0.06) 1px, transparent 1px);
   background-size: 28px 28px;
   opacity: 0;
   animation: dots-fade-in 1.5s ease forwards 0.5s;
