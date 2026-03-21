@@ -120,7 +120,7 @@
       ],
       "name": "Laufschrift (Marquee)",
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-4",
         "speed": 20,
         "padding_y": 12
       }
