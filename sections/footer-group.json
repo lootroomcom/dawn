@@ -13,6 +13,31 @@
   "sections": {
     "trust_belt_EiUb8z": {
       "type": "trust-belt",
+      "blocks": {
+        "shipping_yQcLKL": {
+          "type": "shipping",
+          "settings": {
+            "title": "Versand"
+          }
+        },
+        "shipping_HL9jdg": {
+          "type": "shipping",
+          "settings": {
+            "title": "Versand"
+          }
+        },
+        "shipping_JPAH47": {
+          "type": "shipping",
+          "settings": {
+            "title": "Versand"
+          }
+        }
+      },
+      "block_order": [
+        "shipping_yQcLKL",
+        "shipping_HL9jdg",
+        "shipping_JPAH47"
+      ],
       "name": "Trust Belt",
       "settings": {
         "color_scheme": "scheme-2",
