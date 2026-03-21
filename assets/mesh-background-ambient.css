@@ -9,20 +9,18 @@
   left: -10%;
   right: -10%;
   bottom: -10%;
-  z-index: -1; /* Always behind everything */
+  z-index: 999; /* Overlay ambler light */
   pointer-events: none; /* Prevents blocking clicks */
   
-  /* Fallback base color */
-  background-color: rgb(var(--color-background));
-  
-  /* 3 radial gradients using the brand colors defined in theme.liquid */
+  /* Hardcoded premium gold/beige colors since variables were empty */
   background-image: 
-    radial-gradient(ellipse at 10% 20%, rgba(var(--brand-gold-rgb), 0.15) 0%, transparent 45%),
-    radial-gradient(ellipse at 90% 80%, rgba(var(--brand-beige-rgb), 0.25) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 50%, rgba(var(--color-foreground), 0.02) 0%, transparent 60%);
+    radial-gradient(ellipse at 10% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 80%, rgba(245, 245, 220, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(200, 160, 120, 0.05) 0%, transparent 60%);
     
   /* Extreme blur for the frosted/ambient look */
-  filter: blur(80px);
+  filter: blur(60px);
+  mix-blend-mode: multiply; /* Tints the white background sections beautifully */
   
   /* Infinite slow drifting animation */
   animation: mesh-drift 25s ease-in-out infinite alternate;
