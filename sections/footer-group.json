@@ -14,26 +14,45 @@
     "trust_belt_EiUb8z": {
       "type": "trust-belt",
       "blocks": {
+        "shipping_GJExJ6": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/royal-mail.png",
+            "title": "Royal Mail"
+          }
+        },
+        "shipping_My6HVk": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/Australia-Post-Logo-500x333.png",
+            "title": "Australian Post"
+          }
+        },
         "shipping_yQcLKL": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/United_States_Postal_Service-Logo.wine.png",
+            "title": "USPS"
           }
         },
         "shipping_HL9jdg": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/DHL-Logo.wine.png",
+            "title": "DHL"
           }
         },
         "shipping_JPAH47": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/Canada_Post-Logo.wine.png",
+            "title": "Canada Post"
           }
         }
       },
       "block_order": [
+        "shipping_GJExJ6",
+        "shipping_My6HVk",
         "shipping_yQcLKL",
         "shipping_HL9jdg",
         "shipping_JPAH47"
