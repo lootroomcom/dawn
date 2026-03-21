@@ -120,7 +120,7 @@
       ],
       "name": "Laufschrift (Marquee)",
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "speed": 20,
         "padding_y": 12
       }
@@ -162,7 +162,7 @@
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
