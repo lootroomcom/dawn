@@ -5,29 +5,33 @@
 
 .mesh-bg-ambient {
   position: fixed;
-  top: -10%;
-  left: -10%;
-  right: -10%;
-  bottom: -10%;
-  z-index: 999; /* Overlay ambler light */
-  pointer-events: none; /* Prevents blocking clicks */
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   
-  /* Hardcoded premium gold/beige colors since variables were empty */
-  background-image: 
-    radial-gradient(ellipse at 10% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
-    radial-gradient(ellipse at 90% 80%, rgba(245, 245, 220, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 50%, rgba(200, 160, 120, 0.05) 0%, transparent 60%);
-    
-  /* Extreme blur for the frosted/ambient look */
-  filter: blur(60px);
-  mix-blend-mode: multiply; /* Tints the white background sections beautifully */
+  /* Warm premium gradients – clearly visible */
+  background: 
+    radial-gradient(ellipse 80% 60% at 15% 25%, rgba(212, 175, 55, 0.22), transparent),
+    radial-gradient(ellipse 70% 80% at 85% 75%, rgba(245, 235, 200, 0.35), transparent),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 160, 120, 0.10), transparent);
   
-  /* Infinite slow drifting animation */
+  filter: blur(40px);
   animation: mesh-drift 25s ease-in-out infinite alternate;
 }
 
+/* Make sure all main page sections sit ABOVE the mesh */
+.shopify-section,
+#MainContent,
+#shopify-section-header,
+header,
+footer,
+.section-header {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes mesh-drift {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(3%, 5%); }
+  0%   { transform: scale(1)    translate(0, 0); }
+  50%  { transform: scale(1.1)  translate(3%, 5%); }
   100% { transform: scale(1.05) translate(-2%, 2%); }
 }
