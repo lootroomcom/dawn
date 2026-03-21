@@ -88,6 +88,43 @@
         "show_arrows": true
       }
     },
+    "marquee_banner_t7Ggmi": {
+      "type": "marquee-banner",
+      "blocks": {
+        "text_NcP9Wb": {
+          "type": "text",
+          "settings": {
+            "text": "Kostenloser Versand",
+            "show_bullet": true
+          }
+        },
+        "text_MPVBPg": {
+          "type": "text",
+          "settings": {
+            "text": "100% Sicher",
+            "show_bullet": true
+          }
+        },
+        "text_wfh3wf": {
+          "type": "text",
+          "settings": {
+            "text": "Kostenlose Retouren",
+            "show_bullet": true
+          }
+        }
+      },
+      "block_order": [
+        "text_NcP9Wb",
+        "text_MPVBPg",
+        "text_wfh3wf"
+      ],
+      "name": "Laufschrift (Marquee)",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "speed": 20,
+        "padding_y": 12
+      }
+    },
     "trustpilot_widget_XQzT6e": {
       "type": "trustpilot-widget",
       "settings": {
@@ -125,7 +162,7 @@
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-4",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
@@ -224,6 +261,7 @@
   },
   "order": [
     "product_feature_slider_AbxL6i",
+    "marquee_banner_t7Ggmi",
     "trustpilot_widget_XQzT6e",
     "custom_liquid_ArpbHc",
     "featured_collection",
