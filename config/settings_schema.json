@@ -21,6 +21,13 @@
         "id": "global_background_image_mobile",
         "label": "Global Background Image (Mobile)",
         "info": "Upload an image to be used as the background for all pages on mobile devices (recommended size: 1200 x 390)."
+      },
+      {
+        "type": "color",
+        "id": "global_background_color_override",
+        "label": "Globale Basis-Hintergrundfarbe",
+        "info": "Überschreibt die Standard-Hintergrundfarbe der gesamten Seite. Dies ist die feste Farbe direkt hinter dem Mesh-Gradienten.",
+        "default": "#fdfdfd"
       }
     ]
   },
