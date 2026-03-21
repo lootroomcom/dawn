@@ -24,7 +24,8 @@
         "shipping_HL9jdg": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/DHL-Logo.wine.svg",
+            "title": "DHL"
           }
         },
         "shipping_JPAH47": {
