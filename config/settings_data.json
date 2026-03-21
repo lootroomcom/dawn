@@ -11,7 +11,7 @@
   "current": {
     "ambient_mesh_enabled": true,
     "ambient_mesh_color_2": "#24404b",
-    "ambient_mesh_opacity": 20,
+    "ambient_mesh_opacity": 18,
     "ambient_dots_color": "#ffffff",
     "ambient_dots_opacity": 10,
     "ambient_dots_spacing": 20,
