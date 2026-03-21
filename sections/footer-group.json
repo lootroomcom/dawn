@@ -31,7 +31,8 @@
         "shipping_JPAH47": {
           "type": "shipping",
           "settings": {
-            "title": "Versand"
+            "image": "shopify://shop_images/Canada_Post-Logo.wine.png",
+            "title": "Canada Post"
           }
         }
       },
