@@ -1,9 +1,3 @@
-.trust-belt {
-  /* padding wird nun dynamisch über die Section Settings (padding_top/bottom) gesteuert */
-  border-top: 1px solid rgba(var(--color-foreground), 0.04);
-  border-bottom: 1px solid rgba(var(--color-foreground), 0.04);
-}
-
 .trust-belt__inner {
   display: flex;
   flex-direction: column;
