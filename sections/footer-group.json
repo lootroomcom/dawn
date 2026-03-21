@@ -14,10 +14,17 @@
     "trust_belt_EiUb8z": {
       "type": "trust-belt",
       "blocks": {
+        "shipping_My6HVk": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/Australia-Post-Logo-500x333.png",
+            "title": "Australian Post"
+          }
+        },
         "shipping_yQcLKL": {
           "type": "shipping",
           "settings": {
-            "image": "shopify://shop_images/United_States_Postal_Service-Logo.wine.svg",
+            "image": "shopify://shop_images/United_States_Postal_Service-Logo.wine.png",
             "title": "USPS"
           }
         },
@@ -37,6 +44,7 @@
         }
       },
       "block_order": [
+        "shipping_My6HVk",
         "shipping_yQcLKL",
         "shipping_HL9jdg",
         "shipping_JPAH47"
