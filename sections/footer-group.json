@@ -14,6 +14,13 @@
     "trust_belt_EiUb8z": {
       "type": "trust-belt",
       "blocks": {
+        "shipping_GJExJ6": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/royal-mail.png",
+            "title": "Royal Mail"
+          }
+        },
         "shipping_My6HVk": {
           "type": "shipping",
           "settings": {
@@ -44,6 +51,7 @@
         }
       },
       "block_order": [
+        "shipping_GJExJ6",
         "shipping_My6HVk",
         "shipping_yQcLKL",
         "shipping_HL9jdg",
