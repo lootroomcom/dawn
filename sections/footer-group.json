@@ -11,6 +11,35 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "trust_belt_EiUb8z": {
+      "type": "trust-belt",
+      "blocks": {
+        "shipping_PzxFYQ": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/usps.svg",
+            "title": "USPS"
+          }
+        },
+        "shipping_m6ihpH": {
+          "type": "shipping",
+          "settings": {
+            "title": "Versand"
+          }
+        }
+      },
+      "block_order": [
+        "shipping_PzxFYQ",
+        "shipping_m6ihpH"
+      ],
+      "name": "Trust Belt",
+      "settings": {
+        "color_scheme": "",
+        "shipping_heading": "Versand mit",
+        "payment_heading": "Sicher bezahlen",
+        "grayscale_icons": true
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -54,6 +83,7 @@
     }
   },
   "order": [
+    "trust_belt_EiUb8z",
     "footer"
   ]
 }
