@@ -198,6 +198,110 @@
     ]
   },
   {
+    "name": "Global Overrides",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Body Background"
+      },
+      {
+        "type": "select",
+        "id": "body_bg_position",
+        "options": [
+          {
+            "value": "initial",
+            "label": "Default"
+          },
+          {
+            "value": "left top",
+            "label": "Left Top"
+          },
+          {
+            "value": "center top",
+            "label": "Center Top"
+          },
+          {
+            "value": "right top",
+            "label": "Right Top"
+          },
+          {
+            "value": "center center",
+            "label": "Center Center"
+          }
+        ],
+        "default": "center top",
+        "label": "Background Position"
+      },
+      {
+        "type": "select",
+        "id": "body_bg_size",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "100% auto",
+            "label": "100% Width"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "100% auto",
+        "label": "Background Size"
+      },
+      {
+        "type": "select",
+        "id": "body_bg_repeat",
+        "options": [
+          {
+            "value": "no-repeat",
+            "label": "No Repeat"
+          },
+          {
+            "value": "repeat",
+            "label": "Repeat"
+          },
+          {
+            "value": "repeat-x",
+            "label": "Repeat X"
+          },
+          {
+            "value": "repeat-y",
+            "label": "Repeat Y"
+          }
+        ],
+        "default": "repeat-y",
+        "label": "Background Repeat"
+      },
+      {
+        "type": "header",
+        "content": "Header Menu"
+      },
+      {
+        "type": "color",
+        "id": "header_menu_color",
+        "label": "Menu Link Color",
+        "default": "#dac795"
+      },
+      {
+        "type": "range",
+        "id": "header_menu_weight",
+        "min": 300,
+        "max": 900,
+        "step": 100,
+        "default": 700,
+        "label": "Menu Font Weight"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.typography.name",
     "settings": [
       {

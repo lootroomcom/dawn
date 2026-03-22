@@ -2,9 +2,9 @@
    GLOBAL BACKGROUND
    ============================================= */
 body {
-  background-position: center top !important;
-  background-size: 100% auto !important;
-  background-repeat: repeat-y !important;
+  background-position: var(--body-bg-position);
+  background-size: var(--body-bg-size);
+  background-repeat: var(--body-bg-repeat);
   position: relative;
   overflow-x: hidden;
 }
@@ -20,18 +20,18 @@ body {
 /* Desktop nav menu items */
 @media screen and (min-width: 990px) {
   .header__inline-menu .list-menu__item--link {
-    color: var(--brand-gold) !important;
-    font-weight: 700 !important;
+    color: var(--header-menu-color);
+    font-weight: var(--header-menu-weight);
     text-transform: uppercase;
     font-family: Poppins, sans-serif;
   }
 
   .header__inline-menu .list-menu__item--link:hover {
-    color: var(--brand-beige) !important;
+    color: var(--brand-beige);
   }
 
   .header__inline-menu .header__menu-item {
-    font-weight: 700 !important;
+    font-weight: var(--header-menu-weight);
   }
 }
 
@@ -62,12 +62,11 @@ body {
    FOOTER
    ============================================= */
 
-/* Shopify section wrapper: keine ungewollten Abstände */
 .shopify-section:has(.footer-wrapper),
 .shopify-section-group-footer-group {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: visible !important;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
 }
 
 /* Dekorative Trennlinien oben/unten */
