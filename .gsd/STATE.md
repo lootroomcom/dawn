@@ -9,9 +9,10 @@ Codebase mapping complete.
 - Documented 3 technical debt items in product sections.
 - Verified Trustpilot and Swiper.js integrations.
 
-## Current Context
-The project is a Shopify theme. No build pipeline (webpack/vite) is explicitly configured in the root, suggesting standard Shopify CLI usage.
+## Current Position
+- **Phase**: 1
+- **Task**: Planning complete
+- **Status**: Ready for execution
 
 ## Next Steps
-- Return to `/new-project` to define vision, goals, and roadmap.
-- Run `/plan 1` to start addressing features or debt.
+1. /execute 1
