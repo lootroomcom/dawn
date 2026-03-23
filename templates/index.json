@@ -317,7 +317,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/make_out_of_202603231549.jpg",
-            "image_overlay_opacity": 0,
+            "image_overlay_opacity": 60,
             "heading": "Image slide",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
