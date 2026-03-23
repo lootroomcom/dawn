@@ -91,6 +91,13 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
+        "image_HHCdHT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Garry_s_Mod_logo.svg",
+            "image_width": 40
+          }
+        },
         "image_kJCVjG": {
           "type": "image",
           "settings": {
@@ -121,6 +128,7 @@
         }
       },
       "block_order": [
+        "image_HHCdHT",
         "image_kJCVjG",
         "image_XM8A9r",
         "image_tXFwhf",
