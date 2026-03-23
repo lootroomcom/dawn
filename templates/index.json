@@ -91,6 +91,13 @@
     "marquee_banner_t7Ggmi": {
       "type": "marquee-banner",
       "blocks": {
+        "text_gqQkF8": {
+          "type": "text",
+          "settings": {
+            "text": "Premium Qualität",
+            "show_bullet": true
+          }
+        },
         "text_NcP9Wb": {
           "type": "text",
           "settings": {
@@ -114,6 +121,7 @@
         }
       },
       "block_order": [
+        "text_gqQkF8",
         "text_NcP9Wb",
         "text_MPVBPg",
         "text_wfh3wf"
