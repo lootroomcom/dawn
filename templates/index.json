@@ -120,7 +120,7 @@
           "settings": {
             "image": "shopify://shop_images/Overwatch4.svg",
             "image_width": 110,
-            "link": ""
+            "link": "shopify://collections/overwatch-general"
           }
         },
         "image_tXFwhf": {
@@ -128,7 +128,7 @@
           "settings": {
             "image": "shopify://shop_images/Rust_vector_logo_svg.png",
             "image_width": 120,
-            "link": ""
+            "link": "shopify://collections/rust-general"
           }
         }
       },
@@ -147,7 +147,7 @@
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
-        "logo_filter": "sepia(100%)",
+        "logo_filter": "grayscale(100%)",
         "font_family": "poppins_n4",
         "font_size": 1.4,
         "font_weight": 600,
