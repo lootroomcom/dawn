@@ -183,7 +183,7 @@
       "settings": {
         "color_scheme": "scheme-2",
         "direction": "rtl",
-        "speed": 40,
+        "speed": 60,
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
