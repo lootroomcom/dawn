@@ -61,33 +61,43 @@
   </div>
 </section>
 
-{%- liquid
-  assign cmc_text = section.settings.text_color
-  if cmc_text == '#111111'
-    assign cmc_text = 'rgb(var(--color-foreground))'
-  endif
--%}
+{%- style -%}
+    {%- liquid
+      assign cmc_text = section.settings.text_color
+      if cmc_text == '#111111'
+        assign cmc_text = 'rgb(var(--color-foreground))'
+      endif
 
-.cmc-{{ section.id }} {
-  --cmc-gap: {{ section.settings.gap }}px;
-  --cmc-radius: {{ section.settings.radius }}px;
-  --cmc-text: {{ cmc_text }};
-  --cmc-card: rgba(
-    {{ section.settings.card_color.red }},
-    {{ section.settings.card_color.green }},
-    {{ section.settings.card_color.blue }},
-    {{ section.settings.card_opacity | divided_by: 100.0 }}
-  );
-  --cmc-padding-y: {{ section.settings.padding_y }}px;
-  --cmc-gradient: linear-gradient(-45deg,
-    {{ section.settings.gradient_1 }},
-    {{ section.settings.gradient_2 }},
-    {{ section.settings.gradient_3 }},
-    {{ section.settings.gradient_4 }}
-  );
-  --cmc-gradient-2: {{ section.settings.gradient_2 }};
-  --cmc-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
-}
+      assign card_red = section.settings.card_color.red
+      assign card_green = section.settings.card_color.green
+      assign card_blue = section.settings.card_color.blue
+      if section.settings.card_color == '#ffffff'
+        assign card_red = 'var(--color-background-red)'
+        assign card_green = 'var(--color-background-green)'
+        assign card_blue = 'var(--color-background-blue)'
+      endif
+    -%}
+
+    --cmc-gap: {{ section.settings.gap }}px;
+    --cmc-radius: {{ section.settings.radius }}px;
+    --cmc-text: {{ cmc_text }};
+    --cmc-card: rgba(
+      {{ card_red }},
+      {{ card_green }},
+      {{ card_blue }},
+      {{ section.settings.card_opacity | divided_by: 100.0 }}
+    );
+    --cmc-padding-y: {{ section.settings.padding_y }}px;
+    --cmc-gradient: linear-gradient(-45deg,
+      {{ section.settings.gradient_1 }},
+      {{ section.settings.gradient_2 }},
+      {{ section.settings.gradient_3 }},
+      {{ section.settings.gradient_4 }}
+    );
+    --cmc-gradient-2: {{ section.settings.gradient_2 }};
+    --cmc-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+  }
+{%- endstyle -%}
 
 {{ 'section-chic-multi-columns.css' | asset_url | stylesheet_tag }}
 
@@ -103,8 +113,8 @@ document.querySelectorAll(".cmc-{{ section.id }} .cmc-card").forEach(card=>{
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = (y - centerY) / 0;
-    const rotateY = (centerX - x) / 0;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
 
     card.style.transform = `
       rotateX(${rotateX}deg)

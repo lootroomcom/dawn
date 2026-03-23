@@ -41,13 +41,13 @@
 .cmc-card {
   position:relative;
   border-radius: var(--cmc-radius, 24px);
-  background: var(--cmc-card, rgba(255,255,255,0.8));
+  background: var(--cmc-card, rgba(var(--color-background), 0.8));
   backdrop-filter:blur(28px);
   -webkit-backdrop-filter:blur(28px);
-  border:1px solid rgba(255,255,255,.4);
+  border:1px solid rgba(var(--color-foreground),.2);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.3),
-    0 20px 60px rgba(0,0,0,.35);
+    0 0 0 1px rgba(var(--color-foreground),.1),
+    0 20px 60px rgba(var(--color-foreground),.15);
   overflow:hidden;
   transition:transform .15s ease, box-shadow .3s ease;
   transform-style:preserve-3d;
@@ -57,9 +57,9 @@
 /* 🌈 NEON GLOW */
 .cmc-card:hover {
   box-shadow:
-    0 0 30px rgba(255,255,255,.6),
+    0 0 30px rgba(var(--color-foreground),.2),
     0 0 5px var(--cmc-gradient-2, #333399),
-    0 30px 80px rgba(0,0,0,.45);
+    0 30px 80px rgba(var(--color-foreground),.25);
 }
 
 /* ✨ SHINE SWEEP */
