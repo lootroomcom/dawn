@@ -91,7 +91,7 @@
         "show_arrows": true,
         "navigation_style": "circle",
         "show_sale_badge": true,
-        "sale_badge_type": "percent",
+        "sale_badge_type": "text",
         "padding_top": 36,
         "padding_bottom": 36
       }
