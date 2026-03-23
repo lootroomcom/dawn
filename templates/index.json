@@ -91,13 +91,6 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
-        "text_6CUFc3": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
-          }
-        },
         "text_DipMhz": {
           "type": "text",
           "settings": {
@@ -128,6 +121,13 @@
             "link": "shopify://collections/gmod-general"
           }
         },
+        "text_6CUFc3": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "show_bullet": true
+          }
+        },
         "image_kJCVjG": {
           "type": "image",
           "settings": {
@@ -154,11 +154,11 @@
         }
       },
       "block_order": [
-        "text_6CUFc3",
         "text_DipMhz",
         "image_RYwXwX",
         "text_HkhVmk",
         "image_HHCdHT",
+        "text_6CUFc3",
         "image_kJCVjG",
         "image_XM8A9r",
         "image_tXFwhf"
