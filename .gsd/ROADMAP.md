@@ -21,6 +21,11 @@
 **Objective**: Enhance the marquee banner with logo support, advanced typography, and visual effects.
 **Requirements**: REQ-08
 
+### Phase 2.5: Advanced Product Slider Professionalization
+**Status**: 🔵 Planned
+**Objective**: Enhance the custom product slider with smart badges, modern UI, and clean CSS (no `!important`).
+**Requirements**: REQ-09, REQ-01
+
 ### Phase 2: Product Page Optimization
 **Status**: ⬜ Not Started
 **Objective**: Make the core product details and featured product sections fully schema-controlled.
