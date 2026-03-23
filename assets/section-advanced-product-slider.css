@@ -52,7 +52,7 @@
   color: rgb(var(--color-badge-foreground));
 }
 
-.pf-title {
+.pf-slider .pf-title {
   font-size: var(--title-size, clamp(3rem, 5vw, 4.8rem));
   font-weight: var(--title-weight, 700);
   margin: 0 0 16px 0;
@@ -61,7 +61,7 @@
   color: var(--title-color, inherit);
 }
 
-.pf-text {
+.pf-slider .pf-text {
   margin-bottom: 24px;
   line-height: 1.6;
   font-size: var(--text-size, 1.6rem);
@@ -70,7 +70,8 @@
   opacity: 0.9;
 }
 
-.pf-price {
+.pf-slider .pf-price,
+.pf-slider .pf-price .price {
   margin-bottom: 32px;
   font-size: var(--price-size, 2.4rem);
   font-weight: var(--price-weight, 600);
