@@ -260,6 +260,7 @@
       "settings": {
         "title": "",
         "subtitle": "",
+        "color_scheme": "scheme-2",
         "columns_desktop": 3,
         "media_ratio": "16/9",
         "gap": 20,
