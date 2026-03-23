@@ -1,16 +1,40 @@
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
 
-<section id="pf-slider-{{ section.id }}" class="pf-slider">
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #pf-slider-{{ section.id }} {
+    --pagination-color: {{ section.settings.pagination_color }};
+  }
+{%- endstyle -%}
+
+<section id="pf-slider-{{ section.id }}" class="pf-slider section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
-    <div class="swiper pfSwiper">
+    <div class="swiper pfSwiper" data-touch-move="{{ section.settings.touch_move }}">
       <div class="swiper-wrapper">
 
         {% for block in section.blocks %}
-          {% assign product = block.settings.product %}
+          {%- liquid
+            assign product = block.settings.product
+            assign show_sale_badge = false
+            if section.settings.show_sale_badge and product.compare_at_price > product.price
+              assign show_sale_badge = true
+            endif
+          -%}
 
           <div class="swiper-slide" {{ block.shopify_attributes }}>
-            <div class="pf-inner">
+            <div class="pf-inner pf-inner--{{ section.settings.image_ratio }}">
 
               <!-- LEFT: CUSTOM IMAGE ONLY -->
               <div class="pf-image">
@@ -25,7 +49,12 @@
                       data-float="{{ block.settings.enable_float }}"
                       data-glow="{{ block.settings.enable_glow }}">
                    {% capture image_loading %}{% if forloop.first %}eager{% else %}lazy{% endif %}{% endcapture %}
-                   {{ block.settings.custom_image | image_url: width: 900 | image_tag: class: 'pf-animated-image', loading: image_loading }}
+                   {{ block.settings.custom_image | image_url: width: 900 | image_tag: 
+                      class: 'pf-animated-image', 
+                      loading: image_loading,
+                      widths: '200, 400, 600, 900',
+                      sizes: '(min-width: 1200px) 500px, 40vw'
+                   }}
                  </div>
                {% endif %}
               </div>
@@ -33,40 +62,41 @@
               <!-- RIGHT: PRODUCT CONTENT -->
               <div class="pf-content">
 
-                {% if block.settings.badge_text != blank %}
-                  <div class="pf-badge"
-                       style="background: {{ block.settings.badge_bg }};
-                              color: {{ block.settings.badge_color }};">
-                    {{ block.settings.badge_text }}
-                  </div>
-                {% endif %}
+                <div class="pf-badges">
+                  {% if block.settings.badge_text != blank %}
+                    <div class="pf-badge pf-badge--custom"
+                         style="--badge-bg: {{ block.settings.badge_bg }};
+                                --badge-color: {{ block.settings.badge_color }};">
+                      {{ block.settings.badge_text }}
+                    </div>
+                  {% endif %}
+
+                  {% if show_sale_badge %}
+                    <div class="pf-badge pf-badge--sale">
+                      {% if section.settings.sale_badge_type == 'percent' %}
+                        {% assign discount = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
+                        -{{ discount }}%
+                      {% else %}
+                        {{ 'products.product.on_sale' | t | default: 'SALE' }}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
 
                 {% if product != blank %}
 
-                  {% capture title_style %}
-                    {% if block.settings.title_color != blank %}color: {{ block.settings.title_color }}; {% endif %}
-                    {% if block.settings.title_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
-                  {% endcapture %}
                   {% assign heading_tag = block.settings.heading_tag | default: 'h2' %}
-                  <{{ heading_tag }} class="pf-title" style="{{ title_style | strip_newlines | strip }}">
+                  <{{ heading_tag }} class="pf-title" style="--title-color: {{ block.settings.title_color }}; --title-weight: {% if block.settings.title_bold %}700{% else %}400{% endif %};">
                     {{ product.title }}
                   </{{ heading_tag }}>
 
                   {% if block.settings.custom_text != blank %}
-                    {% capture text_style %}
-                      {% if block.settings.text_color != blank %}color: {{ block.settings.text_color }}; {% endif %}
-                      {% if block.settings.text_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
-                    {% endcapture %}
-                    <div class="pf-text" style="{{ text_style | strip_newlines | strip }}">
+                    <div class="pf-text" style="--text-color: {{ block.settings.text_color }}; --text-weight: {% if block.settings.text_bold %}700{% else %}400{% endif %};">
                       {{ block.settings.custom_text }}
                     </div>
                   {% endif %}
 
-                  {% capture price_style %}
-                    {% if block.settings.price_color != blank %}color: {{ block.settings.price_color }}; {% endif %}
-                    {% if block.settings.price_bold %}font-weight: 700;{% else %}font-weight: 400;{% endif %}
-                  {% endcapture %}
-                  <div class="pf-price" style="{{ price_style | strip_newlines | strip }}">
+                  <div class="pf-price" style="--price-color: {{ block.settings.price_color }}; --price-weight: {% if block.settings.price_bold %}700{% else %}400{% endif %};">
                     {% if product.compare_at_price > product.price %}
                       <span class="price price--compare">
                         {{ product.compare_at_price | money }}
@@ -77,14 +107,19 @@
                     </span>
                   </div>
 
-                  <div class="pf-buttons" style="--pf-btn-bg: {{ block.settings.button_bg }}; --pf-btn-text: {{ block.settings.button_text }}; --pf-btn-bg-alt: {{ block.settings.button_bg_secondary }}; --pf-btn-text-alt: {{ block.settings.button_text_secondary }};">
+                  <div class="pf-buttons" style="
+                    --btn-bg: {{ block.settings.button_bg }}; 
+                    --btn-text: {{ block.settings.button_text }}; 
+                    --btn-bg-alt: {{ block.settings.button_bg_secondary }}; 
+                    --btn-text-alt: {{ block.settings.button_text_secondary }};
+                  ">
 
                     <product-form>
                       {% form 'product', product %}
                         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                         <button 
                           type="submit" 
-                          class="button button--primary"
+                          class="button button--primary pf-btn-main"
                           {% unless product.available %}disabled{% endunless %}
                         >
                           {% if product.available %}
@@ -100,7 +135,7 @@
                       {% endform %}
                     </product-form>
 
-                    <a href="{{ product.url }}" class="button button--secondary">
+                    <a href="{{ product.url }}" class="button button--secondary pf-btn-sub">
                       {% if block.settings.btn_secondary_text != blank %}
                         {{ block.settings.btn_secondary_text }}
                       {% else %}
@@ -126,28 +161,29 @@
       {% endif %}
 
       {% if section.settings.show_arrows %}
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev swiper-button-{{ section.settings.navigation_style }}"></div>
+        <div class="swiper-button-next swiper-button-{{ section.settings.navigation_style }}"></div>
       {% endif %}
 
     </div>
   </div>
 </section>
 
-{%- style -%}
-  #pf-slider-{{ section.id }} .swiper-pagination-bullet {
-    background: {{ section.settings.pagination_color }};
-  }
-{%- endstyle -%}
-
 {{ 'section-advanced-product-slider.css' | asset_url | stylesheet_tag }}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  new Swiper('#pf-slider-{{ section.id }} .pfSwiper', {
+  const swiperEl = document.querySelector('#pf-slider-{{ section.id }} .pfSwiper');
+  if (!swiperEl) return;
+
+  const allowTouch = swiperEl.dataset.touchMove === 'true';
+
+  new Swiper(swiperEl, {
     loop: {{ section.settings.loop }},
     speed: {{ section.settings.speed }},
-    allowTouchMove: false,
+    allowTouchMove: allowTouch,
+    grabCursor: allowTouch,
+    watchSlidesProgress: true,
 
     {% if section.settings.autoplay %}
     autoplay: {
@@ -164,6 +200,11 @@ document.addEventListener('DOMContentLoaded', function () {
     navigation: {
       nextEl: '#pf-slider-{{ section.id }} .swiper-button-next',
       prevEl: '#pf-slider-{{ section.id }} .swiper-button-prev'
+    },
+
+    breakpoints: {
+      320: { autoHeight: true },
+      768: { autoHeight: false }
     }
   });
 });
@@ -173,13 +214,88 @@ document.addEventListener('DOMContentLoaded', function () {
 {
   "name": "Advanced Product Slider",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Verhalten"
+    },
     { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
-    { "type": "range", "id": "autoplay_speed", "min": 2000, "max": 8000, "step": 500, "default": 4000, "label": "Autoplay Speed" },
-    { "type": "range", "id": "speed", "min": 300, "max": 2000, "step": 100, "default": 800, "label": "Slide Speed" },
-    { "type": "checkbox", "id": "loop", "label": "Loop", "default": true },
-    { "type": "checkbox", "id": "show_pagination", "label": "Show Pagination", "default": true },
-    { "type": "color", "id": "pagination_color", "label": "Pagination Color", "default": "#000000" },
-    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true }
+    { "type": "range", "id": "autoplay_speed", "min": 2000, "max": 8000, "step": 500, "default": 4000, "label": "Autoplay Geschwindigkeit" },
+    { "type": "range", "id": "speed", "min": 300, "max": 2000, "step": 100, "default": 800, "label": "Slide Geschwindigkeit" },
+    { "type": "checkbox", "id": "loop", "label": "Endlos-Schleife", "default": true },
+    { "type": "checkbox", "id": "touch_move", "label": "Wischen erlauben", "default": true },
+    {
+      "type": "header",
+      "content": "Layout & Design"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Bildformat",
+      "options": [
+        { "value": "adapt", "label": "Anpassen" },
+        { "value": "square", "label": "Quadrat (1:1)" },
+        { "value": "portrait", "label": "Porträt (2:3)" }
+      ],
+      "default": "adapt"
+    },
+    { "type": "checkbox", "id": "show_pagination", "label": "Pagination anzeigen", "default": true },
+    { "type": "color", "id": "pagination_color", "label": "Farbe der Pagination-Punkte", "default": "#000000" },
+    { "type": "checkbox", "id": "show_arrows", "label": "Pfeile anzeigen", "default": true },
+    {
+      "type": "select",
+      "id": "navigation_style",
+      "label": "Stil der Navigationspfeile",
+      "options": [
+        { "value": "minimal", "label": "Minimal" },
+        { "value": "circle", "label": "Moderner Kreis" }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "header",
+      "content": "Sale & Badges"
+    },
+    { "type": "checkbox", "id": "show_sale_badge", "label": "Automatisches Sale-Badge anzeigen", "default": true },
+    {
+      "type": "select",
+      "id": "sale_badge_type",
+      "label": "Sale-Badge Typ",
+      "options": [
+        { "value": "percent", "label": "Prozentual (-20%)" },
+        { "value": "text", "label": "Text (SALE)" }
+      ],
+      "default": "percent"
+    },
+    {
+      "type": "header",
+      "content": "Sektions-Abstände"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand oben",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand unten",
+      "default": 36
+    }
   ],
   "blocks": [
     {
@@ -190,9 +306,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { "type": "image_picker", "id": "custom_image", "label": "Bild hochladen (links)" },
         { "type": "product", "id": "product", "label": "Produkt (rechte Seite)" },
         { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "FEATURED PRODUCT" },
-        { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "#111111" },
-        { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#ffffff" },
-        { "type": "richtext", "id": "custom_text", "label": "Optional Text" },
+        { "type": "color", "id": "badge_bg", "label": "Badge Hintergrund", "default": "#111111" },
+        { "type": "color", "id": "badge_color", "label": "Badge Textfarbe", "default": "#ffffff" },
+        { "type": "richtext", "id": "custom_text", "label": "Optionaler Text" },
 
         { "type": "header", "content": "Schrift & Farben" },
 
@@ -209,10 +325,10 @@ document.addEventListener('DOMContentLoaded', function () {
           ],
           "default": "h2"
         },
-        { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#ffffff" },
+        { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#111111" },
         { "type": "checkbox", "id": "title_bold", "label": "Titel fettgedruckt", "default": true },
         
-        { "type": "color", "id": "text_color", "label": "Text Farbe", "default": "#cccccc" },
+        { "type": "color", "id": "text_color", "label": "Text Farbe", "default": "#555555" },
         { "type": "checkbox", "id": "text_bold", "label": "Text fettgedruckt", "default": false },
         
         { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
@@ -220,11 +336,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         { "type": "header", "content": "Buttons" },
         { "type": "text", "id": "btn_primary_text", "label": "Text Haupt-Button", "placeholder": "z.B. In den Warenkorb" },
-        { "type": "color", "id": "button_bg", "label": "1. Button Hintergrund", "default": "#ffffff" },
+        { "type": "color", "id": "button_bg", "label": "1. Button Hintergrund", "default": "#111111" },
+        { "type": "color", "id": "button_text", "label": "1. Button Text", "default": "#ffffff" },
         { "type": "text", "id": "btn_secondary_text", "label": "Text Zweiter Button", "placeholder": "z.B. Details ansehen" },
-        { "type": "color", "id": "button_text", "label": "1. Button Text", "default": "#111111" },
         { "type": "color", "id": "button_bg_secondary", "label": "2. Button Hintergrund", "default": "transparent" },
-        { "type": "color", "id": "button_text_secondary", "label": "2. Button Text", "default": "#ffffff" },
+        { "type": "color", "id": "button_text_secondary", "label": "2. Button Text", "default": "#111111" },
 
         { "type": "header", "content": "Bild Animation" },
 
@@ -247,4 +363,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ]
 }
-{% endschema %}
+{% endschema %}
