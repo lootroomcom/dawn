@@ -91,40 +91,24 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
-        "text_d69Vqx": {
-          "type": "text",
+        "image_tXFwhf": {
+          "type": "image",
           "settings": {
-            "text": "Kostenloser Versand",
-            "show_bullet": true
-          }
-        },
-        "text_8qPCQe": {
-          "type": "text",
-          "settings": {
-            "text": "100% Sicher",
-            "show_bullet": true
+            "image": "shopify://shop_images/CITYPNG.COM_Overwatch_Text_Logo_Without_Symbol_-_3000x3000_76e44817-4c6b-4ffb-a76b-8b3cfb7fc8d6.png",
+            "image_width": 140
           }
         },
         "image_PzkyCg": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/sw.png",
+            "image": "shopify://shop_images/toppng.com-star-wars-logo-png-transparent-logo-de-star-wars-2261x1009.png",
             "image_width": 100
-          }
-        },
-        "text_eRCiYU": {
-          "type": "text",
-          "settings": {
-            "text": "Kostenlose Retouren",
-            "show_bullet": true
           }
         }
       },
       "block_order": [
-        "text_d69Vqx",
-        "text_8qPCQe",
-        "image_PzkyCg",
-        "text_eRCiYU"
+        "image_tXFwhf",
+        "image_PzkyCg"
       ],
       "name": "Premium Laufschrift",
       "settings": {
@@ -134,7 +118,7 @@
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
-        "font_family": "assistant_n4",
+        "font_family": "poppins_n4",
         "font_size": 1.4,
         "font_weight": 600,
         "letter_spacing": 2,
