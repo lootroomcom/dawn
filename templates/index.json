@@ -91,26 +91,12 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
-        "text_DipMhz": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
-          }
-        },
         "image_RYwXwX": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/cdnlogo.com_star-wars.png",
             "image_width": 120,
             "link": "shopify://collections/sw-general"
-          }
-        },
-        "text_HkhVmk": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
           }
         },
         "image_HHCdHT": {
@@ -121,13 +107,6 @@
             "link": "shopify://collections/gmod-general"
           }
         },
-        "text_6CUFc3": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
-          }
-        },
         "image_kJCVjG": {
           "type": "image",
           "settings": {
@@ -136,26 +115,12 @@
             "link": "shopify://collections/cs-general"
           }
         },
-        "text_ek8CNp": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
-          }
-        },
         "image_XM8A9r": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Overwatch4.svg",
             "image_width": 110,
             "link": "shopify://collections/overwatch-general"
-          }
-        },
-        "text_LWWc8A": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "show_bullet": true
           }
         },
         "image_tXFwhf": {
@@ -168,15 +133,10 @@
         }
       },
       "block_order": [
-        "text_DipMhz",
         "image_RYwXwX",
-        "text_HkhVmk",
         "image_HHCdHT",
-        "text_6CUFc3",
         "image_kJCVjG",
-        "text_ek8CNp",
         "image_XM8A9r",
-        "text_LWWc8A",
         "image_tXFwhf"
       ],
       "name": "Premium Laufschrift",
