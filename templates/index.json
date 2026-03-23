@@ -91,57 +91,63 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
+        "image_RYwXwX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cdnlogo.com_star-wars.png",
+            "image_width": 120,
+            "link": "shopify://collections/sw-general"
+          }
+        },
         "image_HHCdHT": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Garry_s_Mod_logo.svg",
-            "image_width": 40
+            "image_width": 40,
+            "link": "shopify://collections/gmod-general"
           }
         },
         "image_kJCVjG": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Counter-Strike_Logo.svg",
-            "image_width": 200
+            "image_width": 200,
+            "link": "shopify://collections/cs-general"
           }
         },
         "image_XM8A9r": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Overwatch4.svg",
-            "image_width": 110
+            "image_width": 110,
+            "link": "shopify://collections/overwatch-general"
           }
         },
         "image_tXFwhf": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Rust_vector_logo_svg.png",
-            "image_width": 120
-          }
-        },
-        "image_PzkyCg": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/toppng.com-star-wars-logo-png-transparent-logo-de-star-wars-2261x1009.png",
-            "image_width": 100
+            "image_width": 120,
+            "link": "shopify://collections/rust-general"
           }
         }
       },
       "block_order": [
+        "image_RYwXwX",
         "image_HHCdHT",
         "image_kJCVjG",
         "image_XM8A9r",
-        "image_tXFwhf",
-        "image_PzkyCg"
+        "image_tXFwhf"
       ],
       "name": "Premium Laufschrift",
       "settings": {
         "color_scheme": "scheme-2",
         "direction": "rtl",
-        "speed": 40,
+        "speed": 50,
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
+        "logo_filter": "sepia(100%)",
         "font_family": "poppins_n4",
         "font_size": 1.4,
         "font_weight": 600,
