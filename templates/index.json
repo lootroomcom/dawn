@@ -349,7 +349,7 @@
         "image": "shopify://shop_images/make_out_of_202603231549.jpg",
         "image_overlay_opacity": 40,
         "image_height": "small",
-        "image_behavior": "none",
+        "image_behavior": "ambient",
         "desktop_content_position": "top-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
