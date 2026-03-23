@@ -155,7 +155,7 @@
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
-        "logo_filter": "sepia(100%)",
+        "logo_filter": "grayscale(100%)",
         "font_family": "poppins_n4",
         "font_size": 1.4,
         "font_weight": 600,
