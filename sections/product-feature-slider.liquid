@@ -31,6 +31,36 @@
             if section.settings.show_sale_badge and product.compare_at_price > product.price
               assign show_sale_badge = true
             endif
+
+            assign title_color = block.settings.title_color
+            if title_color == '#111111'
+              assign title_color = 'rgb(var(--color-foreground))'
+            endif
+
+            assign text_color = block.settings.text_color
+            if text_color == '#555555'
+              assign text_color = 'rgba(var(--color-foreground), 0.75)'
+            endif
+
+            assign badge_bg = block.settings.badge_bg
+            if badge_bg == '#111111'
+              assign badge_bg = 'rgb(var(--color-foreground))'
+            endif
+
+            assign btn_bg = block.settings.button_bg
+            if btn_bg == '#111111'
+              assign btn_bg = 'rgb(var(--color-button))'
+            endif
+
+            assign btn_text = block.settings.button_text
+            if btn_text == '#ffffff'
+              assign btn_text = 'rgb(var(--color-button-text))'
+            endif
+
+            assign btn_text_secondary = block.settings.button_text_secondary
+            if btn_text_secondary == '#111111'
+              assign btn_text_secondary = 'rgb(var(--color-foreground))'
+            endif
           -%}
 
           <div class="swiper-slide" {{ block.shopify_attributes }}>
@@ -65,7 +95,7 @@
                 <div class="pf-badges">
                   {% if block.settings.badge_text != blank %}
                     <div class="pf-badge pf-badge--custom"
-                         style="--badge-bg: {{ block.settings.badge_bg }};
+                         style="--badge-bg: {{ badge_bg }};
                                 --badge-color: {{ block.settings.badge_color }};">
                       {{ block.settings.badge_text }}
                     </div>
@@ -86,7 +116,7 @@
                 {% if product != blank %}
 
                   {% assign heading_tag = block.settings.heading_tag | default: 'h2' %}
-                  <{{ heading_tag }} class="pf-title" style="--title-color: {{ block.settings.title_color }}; --title-weight: {% if block.settings.title_bold %}700{% else %}400{% endif %};">
+                  <{{ heading_tag }} class="pf-title" style="--title-color: {{ title_color }}; --title-weight: {% if block.settings.title_bold %}700{% else %}400{% endif %};">
                     {{ product.title }}
                   </{{ heading_tag }}>
 
@@ -108,10 +138,10 @@
                   </div>
 
                   <div class="pf-buttons" style="
-                    --btn-bg: {{ block.settings.button_bg }}; 
-                    --btn-text: {{ block.settings.button_text }}; 
+                    --btn-bg: {{ btn_bg }}; 
+                    --btn-text: {{ btn_text }}; 
                     --btn-bg-alt: {{ block.settings.button_bg_secondary }}; 
-                    --btn-text-alt: {{ block.settings.button_text_secondary }};
+                    --btn-text-alt: {{ btn_text_secondary }};
                   ">
 
                     <product-form>

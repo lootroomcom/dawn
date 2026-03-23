@@ -43,8 +43,8 @@
 }
 
 .pf-badge--custom {
-  background: var(--badge-bg, #111111);
-  color: var(--badge-color, #ffffff);
+  background: var(--badge-bg, rgb(var(--color-foreground)));
+  color: var(--badge-color, rgb(var(--color-background)));
 }
 
 .pf-badge--sale {
@@ -149,8 +149,8 @@
 }
 
 .swiper-button-circle:hover {
-  background: #000000;
-  color: #ffffff;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
 }
 
 /* Staggered text animation on active slide */
