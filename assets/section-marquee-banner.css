@@ -6,6 +6,20 @@
   align-items: center;
   border-top: 1px solid rgba(var(--color-foreground), 0.05);
   border-bottom: 1px solid rgba(var(--color-foreground), 0.05);
+  width: 100%;
+}
+
+/* Glassmorphism Effect */
+.marquee-banner--glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(var(--color-background), 0.5);
+}
+
+/* Edge Masking (Faded Edges) */
+.marquee-banner--masked {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-banner__inner {
@@ -18,20 +32,28 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: space-around;
-  /* Key element for the seamless looping */
-  animation: marquee-scroll var(--marquee-speed, 20s) linear infinite;
+  animation: marquee-scroll-rtl var(--marquee-speed, 20s) linear infinite;
 }
 
-/* Optional UX: slow down or pause on hover so users can read it */
-.marquee-banner:hover .marquee-banner__content {
+/* Pause on Hover */
+.marquee-banner__inner[data-pause-on-hover="true"]:hover .marquee-banner__content {
   animation-play-state: paused;
+}
+
+/* Directional Animations */
+.marquee-banner__content--ltr {
+  animation-name: marquee-scroll-ltr;
+}
+
+.marquee-banner__content--rtl {
+  animation-name: marquee-scroll-rtl;
 }
 
 .marquee-banner__item {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 0 4rem;
+  gap: 2.5rem;
+  padding: 0 5rem;
 }
 
 .marquee-banner__bullet {
@@ -40,20 +62,27 @@
 }
 
 .marquee-banner__text {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: var(--marquee-font-size, 1.4rem);
+  font-weight: var(--marquee-font-weight, 600);
+  letter-spacing: var(--marquee-letter-spacing, 0.1em);
   text-transform: uppercase;
-  letter-spacing: 0.15rem;
   color: rgb(var(--color-foreground));
+  font-family: var(--marquee-font-family);
 }
 
-@media screen and (min-width: 750px) {
-  .marquee-banner__text {
-    font-size: 1.4rem;
-  }
+.marquee-banner__image {
+  max-height: 4rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
-@keyframes marquee-scroll {
+@keyframes marquee-scroll-rtl {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
+}
+
+@keyframes marquee-scroll-ltr {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
 }

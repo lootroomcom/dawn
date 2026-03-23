@@ -1,16 +1,58 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .marquee-{{ section.id }} {
+    --marquee-speed: {{ section.settings.speed }}s;
+    --marquee-font-size: {{ section.settings.font_size }}rem;
+    --marquee-font-weight: {{ section.settings.font_weight }};
+    --marquee-letter-spacing: {{ section.settings.letter_spacing }}em;
+    --marquee-font-family: {{ section.settings.font_family.family }}, {{ section.settings.font_family.fallback_families }};
+  }
+{%- endstyle -%}
+
 {{ 'section-marquee-banner.css' | asset_url | stylesheet_tag }}
 
-<div class="marquee-banner color-{{ section.settings.color_scheme }} gradient" style="--marquee-speed: {{ section.settings.speed }}s; padding-top: {{ section.settings.padding_y }}px; padding-bottom: {{ section.settings.padding_y }}px;">
-  <div class="marquee-banner__inner">
-    {%- for i in (1..6) -%}
-      <div class="marquee-banner__content" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+<div class="marquee-banner marquee-{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if section.settings.mask_edges %} marquee-banner--masked{% endif %}{% if section.settings.show_glassmorphism %} marquee-banner--glass{% endif %}"
+  style="--direction: {% if section.settings.direction == 'rtl' %}-1{% else %}1{% endif %};"
+>
+  <div class="marquee-banner__inner"
+    {% if section.settings.pause_on_hover %}data-pause-on-hover="true"{% endif %}
+  >
+    {%- for i in (1..10) -%}
+      <div class="marquee-banner__content marquee-banner__content--{{ section.settings.direction }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
         {%- for block in section.blocks -%}
-          <div class="marquee-banner__item" {{ block.shopify_attributes }}>
-            {%- if block.settings.show_bullet -%}
-              <span class="marquee-banner__bullet">✦</span>
-            {%- endif -%}
-            <span class="marquee-banner__text">{{ block.settings.text }}</span>
-          </div>
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div class="marquee-banner__item marquee-banner__item--text" {{ block.shopify_attributes }}>
+                {%- if block.settings.show_bullet -%}
+                  <span class="marquee-banner__bullet">✦</span>
+                {%- endif -%}
+                <span class="marquee-banner__text" style="font-family: var(--marquee-font-family);">{{ block.settings.text }}</span>
+              </div>
+            {%- when 'image' -%}
+              <div class="marquee-banner__item marquee-banner__item--image" {{ block.shopify_attributes }}>
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 100 | image_tag: 
+                    class: 'marquee-banner__image', 
+                    loading: 'lazy', 
+                    width: block.settings.image_width,
+                    height: 'auto'
+                  }}
+                {%- else -%}
+                  {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
         {%- endfor -%}
       </div>
     {%- endfor -%}
@@ -19,7 +61,7 @@
 
 {% schema %}
 {
-  "name": "Marquee Banner",
+  "name": "Marquee Banner Premium",
   "settings": [
     {
       "type": "color_scheme",
@@ -28,30 +70,111 @@
       "default": "background-2"
     },
     {
-      "type": "range",
-      "id": "speed",
-      "min": 5,
-      "max": 60,
-      "step": 1,
-      "unit": "s",
-      "label": "Animationsgeschwindigkeit",
-      "default": 20
+      "type": "select",
+      "id": "direction",
+      "label": "Richtung",
+      "options": [
+        { "value": "ltr", "label": "Links nach Rechts" },
+        { "value": "rtl", "label": "Rechts nach Links" }
+      ],
+      "default": "rtl"
     },
     {
       "type": "range",
-      "id": "padding_y",
+      "id": "speed",
+      "min": 2,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Geschwindigkeit",
+      "default": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Bei Hover anhalten",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mask_edges",
+      "label": "Ränder ausfaden (Vignette)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_glassmorphism",
+      "label": "Glassmorphismus Effekt",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Typografie"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_family",
+      "label": "Schriftart",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 1,
+      "max": 10,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Schriftgröße",
+      "default": 1.4
+    },
+    {
+      "type": "range",
+      "id": "font_weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "label": "Schriftgewicht",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": -0.05,
+      "max": 0.3,
+      "step": 0.01,
+      "unit": "em",
+      "label": "Zeichenabstand",
+      "default": 0.1
+    },
+    {
+      "type": "header",
+      "content": "Abstände"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
       "min": 0,
-      "max": 40,
-      "step": 2,
+      "max": 100,
+      "step": 4,
       "unit": "px",
-      "label": "Abstand oben/unten",
+      "label": "Abstand oben",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand unten",
       "default": 12
     }
   ],
   "blocks": [
     {
       "type": "text",
-      "name": "USP / Lauftext",
+      "name": "Text",
       "settings": [
         {
           "type": "text",
@@ -66,15 +189,39 @@
           "default": true
         }
       ]
+    },
+    {
+      "type": "image",
+      "name": "Logo/Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild/Logo"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 20,
+          "max": 200,
+          "step": 10,
+          "unit": "px",
+          "label": "Bildbreite",
+          "default": 40
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Laufschrift (Marquee)",
+      "name": "Premium Laufschrift",
       "blocks": [
         { "type": "text", "settings": { "text": "Kostenloser Versand" } },
+        { "type": "image" },
         { "type": "text", "settings": { "text": "100% Sicher" } },
-        { "type": "text", "settings": { "text": "Kostenlose Retouren" } }
+        { "type": "image" },
+        { "type": "text", "settings": { "text": "Kostenlose Retouren" } },
+        { "type": "image" }
       ]
     }
   ]
