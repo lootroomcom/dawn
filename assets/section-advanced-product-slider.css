@@ -93,16 +93,34 @@
   align-items: center;
 }
 
+.pf-buttons .button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.pf-buttons .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .pf-buttons .button.button--primary.pf-btn-main {
   background-color: var(--btn-bg, #111111);
   color: var(--btn-text, #ffffff);
   border: 1px solid var(--btn-bg, #111111);
 }
 
+.pf-buttons .button.button--primary.pf-btn-main:hover {
+  opacity: 0.9;
+}
+
 .pf-buttons .button.button--secondary.pf-btn-sub {
   background-color: var(--btn-bg-alt, transparent);
   color: var(--btn-text-alt, #111111);
   border: 1px solid var(--btn-text-alt, #111111);
+}
+
+.pf-buttons .button.button--secondary.pf-btn-sub:hover {
+  background-color: var(--btn-text-alt, #111111);
+  color: var(--btn-bg-alt, #ffffff);
 }
 
 /* Swiper UI Enhancements */
