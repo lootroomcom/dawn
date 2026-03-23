@@ -40,7 +40,7 @@
                 <span class="marquee-banner__text" style="font-family: var(--marquee-font-family);">{{ block.settings.text }}</span>
               </div>
             {%- when 'image' -%}
-              <div class="marquee-banner__item marquee-banner__item--image" {{ block.shopify_attributes }}>
+              <div class="marquee-banner__item marquee-banner__item--image" {{ block.shopify_attributes }} style="--image-width: {{ block.settings.image_width }}px;">
                 {%- if block.settings.image != blank -%}
                   {{ block.settings.image | image_url: width: 100 | image_tag: 
                     class: 'marquee-banner__image', 

@@ -71,8 +71,8 @@
 }
 
 .marquee-banner__image {
-  max-height: 4rem;
-  width: auto;
+  height: auto;
+  width: var(--image-width, 4rem);
   object-fit: contain;
   display: block;
 }
