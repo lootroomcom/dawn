@@ -75,6 +75,22 @@
   width: var(--image-width, 4rem);
   object-fit: contain;
   display: block;
+  filter: var(--logo-filter, none);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.marquee-banner__item-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.marquee-banner__item-link:hover {
+  transform: scale(1.05);
+}
+
+.marquee-banner__item-link:hover .marquee-banner__image {
+  filter: none; /* Show original on hover if filtered */
 }
 
 @keyframes marquee-scroll-rtl {
