@@ -126,7 +126,7 @@
                     </div>
                   {% endif %}
 
-                  <div class="pf-price" style="--price-color: {{ block.settings.price_color }}; --price-weight: {% if block.settings.price_bold %}700{% else %}400{% endif %};">
+                  <div class="pf-price" style="--price-color: {{ block.settings.price_color }}; --price-size: {{ block.settings.price_size }}rem; --price-weight: {% if block.settings.price_bold %}700{% else %}400{% endif %};">
                     {% if product.compare_at_price > product.price %}
                       <span class="price price--compare">
                         {{ product.compare_at_price | money }}
@@ -362,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { "type": "checkbox", "id": "text_bold", "label": "Text fettgedruckt", "default": false },
         
         { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
+        { "type": "range", "id": "price_size", "min": 1.2, "max": 5.0, "step": 0.1, "unit": "rem", "default": 2.4, "label": "Preis Schriftgröße" },
         { "type": "checkbox", "id": "price_bold", "label": "Preis fettgedruckt", "default": true },
 
         { "type": "header", "content": "Buttons" },
