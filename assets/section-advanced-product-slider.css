@@ -53,7 +53,7 @@
 }
 
 .pf-title {
-  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-size: var(--title-size, clamp(3rem, 5vw, 4.8rem));
   font-weight: var(--title-weight, 700);
   margin: 0 0 16px 0;
   line-height: 1.1;
@@ -64,7 +64,7 @@
 .pf-text {
   margin-bottom: 24px;
   line-height: 1.6;
-  font-size: 1.6rem;
+  font-size: var(--text-size, 1.6rem);
   font-weight: var(--text-weight, 400);
   color: var(--text-color, inherit);
   opacity: 0.9;

@@ -116,12 +116,12 @@
                 {% if product != blank %}
 
                   {% assign heading_tag = block.settings.heading_tag | default: 'h2' %}
-                  <{{ heading_tag }} class="pf-title" style="--title-color: {{ title_color }}; --title-weight: {% if block.settings.title_bold %}700{% else %}400{% endif %};">
+                  <{{ heading_tag }} class="pf-title" style="--title-color: {{ title_color }}; --title-size: {{ block.settings.title_size }}rem; --title-weight: {% if block.settings.title_bold %}700{% else %}400{% endif %};">
                     {{ product.title }}
                   </{{ heading_tag }}>
 
                   {% if block.settings.custom_text != blank %}
-                    <div class="pf-text" style="--text-color: {{ block.settings.text_color }}; --text-weight: {% if block.settings.text_bold %}700{% else %}400{% endif %};">
+                    <div class="pf-text" style="--text-color: {{ block.settings.text_color }}; --text-size: {{ block.settings.text_size }}rem; --text-weight: {% if block.settings.text_bold %}700{% else %}400{% endif %};">
                       {{ block.settings.custom_text }}
                     </div>
                   {% endif %}
@@ -356,9 +356,11 @@ document.addEventListener('DOMContentLoaded', function () {
           "default": "h2"
         },
         { "type": "color", "id": "title_color", "label": "Titel Farbe", "default": "#111111" },
+        { "type": "range", "id": "title_size", "min": 2.0, "max": 10.0, "step": 0.2, "unit": "rem", "default": 4.8, "label": "Titel Schriftgröße" },
         { "type": "checkbox", "id": "title_bold", "label": "Titel fettgedruckt", "default": true },
         
         { "type": "color", "id": "text_color", "label": "Text Farbe", "default": "#555555" },
+        { "type": "range", "id": "text_size", "min": 1.0, "max": 4.0, "step": 0.1, "unit": "rem", "default": 1.6, "label": "Text Schriftgröße" },
         { "type": "checkbox", "id": "text_bold", "label": "Text fettgedruckt", "default": false },
         
         { "type": "color", "id": "price_color", "label": "Preis Farbe", "default": "#dac795" },
