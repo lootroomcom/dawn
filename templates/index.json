@@ -30,8 +30,8 @@
             "price_bold": true,
             "btn_primary_text": "",
             "button_bg": "rgba(0,0,0,0)",
-            "btn_secondary_text": "",
             "button_text": "#f5e5b9",
+            "btn_secondary_text": "",
             "button_bg_secondary": "rgba(0,0,0,0)",
             "button_text_secondary": "#f5e5b9",
             "enable_float": true,
@@ -60,8 +60,8 @@
             "price_bold": true,
             "btn_primary_text": "",
             "button_bg": "rgba(0,0,0,0)",
-            "btn_secondary_text": "",
             "button_text": "#f5e5b9",
+            "btn_secondary_text": "",
             "button_bg_secondary": "rgba(0,0,0,0)",
             "button_text_secondary": "#f5e5b9",
             "enable_float": true,
@@ -79,13 +79,21 @@
       ],
       "name": "Advanced Product Slider",
       "settings": {
+        "color_scheme": "scheme-2",
         "autoplay": true,
         "autoplay_speed": 8000,
         "speed": 800,
         "loop": true,
+        "touch_move": true,
+        "image_ratio": "adapt",
         "show_pagination": true,
         "pagination_color": "#ffffff",
-        "show_arrows": true
+        "show_arrows": true,
+        "navigation_style": "circle",
+        "show_sale_badge": true,
+        "sale_badge_type": "percent",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "marquee_banner_aicABf": {
