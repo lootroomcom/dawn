@@ -94,14 +94,14 @@
         "image_kJCVjG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Counter-Strike_yellow-gray_svg.png",
-            "image_width": 140
+            "image": "shopify://shop_images/Counter-Strike_Logo.svg",
+            "image_width": 200
           }
         },
         "image_XM8A9r": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Overwatch4_svg.png",
+            "image": "shopify://shop_images/Overwatch4.svg",
             "image_width": 110
           }
         },
