@@ -136,12 +136,26 @@
             "link": "shopify://collections/cs-general"
           }
         },
+        "text_ek8CNp": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "show_bullet": true
+          }
+        },
         "image_XM8A9r": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Overwatch4.svg",
             "image_width": 110,
             "link": "shopify://collections/overwatch-general"
+          }
+        },
+        "text_LWWc8A": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "show_bullet": true
           }
         },
         "image_tXFwhf": {
@@ -160,7 +174,9 @@
         "image_HHCdHT",
         "text_6CUFc3",
         "image_kJCVjG",
+        "text_ek8CNp",
         "image_XM8A9r",
+        "text_LWWc8A",
         "image_tXFwhf"
       ],
       "name": "Premium Laufschrift",
