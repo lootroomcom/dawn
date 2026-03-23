@@ -49,7 +49,7 @@
             "product": "rust-game-sar-standard-prop",
             "badge_text": "FEATURED PRODUCT",
             "badge_bg": "rgba(0,0,0,0)",
-            "badge_color": "#ffffff",
+            "badge_color": "#f5e5b9",
             "custom_text": "<p>- Life-Size: 75 x 18 x 8 cm (30 x 7 x 3 inch)<br/>- Weight: 370 grams<br/>- Professional airbrushed with Default Skin<br/>- Special: real metal clamps, cloth line, two types of tape</p>",
             "heading_tag": "h2",
             "title_color": "#ffffff",
@@ -118,7 +118,7 @@
         "image_kJCVjG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Counter-Strike_Logo.svg",
+            "image": "shopify://shop_images/Counter-Strike_yellow-gray.svg",
             "image_width": 200,
             "link": "shopify://collections/cs-general"
           }
