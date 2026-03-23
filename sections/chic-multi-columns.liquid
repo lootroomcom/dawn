@@ -61,11 +61,17 @@
   </div>
 </section>
 
-{%- style -%}
+{%- liquid
+  assign cmc_text = section.settings.text_color
+  if cmc_text == '#111111'
+    assign cmc_text = 'rgb(var(--color-foreground))'
+  endif
+-%}
+
 .cmc-{{ section.id }} {
   --cmc-gap: {{ section.settings.gap }}px;
   --cmc-radius: {{ section.settings.radius }}px;
-  --cmc-text: {{ section.settings.text_color }};
+  --cmc-text: {{ cmc_text }};
   --cmc-card: rgba(
     {{ section.settings.card_color.red }},
     {{ section.settings.card_color.green }},
@@ -82,7 +88,6 @@
   --cmc-gradient-2: {{ section.settings.gradient_2 }};
   --cmc-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
 }
-{%- endstyle -%}
 
 {{ 'section-chic-multi-columns.css' | asset_url | stylesheet_tag }}
 
