@@ -16,6 +16,11 @@
 **Objective**: Clean up hardcoded styles and technical debt from existing theme.
 **Requirements**: REQ-01, REQ-06
 
+### Phase 1.5: Premium Marquee Banner
+**Status**: 🔵 Planned
+**Objective**: Enhance the marquee banner with logo support, advanced typography, and visual effects.
+**Requirements**: REQ-08
+
 ### Phase 2: Product Page Optimization
 **Status**: ⬜ Not Started
 **Objective**: Make the core product details and featured product sections fully schema-controlled.
