@@ -61,7 +61,7 @@
             "text_color": "#ffffff",
             "text_size": 1.6,
             "text_bold": false,
-            "price_color": "#ffffff",
+            "price_color": "#f5e5b9",
             "price_size": 2.4,
             "price_bold": true,
             "btn_primary_text": "",
