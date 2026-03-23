@@ -281,6 +281,18 @@
         "gradient_4": "#4facfe"
       }
     },
+    "modern_divider_ztpwXW": {
+      "type": "modern-divider",
+      "name": "Strong Modern Divider",
+      "settings": {
+        "show_text": true,
+        "text": "Featured",
+        "spacing": 50,
+        "color_1": "#f5e5b9",
+        "color_2": "#24404b",
+        "color_3": "#dac795"
+      }
+    },
     "image_with_text_gD4mME": {
       "type": "image-with-text",
       "blocks": {
@@ -337,6 +349,7 @@
     "custom_liquid_ArpbHc",
     "featured_collection",
     "chic_multi_columns_jV64Yr",
+    "modern_divider_ztpwXW",
     "image_with_text_gD4mME"
   ]
 }
