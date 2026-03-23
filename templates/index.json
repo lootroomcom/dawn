@@ -26,7 +26,7 @@
             "title_bold": true,
             "text_color": "#ffffff",
             "text_bold": false,
-            "price_color": "#ffffff",
+            "price_color": "rgba(0,0,0,0)",
             "price_bold": true,
             "btn_primary_text": "",
             "button_bg": "rgba(0,0,0,0)",
@@ -92,8 +92,8 @@
         "navigation_style": "circle",
         "show_sale_badge": true,
         "sale_badge_type": "text",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "marquee_banner_aicABf": {
