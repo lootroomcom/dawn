@@ -104,7 +104,7 @@
           "settings": {
             "image": "shopify://shop_images/Garry_s_Mod_logo.svg",
             "image_width": 40,
-            "link": ""
+            "link": "shopify://collections/gmod-general"
           }
         },
         "image_kJCVjG": {
@@ -112,7 +112,7 @@
           "settings": {
             "image": "shopify://shop_images/Counter-Strike_Logo.svg",
             "image_width": 200,
-            "link": ""
+            "link": "shopify://collections/cs-general"
           }
         },
         "image_XM8A9r": {
