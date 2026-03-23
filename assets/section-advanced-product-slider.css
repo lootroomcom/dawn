@@ -119,8 +119,7 @@
 }
 
 .pf-buttons .button.button--secondary.pf-btn-sub:hover {
-  background-color: var(--btn-text-alt, #111111);
-  color: var(--btn-bg-alt, #ffffff);
+  opacity: 0.8;
 }
 
 /* Swiper UI Enhancements */
