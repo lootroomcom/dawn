@@ -301,9 +301,9 @@
         "button_RTFDBC": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
+            "button_label": "giftcards",
             "button_link": "",
-            "button_style_secondary": false
+            "button_style_secondary": true
           }
         }
       },
