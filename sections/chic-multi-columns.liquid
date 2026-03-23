@@ -24,7 +24,20 @@
             <a href="{{ card_link }}" class="cmc-card-link">
           {% endif %}
 
-          <article class="cmc-card">
+          {%- liquid
+            assign block_card_red = block.settings.card_color.red
+            assign block_card_green = block.settings.card_color.green
+            assign block_card_blue = block.settings.card_color.blue
+            
+            if block.settings.card_color == '#ffffff' and section.settings.card_color == '#ffffff'
+               assign block_card_red = 'var(--color-background-red)'
+               assign block_card_green = 'var(--color-background-green)'
+               assign block_card_blue = 'var(--color-background-blue)'
+            endif
+          -%}
+
+          <article class="cmc-card" 
+            style="--cmc-card: rgba({{ block_card_red }}, {{ block_card_green }}, {{ block_card_blue }}, {{ block.settings.card_opacity | divided_by: 100.0 }});">
             
             {% if block.settings.image != blank %}
               <div class="cmc-media">
@@ -172,7 +185,9 @@ document.querySelectorAll(".cmc-{{ section.id }} .cmc-card").forEach(card=>{
         { "type":"image_picker","id":"image","label":"Bild" },
         { "type":"text","id":"heading","label":"Titel","default":"Premium Qualität" },
         { "type":"richtext","id":"text","label":"Text","default":"<p>Massiver visueller Effekt.</p>" },
-        { "type":"url","id":"link_url","label":"Link URL" }
+        { "type":"url","id":"link_url","label":"Link URL" },
+        { "type": "color", "id": "card_color", "label": "Card Hintergrund", "default": "#ffffff" },
+        { "type": "range", "id": "card_opacity", "label": "Card Opazität", "min": 0, "max": 100, "step": 1, "default": 80 }
       ]
     }
   ],
