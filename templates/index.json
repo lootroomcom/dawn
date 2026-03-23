@@ -91,11 +91,32 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
+        "image_HHCdHT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Garry_s_Mod_logo.svg",
+            "image_width": 40
+          }
+        },
+        "image_kJCVjG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Counter-Strike_Logo.svg",
+            "image_width": 200
+          }
+        },
+        "image_XM8A9r": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Overwatch4.svg",
+            "image_width": 110
+          }
+        },
         "image_tXFwhf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/CITYPNG.COM_Overwatch_Text_Logo_Without_Symbol_-_3000x3000_76e44817-4c6b-4ffb-a76b-8b3cfb7fc8d6.png",
-            "image_width": 140
+            "image": "shopify://shop_images/Rust_vector_logo_svg.png",
+            "image_width": 120
           }
         },
         "image_PzkyCg": {
@@ -107,6 +128,9 @@
         }
       },
       "block_order": [
+        "image_HHCdHT",
+        "image_kJCVjG",
+        "image_XM8A9r",
         "image_tXFwhf",
         "image_PzkyCg"
       ],
@@ -114,7 +138,7 @@
       "settings": {
         "color_scheme": "scheme-2",
         "direction": "rtl",
-        "speed": 20,
+        "speed": 40,
         "pause_on_hover": false,
         "mask_edges": true,
         "show_glassmorphism": false,
