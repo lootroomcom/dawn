@@ -229,7 +229,9 @@
             "image": "shopify://shop_images/deutschland.png",
             "heading": "Made in Germany",
             "text": "<p>Since 2018 we craft irl loot with diligence and state of the art systems in bavaria/germany. Thousands of customers are convinced and appreciate the quality of our products. <br/><br/></p>",
-            "link_url": ""
+            "link_url": "",
+            "card_color": "#1b333c",
+            "card_opacity": 0
           }
         },
         "column_464WYx": {
@@ -238,7 +240,9 @@
             "image": "shopify://shop_images/beratungsstelle.png",
             "heading": "Discord and Email Support",
             "text": "<p>You come first! We never use scripted support. Our Team is real and will answer your questions shortly. Get in touch with lootroom - easy, fast and reliable.<br/><br/></p>",
-            "link_url": ""
+            "link_url": "",
+            "card_color": "#1b333c",
+            "card_opacity": 0
           }
         },
         "column_dNfRt6": {
@@ -247,7 +251,9 @@
             "image": "shopify://shop_images/shipping-and-delivery.png",
             "heading": "Worldwide shipping",
             "text": "<p>We’ve already shipped to 50+ countries worldwide! Shipping is FREE for orders above $100. Express shipping can be added at checkout. Every order securely shipped.<br/><br/></p>",
-            "link_url": ""
+            "link_url": "",
+            "card_color": "#1b333c",
+            "card_opacity": 0
           }
         }
       },
