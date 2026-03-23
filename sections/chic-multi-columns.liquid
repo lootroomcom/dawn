@@ -2,7 +2,7 @@
   Chic Multi Columns – ULTRA MAX EFFECT EDITION
 {% endcomment %}
 
-<section class="cmc-wrap cmc-{{ section.id }}">
+<section class="cmc-wrap cmc-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   <div class="cmc-bg-animated"></div>
 
   <div class="cmc-inner page-width">
@@ -139,6 +139,12 @@ document.querySelectorAll(".cmc-{{ section.id }} .cmc-card").forEach(card=>{
   "settings": [
     { "type": "text", "id": "title", "label": "Titel", "default": "Ultra Premium Section" },
     { "type": "text", "id": "subtitle", "label": "Untertitel", "default": "Maximum Visual Impact" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    },
     { "type": "range", "id": "columns_desktop", "label": "Spalten Desktop", "min": 2, "max": 4, "step": 1, "default": 3 },
     { "type": "select", "id": "media_ratio", "label": "Bildverhältnis", "default": "16/9",
       "options":[
