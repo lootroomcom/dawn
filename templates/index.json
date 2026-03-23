@@ -88,6 +88,74 @@
         "show_arrows": true
       }
     },
+    "marquee_banner_aicABf": {
+      "type": "marquee-banner",
+      "blocks": {
+        "text_d69Vqx": {
+          "type": "text",
+          "settings": {
+            "text": "Kostenloser Versand",
+            "show_bullet": true
+          }
+        },
+        "image_LTWGri": {
+          "type": "image",
+          "settings": {
+            "image_width": 40
+          }
+        },
+        "text_8qPCQe": {
+          "type": "text",
+          "settings": {
+            "text": "100% Sicher",
+            "show_bullet": true
+          }
+        },
+        "image_PzkyCg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sw.png",
+            "image_width": 100
+          }
+        },
+        "text_eRCiYU": {
+          "type": "text",
+          "settings": {
+            "text": "Kostenlose Retouren",
+            "show_bullet": true
+          }
+        },
+        "image_CiR93j": {
+          "type": "image",
+          "settings": {
+            "image_width": 40
+          }
+        }
+      },
+      "block_order": [
+        "text_d69Vqx",
+        "image_LTWGri",
+        "text_8qPCQe",
+        "image_PzkyCg",
+        "text_eRCiYU",
+        "image_CiR93j"
+      ],
+      "name": "Premium Laufschrift",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "direction": "rtl",
+        "speed": 20,
+        "pause_on_hover": false,
+        "mask_edges": true,
+        "show_glassmorphism": false,
+        "font_family": "assistant_n4",
+        "font_size": 1.4,
+        "font_weight": 600,
+        "letter_spacing": 2,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "marquee_banner_t7Ggmi": {
       "type": "marquee-banner",
       "blocks": {
@@ -129,8 +197,17 @@
       "name": "Laufschrift (Marquee)",
       "settings": {
         "color_scheme": "scheme-2",
+        "direction": "rtl",
         "speed": 20,
-        "padding_y": 12
+        "pause_on_hover": true,
+        "mask_edges": true,
+        "show_glassmorphism": false,
+        "font_family": "assistant_n4",
+        "font_size": 1.4,
+        "font_weight": 600,
+        "letter_spacing": 2,
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "trustpilot_widget_XQzT6e": {
@@ -269,6 +346,7 @@
   },
   "order": [
     "product_feature_slider_AbxL6i",
+    "marquee_banner_aicABf",
     "marquee_banner_t7Ggmi",
     "trustpilot_widget_XQzT6e",
     "custom_liquid_ArpbHc",
