@@ -91,11 +91,25 @@
     "marquee_banner_aicABf": {
       "type": "marquee-banner",
       "blocks": {
+        "image_kJCVjG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Counter-Strike_yellow-gray_svg.png",
+            "image_width": 140
+          }
+        },
+        "image_XM8A9r": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Overwatch4_svg.png",
+            "image_width": 110
+          }
+        },
         "image_tXFwhf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/CITYPNG.COM_Overwatch_Text_Logo_Without_Symbol_-_3000x3000_76e44817-4c6b-4ffb-a76b-8b3cfb7fc8d6.png",
-            "image_width": 140
+            "image": "shopify://shop_images/Rust_vector_logo_svg.png",
+            "image_width": 120
           }
         },
         "image_PzkyCg": {
@@ -107,6 +121,8 @@
         }
       },
       "block_order": [
+        "image_kJCVjG",
+        "image_XM8A9r",
         "image_tXFwhf",
         "image_PzkyCg"
       ],
