@@ -1,13 +1,4 @@
-/* =============================================
-   GLOBAL BACKGROUND
-   ============================================= */
-body {
-  background-position: var(--body-bg-position);
-  background-size: var(--body-bg-size);
-  background-repeat: var(--body-bg-repeat);
-  position: relative;
-  overflow-x: hidden;
-}
+
 
 /* =============================================
    CUSTOM BRANDING & STYLING
