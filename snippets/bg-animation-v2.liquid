@@ -1,0 +1,305 @@
+{%- comment -%}
+  Snippet: bg-animation.liquid
+  Einbinden in layout/theme.liquid direkt nach <body>:
+  {% render 'bg-animation' %}
+
+  Originalfarben von optimizerplus.github.io:
+    boo-dark  = #070b14
+    boo-blue  = #00a3ff
+    boo-green = #22c55e
+{%- endcomment -%}
+
+<div id="lootroom-bg" aria-hidden="true">
+
+  <!-- Blauer Radial-Glow (wie bg-blue-glow) -->
+  <div class="lrb-blue-glow"></div>
+
+  <!-- Blur-Orb Blau: top 1/3, left 1/4 -->
+  <div class="lrb-orb lrb-orb--blue"></div>
+
+  <!-- Blur-Orb Grün: bottom 1/3, right 1/4 -->
+  <div class="lrb-orb lrb-orb--green"></div>
+
+  <!-- Lila/Pink Gradient unten Mitte -->
+  <div class="lrb-bottom-glow"></div>
+
+  <!-- Feines Linien-Grid (50px, blau 3% opacity) -->
+  <div class="lrb-grid"></div>
+
+  <!-- Subtile Scanlines -->
+  <div class="lrb-scanlines"></div>
+
+  <!-- Retro Perspective Grid am Boden -->
+  <div class="lrb-retro-grid-wrap">
+    <div class="lrb-retro-grid"></div>
+    <div class="lrb-retro-grid-fade"></div>
+  </div>
+
+  <!-- Floating Geometric Shapes -->
+  <div class="lrb-shapes">
+    <!-- Hexagon oben links -->
+    <div class="lrb-shape lrb-hex" style="top:8%;left:10%;width:64px;height:64px;animation-delay:0s">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5"
+          fill="none" stroke="#00a3ff" stroke-width="2" opacity="0.2"/>
+      </svg>
+    </div>
+    <!-- Dreieck oben rechts -->
+    <div class="lrb-shape lrb-float-delayed" style="top:15%;right:15%;width:48px;height:48px;animation-delay:0.5s">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <polygon points="50,10 90,90 10,90"
+          fill="none" stroke="#22c55e" stroke-width="2" opacity="0.15"/>
+      </svg>
+    </div>
+    <!-- Kreis mit Punkt links mitte -->
+    <div class="lrb-shape lrb-spin-slow" style="bottom:35%;left:20%;width:80px;height:80px">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#00a3ff" stroke-width="2" opacity="0.1"/>
+        <circle cx="50" cy="10" r="5" fill="#00a3ff" opacity="0.2"/>
+      </svg>
+    </div>
+    <!-- Rotation Square links oben -->
+    <div class="lrb-shape lrb-float-reverse" style="top:48%;left:5%;width:40px;height:40px">
+      <div style="width:100%;height:100%;border:2px solid rgba(0,163,255,0.25);transform:rotate(45deg)"></div>
+    </div>
+    <!-- Plus rechts mitte -->
+    <div class="lrb-shape lrb-pulse-slow" style="bottom:55%;right:10%;width:32px;height:32px">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <line x1="50" y1="20" x2="50" y2="80" stroke="#22c55e" stroke-width="8" opacity="0.2"/>
+        <line x1="20" y1="50" x2="80" y2="50" stroke="#22c55e" stroke-width="8" opacity="0.2"/>
+      </svg>
+    </div>
+    <!-- Dot-Grid Muster rechts -->
+    <div class="lrb-shape" style="top:48%;right:5%;opacity:0.1">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.1s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.2s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.3s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.4s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.5s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.6s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.7s"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-pulse 2s infinite 0.8s"></div>
+      </div>
+    </div>
+    <!-- Corner Bracket oben rechts -->
+    <div class="lrb-shape lrb-float" style="top:12%;right:25%;width:64px;height:64px;opacity:0.2">
+      <div style="position:relative;width:100%;height:100%">
+        <div style="position:absolute;top:0;left:0;width:16px;height:16px;border-top:2px solid #00a3ff;border-left:2px solid #00a3ff"></div>
+        <div style="position:absolute;top:0;right:0;width:16px;height:16px;border-top:2px solid #00a3ff;border-right:2px solid #00a3ff"></div>
+        <div style="position:absolute;bottom:0;left:0;width:16px;height:16px;border-bottom:2px solid #00a3ff;border-left:2px solid #00a3ff"></div>
+        <div style="position:absolute;bottom:0;right:0;width:16px;height:16px;border-bottom:2px solid #00a3ff;border-right:2px solid #00a3ff"></div>
+      </div>
+    </div>
+    <!-- Ping dot oben links -->
+    <div class="lrb-shape" style="top:25%;left:33%;opacity:0.3">
+      <div style="width:8px;height:8px;border-radius:50%;background:#00a3ff;animation:lrb-ping 1.5s cubic-bezier(0,0,0.2,1) infinite"></div>
+    </div>
+    <!-- Ping dot unten rechts -->
+    <div class="lrb-shape" style="bottom:25%;right:33%;opacity:0.2">
+      <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;animation:lrb-ping 1.5s cubic-bezier(0,0,0.2,1) infinite 1s"></div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* ─── Basis ─────────────────────────────────────── */
+  body {
+    background-color: #070b14;
+  }
+
+  #lootroom-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* Shopify Dawn: Content über den Background */
+  .shopify-section,
+  main,
+  #shopify-section-header,
+  #shopify-section-footer,
+  .header-wrapper,
+  .content-for-layout {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Blue Glow (radial, wie bg-blue-glow) ─────── */
+  .lrb-blue-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(0, 163, 255, 0.12) 0%,
+      transparent 70%
+    );
+    opacity: 0.5;
+  }
+
+  /* ─── Blur Orbs ─────────────────────────────────── */
+  .lrb-orb {
+    position: absolute;
+    width: 384px;
+    height: 384px;
+    border-radius: 50%;
+    filter: blur(100px);
+    will-change: opacity;
+  }
+  /* top: 33%, left: 25% — Blau */
+  .lrb-orb--blue {
+    background: rgba(0, 163, 255, 0.10);
+    top: 33%;
+    left: 25%;
+    animation: lrb-pulse 8s ease-in-out infinite;
+  }
+  /* bottom: 33%, right: 25% — Grün */
+  .lrb-orb--green {
+    background: rgba(34, 197, 94, 0.10);
+    bottom: 33%;
+    right: 25%;
+    animation: lrb-pulse 8s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  /* ─── Bottom Gradient (Lila/Pink) ───────────────── */
+  .lrb-bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(800px, 100vw);
+    height: 400px;
+    border-radius: 50% 50% 0 0;
+    background: linear-gradient(
+      to top,
+      rgba(88, 28, 135, 0.20),
+      rgba(219, 39, 119, 0.10),
+      transparent
+    );
+    opacity: 0.30;
+  }
+
+  /* ─── Feines Linien-Grid (50px, blau) ───────────── */
+  .lrb-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 163, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 163, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.03;
+  }
+
+  /* ─── Scanlines ──────────────────────────────────── */
+  .lrb-scanlines {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+    opacity: 0.02;
+  }
+
+  /* ─── Retro Perspective Grid (Boden) ─────────────── */
+  .lrb-retro-grid-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    overflow: hidden;
+    opacity: 0.30;
+  }
+  .lrb-retro-grid {
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(0, 163, 255, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 163, 255, 0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(300px) rotateX(60deg);
+    transform-origin: bottom center;
+    background-position: center bottom;
+  }
+  /* Fade-out nach oben */
+  .lrb-retro-grid-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 163, 255, 0.20),
+      transparent
+    );
+  }
+
+  /* ─── Floating Shapes Container ──────────────────── */
+  .lrb-shapes {
+    position: absolute;
+    inset: 0;
+  }
+  .lrb-shape {
+    position: absolute;
+  }
+
+  /* ─── Keyframes ──────────────────────────────────── */
+  @keyframes lrb-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+  @keyframes lrb-ping {
+    0%    { transform: scale(1); opacity: 1; }
+    75%, 100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* Float Animations */
+  @keyframes lrb-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+  }
+  @keyframes lrb-float-delayed {
+    0%, 100% { transform: translateY(0px) rotate(12deg); }
+    50%       { transform: translateY(-10px) rotate(12deg); }
+  }
+  @keyframes lrb-float-reverse {
+    0%, 100% { transform: translateY(0px) rotate(45deg); }
+    50%       { transform: translateY(10px) rotate(45deg); }
+  }
+  @keyframes lrb-spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes lrb-pulse-slow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50%       { opacity: 0.35; transform: scale(1.1); }
+  }
+
+  .lrb-float          { animation: lrb-float 4s ease-in-out infinite; }
+  .lrb-float-delayed  { animation: lrb-float-delayed 5s ease-in-out infinite; }
+  .lrb-float-reverse  { animation: lrb-float-reverse 6s ease-in-out infinite; }
+  .lrb-spin-slow      { animation: lrb-spin-slow 12s linear infinite; }
+  .lrb-pulse-slow     { animation: lrb-pulse-slow 3s ease-in-out infinite; }
+  .lrb-hex            { animation: lrb-float 4s ease-in-out infinite; }
+
+  /* ─── Reduced Motion ──────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .lrb-orb,
+    .lrb-float,
+    .lrb-float-delayed,
+    .lrb-float-reverse,
+    .lrb-spin-slow,
+    .lrb-pulse-slow,
+    .lrb-hex { animation: none !important; }
+  }
+</style>
