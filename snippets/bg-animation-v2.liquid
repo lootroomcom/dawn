@@ -111,11 +111,17 @@
   }
 
   #lootroom-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    transform: translateZ(0);
   }
 
   /* Shopify Dawn: Content über den Background */
@@ -292,7 +298,7 @@
   .lrb-pulse-slow     { animation: lrb-pulse-slow 3s ease-in-out infinite; }
   .lrb-hex            { animation: lrb-float 4s ease-in-out infinite; }
 
-  /* ─── Reduced Motion ──────────────────────────────── */
+  /* ─── Reduced Motion (Auskommentiert für garantierte Animation) ─ 
   @media (prefers-reduced-motion: reduce) {
     .lrb-orb,
     .lrb-float,
@@ -302,4 +308,5 @@
     .lrb-pulse-slow,
     .lrb-hex { animation: none !important; }
   }
+  */
 </style>
