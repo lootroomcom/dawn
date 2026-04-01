@@ -9,14 +9,6 @@
  */
 {
   "current": {
-    "ambient_mesh_enabled": true,
-    "ambient_mesh_color_1": "#f5e5b9",
-    "ambient_mesh_color_2": "#9841cf",
-    "ambient_mesh_color_3": "#dac795",
-    "ambient_mesh_opacity": 15,
-    "ambient_dots_color": "#ffffff",
-    "ambient_dots_opacity": 12,
-    "ambient_dots_spacing": 26,
     "logo": "shopify://shop_images/logo-tw-1000px.png",
     "logo_width": 210,
     "brand_gold": "#dac795",
@@ -137,6 +129,14 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "ambient_mesh_enabled": true,
+    "ambient_mesh_color_1": "#f5e5b9",
+    "ambient_mesh_color_2": "#9841cf",
+    "ambient_mesh_color_3": "#dac795",
+    "ambient_mesh_opacity": 15,
+    "ambient_dots_color": "#ffffff",
+    "ambient_dots_opacity": 12,
+    "ambient_dots_spacing": 26,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -174,7 +174,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#1b333c",
+          "background": "#0e2d2d",
           "background_gradient": "",
           "text": "#f5e5b9",
           "button": "#f5e5b9",
@@ -234,6 +234,17 @@
           "text": "#ffffff",
           "button": "#f5e5b9",
           "button_label": "#dac795",
+          "secondary_button_label": "#dac795",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      },
+      "scheme-272b863c-fe18-498b-b7c0-a18f41676b78": {
+        "settings": {
+          "background": "#24404b",
+          "background_gradient": "",
+          "text": "#f5e5b9",
+          "button": "#f5e5b9",
+          "button_label": "#1b333c",
           "secondary_button_label": "#dac795",
           "shadow": "rgba(0,0,0,0)"
         }
