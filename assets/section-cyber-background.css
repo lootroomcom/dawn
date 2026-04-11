@@ -3,12 +3,17 @@
   Designed for Shopify Dawn Architecture 
 */
 
+/* Anchor for absolute positioning of #lootroom-bg */
+body {
+  position: relative;
+}
+
 #lootroom-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
@@ -45,18 +50,20 @@
 }
 
 /* top: 33%, left: 25% — Blau */
+/* Zone 1: Hero area */
 .lrb-orb--blue {
   background: rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.10);
-  top: 33%;
+  top: 10%;
   left: 25%;
   animation: lrb-pulse 8s ease-in-out infinite;
 }
 
 /* bottom: 33%, right: 25% — Grün */
+/* Zone 3: Ausklang */
 .lrb-orb--green {
   background: rgba(var(--lrb-green-rgb, 34, 197, 94), 0.10);
-  bottom: 33%;
-  right: 25%;
+  top: 70%;
+  right: 20%;
   animation: lrb-pulse 8s ease-in-out infinite;
   animation-delay: 2s;
 }
@@ -65,10 +72,10 @@
   background: radial-gradient(circle, rgba(var(--lrb-green-rgb, 34, 197, 94), 0.15) 0%, transparent 60%) !important;
 }
 
-/* ─── Bottom Gradient (Lila/Pink) ───────────────── */
+/* ─── Zone 3: Bottom Gradient (Lila/Pink) ───────── */
 .lrb-bottom-glow {
   position: absolute;
-  bottom: 0;
+  top: 80%;
   left: 50%;
   transform: translateX(-50%);
   width: min(80.0rem, 100vw);
@@ -94,10 +101,13 @@
   opacity: 0.03;
 }
 
-/* ─── Scanlines ──────────────────────────────────── */
+/* ─── Zone 2: Scanlines (nur Retro-Mitte) ────────── */
 .lrb-scanlines {
   position: absolute;
-  inset: 0;
+  top: 30%;
+  left: 0;
+  right: 0;
+  height: 35%;
   background-image: repeating-linear-gradient(
     0deg,
     transparent,
@@ -108,10 +118,10 @@
   opacity: 0.02;
 }
 
-/* ─── Retro Perspective Grid (Boden) ─────────────── */
+/* ─── Zone 2: Retro Perspective Grid (Mitte) ─────── */
 .lrb-retro-grid-wrap {
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 0;
   right: 0;
   height: 16.0rem;
