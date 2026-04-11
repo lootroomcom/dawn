@@ -9,7 +9,7 @@
   <div class="footer-break-top" aria-hidden="true" style="background-image: url('{{ top_break_url }}');"></div>
 {%- endif -%}
 
-<footer class="footer-wrapper" role="contentinfo">
+<footer class="footer-wrapper color-{{ section.settings.color_scheme }}" role="contentinfo">
   <div class="footer-inner page-width">
 
     {%- for block in section.blocks -%}
@@ -96,6 +96,12 @@
 {
   "name": "Footer",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
     {
       "type": "checkbox",
       "id": "show_footer_break_top",
