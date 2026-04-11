@@ -7,20 +7,20 @@
 .trustpilot-wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 6px; /* Punkt näher dran */
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.25);
+  gap: 0.6rem; /* Punkt näher dran */
+  padding: 0.8rem 1.4rem;
+  border-radius: 1.0rem;
+  border: 0.1rem solid rgba(255,255,255,0.25);
 }
 
 /* Grüner Glow-Punkt */
 .trustpilot-status {
-  width: 10px;
-  height: 10px;
-  background: #00ff55;
+  width: 1.0rem;
+  height: 1.0rem;
+  background: var(--trustpilot-brand, #00ff55);
   border-radius: 50%;
   box-shadow:
-    0 0 6px #00ff55,
-    0 0 12px #00ff55;
+    0 0 0.6rem var(--trustpilot-brand, #00ff55),
+    0 0 1.2rem var(--trustpilot-brand, #00ff55);
   flex-shrink: 0;
 }

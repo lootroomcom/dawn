@@ -96,22 +96,22 @@ product-info {
   min-height: 4.6rem;
 }
 
-.shopify-payment-button__button [role='button'].focused {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5) !important;
+body .shopify-payment-button__button [role='button'].focused {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.3rem;
   box-shadow: 0 0 0 0.1rem rgba(var(--color-button), var(--alpha-button-border)),
-    0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3) !important;
+    0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
-.shopify-payment-button__button [role='button']:focus:not(:focus-visible) {
+body .shopify-payment-button__button [role='button']:focus:not(:focus-visible) {
   outline: 0;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
-.shopify-payment-button__button [role='button']:focus-visible {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5) !important;
+body .shopify-payment-button__button [role='button']:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   box-shadow: 0 0 0 0.1rem rgba(var(--color-button), var(--alpha-button-border)),
-    0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3) !important;
+    0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .shopify-payment-button__button--unbranded {
@@ -814,8 +814,8 @@ a.product__text {
     padding: 0 3rem;
   }
 
-  .product-media-modal__dialog .global-media-settings--no-shadow {
-    overflow: visible !important;
+  body .product-media-modal__dialog .global-media-settings--no-shadow {
+    overflow: visible;
   }
 }
 
@@ -1082,8 +1082,8 @@ a.product__text {
   }
 }
 
-.js .product__media {
-  overflow: hidden !important;
+html.js body .product__media {
+  overflow: hidden;
 }
 
 .thumbnail[aria-current]:focus-visible {

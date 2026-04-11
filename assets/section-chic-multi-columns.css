@@ -1,7 +1,7 @@
 .cmc-wrap {
   position:relative;
-  padding: var(--cmc-padding-y, 80px) 0;
-  color: var(--cmc-text, #111);
+  padding: var(--cmc-padding-y, 8.0rem) 0;
+  color: var(--cmc-text, rgb(var(--color-foreground)));
   overflow:hidden;
 }
 
@@ -25,7 +25,7 @@
 /* GRID */
 .cmc-grid {
   display:grid;
-  gap: var(--cmc-gap, 20px);
+  gap: var(--cmc-gap, 2.0rem);
   grid-template-columns: var(--cmc-columns, repeat(3, 1fr));
   position:relative;
   z-index:2;
@@ -40,7 +40,7 @@
 /* 💎 CARD */
 .cmc-card {
   position:relative;
-  border-radius: var(--cmc-radius, 24px);
+  border-radius: var(--cmc-radius, 2.4rem);
   background: var(--cmc-card, rgba(var(--color-background), 0.8));
   backdrop-filter:blur(28px);
   -webkit-backdrop-filter:blur(28px);
@@ -57,9 +57,9 @@
 /* 🌈 NEON GLOW */
 .cmc-card:hover {
   box-shadow:
-    0 0 30px rgba(var(--color-foreground),.2),
-    0 0 5px var(--cmc-gradient-2, #333399),
-    0 30px 80px rgba(var(--color-foreground),.25);
+    0 0 3.0rem rgba(var(--color-foreground),.2),
+    0 0 0.5rem var(--cmc-gradient-2, rgba(var(--color-button), 0.5)),
+    0 3.0rem 8.0rem rgba(var(--color-foreground),.25);
 }
 
 /* ✨ SHINE SWEEP */
@@ -89,8 +89,8 @@
 /* 💡 MOUSE LIGHT */
 .cmc-light {
   position:absolute;
-  width:400px;
-  height:400px;
+  width:40.0rem;
+  height:40.0rem;
   background:radial-gradient(circle,
     rgba(255,255,255,.8),
     rgba(255,255,255,.3),
@@ -109,12 +109,12 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:30px 20px 10px;
+  padding: 3.0rem 2.0rem 1.0rem;
 }
 
 .cmc-img {
-  width:80px;
-  height:80px;
+  width: 8.0rem;
+  height: 8.0rem;
   object-fit:contain;
   transition:transform .4s ease;
 }
@@ -124,14 +124,14 @@
 
 /* BODY */
 .cmc-body {
-  padding:24px;
+  padding: 2.4rem;
 }
 .cmc-card-title {
-  margin:0 0 8px;
-  font-size:20px;
+  margin:0 0 0.8rem;
+  font-size: 2.0rem;
 }
 .cmc-card-text {
-  font-size:14.5px;
+  font-size: 1.45rem;
   opacity:.75;
 }
 
