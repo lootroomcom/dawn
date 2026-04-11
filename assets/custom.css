@@ -10,8 +10,6 @@
 /* Desktop nav menu items */
 @media screen and (min-width: 990px) {
   .header__inline-menu .list-menu__item--link {
-    color: var(--header-menu-color);
-    font-weight: var(--header-menu-weight);
     text-transform: uppercase;
     font-family: Poppins, sans-serif;
   }
@@ -20,7 +18,6 @@
   }
 
   .header__inline-menu .header__menu-item {
-    font-weight: var(--header-menu-weight);
   }
 }
 

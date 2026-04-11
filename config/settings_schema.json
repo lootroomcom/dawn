@@ -117,29 +117,6 @@
       }
     ]
   },
-  {
-    "name": "Global Overrides",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Header Menu"
-      },
-      {
-        "type": "color",
-        "id": "header_menu_color",
-        "label": "Menu Link Color",
-        "default": "#dac795"
-      },
-      {
-        "type": "range",
-        "id": "header_menu_weight",
-        "min": 300,
-        "max": 900,
-        "step": 100,
-        "default": 700,
-        "label": "Menu Font Weight"
-      }
-    ]
   },
   {
     "name": "t:settings_schema.typography.name",
