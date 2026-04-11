@@ -1,0 +1,209 @@
+/* 
+  Cyberpunk Background Animation System 
+  Designed for Shopify Dawn Architecture 
+*/
+
+#lootroom-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Base Body Color Overwrite */
+body.lrb-active {
+  background-color: var(--lrb-bg, #070b14);
+}
+
+/* ─── Blue Glow (radial, wie bg-blue-glow) ─────── */
+.lrb-blue-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 15%,
+    rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.12) 0%,
+    transparent 70%
+  );
+  opacity: 0.5;
+}
+
+/* ─── Blur Orbs ─────────────────────────────────── */
+.lrb-orb {
+  position: absolute;
+  width: 38.4rem;
+  height: 38.4rem;
+  border-radius: 50%;
+  filter: blur(10.0rem);
+  will-change: opacity, transform;
+}
+
+/* Performance Mode: Disable extreme blurs on Orbs */
+.lrb-perf-mode .lrb-orb {
+  filter: none;
+  background: radial-gradient(circle, rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.15) 0%, transparent 60%) !important;
+}
+
+/* top: 33%, left: 25% — Blau */
+.lrb-orb--blue {
+  background: rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.10);
+  top: 33%;
+  left: 25%;
+  animation: lrb-pulse 8s ease-in-out infinite;
+}
+
+/* bottom: 33%, right: 25% — Grün */
+.lrb-orb--green {
+  background: rgba(var(--lrb-green-rgb, 34, 197, 94), 0.10);
+  bottom: 33%;
+  right: 25%;
+  animation: lrb-pulse 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.lrb-perf-mode .lrb-orb--green {
+  background: radial-gradient(circle, rgba(var(--lrb-green-rgb, 34, 197, 94), 0.15) 0%, transparent 60%) !important;
+}
+
+/* ─── Bottom Gradient (Lila/Pink) ───────────────── */
+.lrb-bottom-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80.0rem, 100vw);
+  height: 40.0rem;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(
+    to top,
+    rgba(88, 28, 135, 0.20),
+    rgba(219, 39, 119, 0.10),
+    transparent
+  );
+  opacity: 0.30;
+}
+
+/* ─── Feines Linien-Grid ───────────── */
+.lrb-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.1) 0.1rem, transparent 0.1rem),
+    linear-gradient(90deg, rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.1) 0.1rem, transparent 0.1rem);
+  background-size: 5.0rem 5.0rem;
+  opacity: 0.03;
+}
+
+/* ─── Scanlines ──────────────────────────────────── */
+.lrb-scanlines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 0.2rem,
+    rgba(255, 255, 255, 0.03) 0.2rem,
+    rgba(255, 255, 255, 0.03) 0.4rem
+  );
+  opacity: 0.02;
+}
+
+/* ─── Retro Perspective Grid (Boden) ─────────────── */
+.lrb-retro-grid-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16.0rem;
+  overflow: hidden;
+  opacity: 0.30;
+}
+.lrb-retro-grid {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.4) 0.1rem, transparent 0.1rem),
+    linear-gradient(90deg, rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.4) 0.1rem, transparent 0.1rem);
+  background-size: 6.0rem 6.0rem;
+  transform: perspective(30.0rem) rotateX(60deg);
+  transform-origin: bottom center;
+  background-position: center bottom;
+}
+/* Fade-out nach oben */
+.lrb-retro-grid-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.2rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--lrb-blue-rgb, 0, 163, 255), 0.20),
+    transparent
+  );
+}
+
+/* ─── Floating Shapes Container ──────────────────── */
+.lrb-shapes {
+  position: absolute;
+  inset: 0;
+}
+.lrb-shape {
+  position: absolute;
+}
+
+.lrb-perf-mode .lrb-shapes {
+  display: none;
+}
+
+/* ─── Keyframes ──────────────────────────────────── */
+@keyframes lrb-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+@keyframes lrb-ping {
+  0%    { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Float Animations */
+@keyframes lrb-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-1.2rem); }
+}
+@keyframes lrb-float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(12deg); }
+  50%       { transform: translateY(-1.0rem) rotate(12deg); }
+}
+@keyframes lrb-float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(45deg); }
+  50%       { transform: translateY(1.0rem) rotate(45deg); }
+}
+@keyframes lrb-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes lrb-pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(1.1); }
+}
+
+.lrb-float          { animation: lrb-float 4s ease-in-out infinite; }
+.lrb-float-delayed  { animation: lrb-float-delayed 5s ease-in-out infinite; }
+.lrb-float-reverse  { animation: lrb-float-reverse 6s ease-in-out infinite; }
+.lrb-spin-slow      { animation: lrb-spin-slow 12s linear infinite; }
+.lrb-pulse-slow     { animation: lrb-pulse-slow 3s ease-in-out infinite; }
+.lrb-hex            { animation: lrb-float 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lrb-orb,
+  .lrb-float,
+  .lrb-float-delayed,
+  .lrb-float-reverse,
+  .lrb-spin-slow,
+  .lrb-pulse-slow,
+  .lrb-hex { animation: none !important; }
+}

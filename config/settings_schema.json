@@ -1491,5 +1491,43 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Cyberpunk Background",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "lrb_enable",
+        "label": "Enable Cyberpunk Background",
+        "info": "Turn on animated floating elements and glows.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "lrb_performance_mode",
+        "label": "Optimize Performance",
+        "info": "Disables expensive CSS blurs and reduces animations.",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "lrb_bg_color",
+        "label": "Base Custom Background Color",
+        "info": "Overrides native color scheme background.",
+        "default": "#070b14"
+      },
+      {
+        "type": "color",
+        "id": "lrb_accent_blue",
+        "label": "Accent Color 1",
+        "default": "#00a3ff"
+      },
+      {
+        "type": "color",
+        "id": "lrb_accent_green",
+        "label": "Accent Color 2",
+        "default": "#22c55e"
+      }
+    ]
   }
 ]
