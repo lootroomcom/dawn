@@ -1511,13 +1511,6 @@
       },
       {
         "type": "color",
-        "id": "lrb_bg_color",
-        "label": "Base Custom Background Color",
-        "info": "Overrides native color scheme background.",
-        "default": "#070b14"
-      },
-      {
-        "type": "color",
         "id": "lrb_accent_blue",
         "label": "Accent Color 1",
         "default": "#00a3ff"

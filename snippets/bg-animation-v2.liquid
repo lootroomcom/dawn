@@ -9,7 +9,7 @@
   {%- assign blue_rgb = settings.lrb_accent_blue.red | append: ', ' | append: settings.lrb_accent_blue.green | append: ', ' | append: settings.lrb_accent_blue.blue -%}
   {%- assign green_rgb = settings.lrb_accent_green.red | append: ', ' | append: settings.lrb_accent_green.green | append: ', ' | append: settings.lrb_accent_green.blue -%}
   
-  <div id="lootroom-bg" class="{% if settings.lrb_performance_mode %}lrb-perf-mode{% endif %}" aria-hidden="true" style="--lrb-bg: {{ settings.lrb_bg_color | default: '#070b14' }}; --lrb-blue: {{ settings.lrb_accent_blue | default: '#00a3ff' }}; --lrb-blue-rgb: {{ blue_rgb }}; --lrb-green: {{ settings.lrb_accent_green | default: '#22c55e' }}; --lrb-green-rgb: {{ green_rgb }};">
+  <div id="lootroom-bg" class="{% if settings.lrb_performance_mode %}lrb-perf-mode{% endif %}" aria-hidden="true" style="--lrb-blue: {{ settings.lrb_accent_blue | default: '#00a3ff' }}; --lrb-blue-rgb: {{ blue_rgb }}; --lrb-green: {{ settings.lrb_accent_green | default: '#22c55e' }}; --lrb-green-rgb: {{ green_rgb }};">
     
     <!-- Blauer Radial-Glow -->
     <div class="lrb-blue-glow"></div>

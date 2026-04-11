@@ -14,10 +14,7 @@
   pointer-events: none;
 }
 
-/* Base Body Color Overwrite */
-body.lrb-active {
-  background-color: var(--lrb-bg, #070b14);
-}
+
 
 /* ─── Blue Glow (radial, wie bg-blue-glow) ─────── */
 .lrb-blue-glow {
