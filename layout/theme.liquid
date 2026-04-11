@@ -97,14 +97,6 @@
       }
       {% endfor %}
 
-      :root {
-        --brand-gold: {{ settings.brand_gold }};
-        --brand-gold-rgb: {{ settings.brand_gold.red }}, {{ settings.brand_gold.green }}, {{ settings.brand_gold.blue }};
-        --brand-beige: {{ settings.brand_beige }};
-        --brand-beige-rgb: {{ settings.brand_beige.red }}, {{ settings.brand_beige.green }}, {{ settings.brand_beige.blue }};
-        --brand-dark: {{ settings.brand_dark | default: '#1b333c' }};
-      }
-
 {{ scheme_classes | prepend: 'body' }} {
   color: rgba(var(--color-foreground), 0.75);
   background-color: rgb(var(--color-background));
