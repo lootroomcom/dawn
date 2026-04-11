@@ -1493,6 +1493,29 @@
     ]
   },
   {
+    "name": "Global Brand Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "brand_gold",
+        "label": "Brand Gold (Main Accent)",
+        "default": "#DAC795"
+      },
+      {
+        "type": "color",
+        "id": "brand_beige",
+        "label": "Brand Beige (Secondary Accent)",
+        "default": "#F4F0E6"
+      },
+      {
+        "type": "color",
+        "id": "brand_dark",
+        "label": "Brand Dark (Text/Backgrounds)",
+        "default": "#1B333C"
+      }
+    ]
+  },
+  {
     "name": "Cyberpunk Background",
     "settings": [
       {
