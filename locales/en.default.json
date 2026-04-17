@@ -539,7 +539,8 @@
   "shopify": {
     "checkout": {
       "order_summary": {
-        "duties_label": "US Import Duty & Processing (Section 122)"
+        "duties_label": "US Import Duty & Processing (Section 122)",
+        "recurring_total_tooltip": "This includes the mandatory US Import Surcharge (Section 122) and all customs clearance fees. Your order is shipped 'Delivered Duty Paid' (DDP), meaning we handle all paperwork and guarantee no additional fees upon delivery."
       },
       "shipping": {
         "duties_and_taxes_title": "US Import Duties & Taxes"
