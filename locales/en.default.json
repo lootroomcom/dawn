@@ -187,7 +187,7 @@
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "taxes_included": "Taxes included.",
       "duties_included": "Duties included.",
-      "duties_and_taxes_included": "Duties and taxes included.",
+      "duties_and_taxes_included": "All US Import Duties included",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
     },
     "modal": {
