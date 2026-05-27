@@ -118,7 +118,7 @@
           "settings": {
             "image": "shopify://shop_images/Garry_s_Mod_logo.svg",
             "image_width": 40,
-            "link": "shopify://collections/gmod-general"
+            "link": "shopify://collections/garrys-mod"
           }
         },
         "image_kJCVjG": {
@@ -126,7 +126,7 @@
           "settings": {
             "image": "shopify://shop_images/Counter-Strike_yellow-gray.svg",
             "image_width": 200,
-            "link": "shopify://collections/cs-general"
+            "link": "shopify://collections/counter-strike"
           }
         },
         "image_XM8A9r": {
@@ -134,7 +134,7 @@
           "settings": {
             "image": "shopify://shop_images/Overwatch4.svg",
             "image_width": 110,
-            "link": "shopify://collections/overwatch-general"
+            "link": "shopify://collections/overwatch"
           }
         },
         "image_tXFwhf": {
@@ -142,7 +142,7 @@
           "settings": {
             "image": "shopify://shop_images/Rust_vector_logo_svg.png",
             "image_width": 120,
-            "link": "shopify://collections/rust-general"
+            "link": "shopify://collections/rust"
           }
         }
       },
